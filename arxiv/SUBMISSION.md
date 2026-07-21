@@ -55,7 +55,7 @@ $\frac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$. Optimality is not claimed.
 **MSC classes:** 52A10 (Primary), 52B55, 52A38 (Secondary)
 
 **Comments field:**
-11 pages, 6 figures, 2 tables. Ancillary files contain exact verification
+12 pages, 6 figures, 2 tables. Ancillary files contain exact verification
 code (Python/SymPy); code and data also at
 https://github.com/atemerev/bellman-staple
 
