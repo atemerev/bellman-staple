@@ -10,6 +10,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -130,15 +131,41 @@ proof below.
 A \emph{staple} is a three-segment path whose four vertices
 $(\pm b,0),(\pm a,c)$ form an isosceles trapezoid: a bar of length $2b$ with
 two equal legs attached at equal obtuse angles
-(Figure~\ref{fig:family}).  Ward's square path is the case $a=b$, $c=2b$;
-releasing the right angles is what saves length.
+(Figure~\ref{fig:anatomy}).  Ward's square path is the case $a=b$, $c=2b$;
+releasing the right angles is what saves length.  The name is borrowed from
+Movshovich and Wetzel: their \emph{staples}
+\cite[\S3.2]{movshovichwetzel2011}, after \cite{coultonmovshovich2006}, are
+the three-segment arcs whose endpoints lie on the base of the triangle and
+whose two middle vertices lie on the two arms --- exactly the contact
+pattern of our path at a critical placement (Figure~\ref{fig:panels}) ---
+and their Lemma~9 shows that in the zee range, base angles above
+$45^\circ$, every staple is too long to be optimal.
+Theorem~\ref{thm:interval} certifies that below $45^\circ$ the staples
+take the lead.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=2.6]
+\draw[densely dotted,gray] (-0.365,0.6773) -- (0.365,0.6773);
+\draw[line width=1.5pt,orange!85!black]
+ (-0.365,0.6773) -- (-0.281,0) -- (0.281,0) -- (0.365,0.6773);
+\fill[black] (-0.365,0.6773) circle (0.013) node[above left,font=\scriptsize] {$(-a,c)$};
+\fill[black] (0.365,0.6773) circle (0.013) node[above right,font=\scriptsize] {$(a,c)$};
+\fill[black] (-0.281,0) circle (0.013) node[below left,font=\scriptsize] {$(-b,0)$};
+\fill[black] (0.281,0) circle (0.013) node[below right,font=\scriptsize] {$(b,0)$};
+\end{tikzpicture}
+\caption{A staple and its isosceles-trapezoidal hull: the bar from
+$(-b,0)$ to $(b,0)$, two equal legs to $(\pm a,c)$, and the dotted top edge
+completing the hull.}
+\label{fig:anatomy}
+\end{figure}
 
 \begin{theorem}\label{thm:interval}
 Let $u=\tan(\beta/2)$, and let $S(u)$ be the staple whose parameters
 $a(u),b(u),c(u)$ are the explicit rational polynomials of
 Section~\ref{sec:interval} (degrees at most $6$; $51$ rational coefficients
-in total, listed in the ancillary file
-\texttt{interval\_construction.json}).  Then for every
+in total, printed in Appendix~\ref{app:coeffs} and listed in the ancillary
+file \texttt{interval\_construction.json}).  Then for every
 $u\in[0.278,\,0.3855]$, that is for every base angle
 $\beta=2\arctan u\in[31.0719^\circ,\,42.1633^\circ]$:
 \begin{enumerate}
@@ -146,8 +173,10 @@ $\beta=2\arctan u\in[31.0719^\circ,\,42.1633^\circ]$:
 \item[(ii)] $|S(u)| < 3s$ for every square path of side $s$ that escapes
 $T(\beta)$ --- in particular $|S(u)|$ is strictly smaller than Ward's
 square-path length in both of its regimes;
-\item[(iii)] $|S(u)|$ is strictly smaller than the zee length
-$\frac{6\sin\beta\cos\beta}{\sqrt{1+8\sin^2\beta}}$ and the diameter
+\item[(iii)] $|S(u)|$ is strictly smaller than the critical zee length
+$\frac{6\sin\beta\cos\beta}{\sqrt{1+8\sin^2\beta}}$
+(Ward's closed form \cite{ward2008}, rescaled to legs $1$; the arcs are the
+$z_\beta$ of \cite{movshovichwetzel2011,movshovich2012}) and the diameter
 $2\cos\beta$; and for $u\ge 0.282$ (i.e.\ $\beta\ge31.4969^\circ$) also
 strictly smaller than the caliper length $\zeta\sin\beta$.
 \end{enumerate}
@@ -304,7 +333,9 @@ the four standard candidates at the gnomon.  Sections
 Section~\ref{sec:numerics} separates out the numerical evidence (stationary
 staples, family crossings) that guided the constructions but enters no
 proof.  We emphasize what is \emph{not} claimed: optimality of the staple,
-within its family or otherwise.
+within its family or otherwise.  All code and data accompanying the paper
+are available at \url{https://github.com/atemerev/bellman-staple} and as
+arXiv ancillary files.
 
 \begin{figure}[t]
 \centering
@@ -368,21 +399,6 @@ function of a compact convex set $C$, and $R_\theta$ the rotation of
 $\R^2$ by angle $\theta$. We use two standard facts: $h_{C\oplus D}=h_C+h_D$
 for the Minkowski sum, and $h_{RC}(u)=h_C(R^{-1}u)$.
 
-\begin{lemma}[hull reduction]\label{lem:hull}
-A path $P$ is an escape path for a convex region $T$ if and only if for
-every rotation $\theta$ there is no translation $t$ with
-$R_\theta\operatorname{conv}(P)+t\subset\operatorname{int}T$.
-\end{lemma}
-
-\begin{proof}
-A placed copy of $P$ lies in the open convex set
-$\operatorname{int}T$ if and only if its convex hull does; rigid
-motions factor as a rotation followed by a translation. (If a placed
-copy is not contained in the interior, the connected path starting
-inside must meet $\partial T$, i.e.\ the hiker escapes; cf.\
-\cite{finchwetzel2004}.)
-\end{proof}
-
 \begin{lemma}[fit criterion for triangles]\label{lem:fit}
 Let $T=\{x:\langle n_i,x\rangle\le t_i,\ i=1,2,3\}$ be a triangle with
 unit outward normals $n_i$ and side lengths $s_i$, so that
@@ -429,7 +445,7 @@ is precisely its compatibility condition. For this $t_0$,
 Note the geometric content of sufficiency: \emph{the set of admissible
 translations is itself a homothet of the triangle}, of ratio $\lambda$.
 
-\begin{corollary}[Minkowski criterion]\label{cor:mink}
+\begin{proposition}[escape criterion]\label{cor:mink}
 With $T$, $n_i=(\cos\alpha_i,\sin\alpha_i)$, $s_i$ as above, a path $P$
 with $H=\operatorname{conv}(P)$ is an escape path for $T$ if and only if
 the Minkowski sum
@@ -438,10 +454,16 @@ W\;:=\;s_1\,R_{-\alpha_1}H\;\oplus\;s_2\,R_{-\alpha_2}H\;\oplus\;s_3\,R_{-\alpha
 \]
 contains the closed disk of radius $2\operatorname{Area}(T)$ centered at
 the origin.  If $H$ is a polygon, then so is $W$.
-\end{corollary}
+\end{proposition}
 
 \begin{proof}
-By Lemmas \ref{lem:hull}--\ref{lem:fit}, $P$ escapes iff for all
+A placed congruent copy of $P$ lies in the open convex set
+$\operatorname{int}T$ if and only if its convex hull does, and rigid
+motions factor as a rotation followed by a translation; if a placed copy is
+not contained in the interior, the connected path, starting inside, must
+meet $\partial T$ --- the hiker escapes (cf.\ \cite{finchwetzel2004}).
+Thus $P$ escapes iff for every $\theta$ no translate of $R_\theta H$ lies
+in $\operatorname{int}T$; by Lemma~\ref{lem:fit} this holds iff for all
 $\theta$,
 $\sum_i s_i\,h_{R_\theta H}(n_i)\ge 2\operatorname{Area}(T)$
 (the closed inequality: a hull that can only be translated to touch
@@ -481,7 +503,7 @@ sense: its Minkowski sum circumscribes that disk.
 
 Parametrize by $u=\tan(\beta/2)$, so that $\sin\beta=\frac{2u}{1+u^2}$ and
 $\cos\beta=\frac{1-u^2}{1+u^2}$ are rational functions of $u$.  All triangle
-data --- normals, side lengths, the rotations of Corollary~\ref{cor:mink},
+data --- normals, side lengths, the rotations of Proposition~\ref{cor:mink},
 the disk radius $2\operatorname{Area}=\sin2\beta$ --- are then rational in
 $u$, and for a staple whose parameters $a,b,c$ are \emph{polynomials} in $u$
 with rational coefficients, every certificate of
@@ -499,49 +521,42 @@ on the respective pieces
 \]
 and $S(u)$ is the path through
 $(-a_i(u),c_i(u)),\,(-b_i(u),0),\,(b_i(u),0),\,(a_i(u),c_i(u))$.
-All $51$ coefficients are rational numbers; the machine-readable file is
-part of the theorem statement, and the verification script reads it afresh
-and certifies $a_i,b_i,c_i>0$ together with every inequality used below.
-Figure~\ref{fig:family} shows the family at three angles.  (The two interior
-breakpoints track a change in the contact pattern of the optimal staple; see
-Section~\ref{sec:numerics}.)
+All $51$ coefficients are rational numbers, printed in full in
+Appendix~\ref{app:coeffs}; the machine-readable copy is read afresh by the
+verification script, which certifies $a_i,b_i,c_i>0$ together with every
+inequality used below.  Figure~\ref{fig:family} shows the family at three
+angles.  The middle piece is a deliberately thin bridge: near
+$u\approx0.3534$ the numerically optimal staple changes which edges of its
+Minkowski sum touch the disk (Section~\ref{sec:numerics}), and the two
+outer fits track the two contact regimes; the quadratic bridge hands over
+between them, and its exact endpoints are immaterial --- every certificate
+is checked on each piece separately.
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[scale=2.1]
-\begin{scope}[shift={(-2.75,0.02)}]
-\draw[densely dotted,gray] (-0.365,0.6773) -- (0.365,0.6773);
-\draw[line width=1.4pt,orange!85!black]
- (-0.365,0.6773) -- (-0.281,0) -- (0.281,0) -- (0.365,0.6773);
-\fill[black] (-0.365,0.6773) circle (0.014) node[above left,font=\scriptsize] {$(-a,c)$};
-\fill[black] (0.365,0.6773) circle (0.014) node[above right,font=\scriptsize] {$(a,c)$};
-\fill[black] (-0.281,0) circle (0.014) node[left,font=\scriptsize] {$(-b,0)$};
-\fill[black] (0.281,0) circle (0.014) node[right,font=\scriptsize] {$(b,0)$};
-\node[font=\scriptsize,align=center] at (0,-0.21) {the staple and\\ its hull};
-\end{scope}
-\begin{scope}[shift={(-0.87,0)}]
+\begin{scope}[shift={(-1.74,0)}]
 \draw[very thick,green!45!black] (-0.84805,0) -- (0.84805,0) -- (0,0.52992) -- cycle;
 \draw[line width=1.2pt,orange!85!black]
  (0.23631,0) -- (0.17087,0.42315) -- (-0.17087,0.42315) -- (-0.23631,0);
 \node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=32^\circ$\\ $|S|=1.19812$};
 \end{scope}
-\begin{scope}[shift={(0.87,0)}]
+\begin{scope}[shift={(0,0)}]
 \draw[very thick,green!45!black] (-0.77715,0) -- (0.77715,0) -- (0,0.62932) -- cycle;
 \draw[line width=1.2pt,orange!85!black]
  (0.24298,0) -- (0.20207,0.46569) -- (-0.20207,0.46569) -- (-0.24298,0);
 \node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=39^\circ$\\ $|S|=1.33913$};
 \end{scope}
-\begin{scope}[shift={(2.61,0)}]
+\begin{scope}[shift={(1.74,0)}]
 \draw[very thick,green!45!black] (-0.74314,0) -- (0.74314,0) -- (0,0.66913) -- cycle;
 \draw[line width=1.2pt,orange!85!black]
  (0.25843,0) -- (0.22794,0.46390) -- (-0.22794,0.46390) -- (-0.25843,0);
 \node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=42^\circ$\\ $|S|=1.38569$};
 \end{scope}
 \end{tikzpicture}
-\caption{Left: a staple and its trapezoidal hull.  Right: the certified
-family $S(u)$ inside $T(\beta)$ at $\beta=32^\circ$, $39^\circ$,
-$42^\circ$, each at a critical placement (the hull fits only in touching
-position).}
+\caption{The certified family $S(u)$ inside $T(\beta)$ at
+$\beta=32^\circ$, $39^\circ$, $42^\circ$, each at a critical placement
+(the hull fits only in touching position).}
 \label{fig:family}
 \end{figure}
 
@@ -624,7 +639,8 @@ squares away the single root in $|S(u)|$. (iii): the diameter and caliper
 comparisons are of the same shape, using the outward-rounded bracket
 $\zeta>2.2782916$ from the published closed form; the zee comparison
 carries one further square root and is squared twice, with both
-intermediate signs certified.
+intermediate signs certified.  (The zee length in (iii) is Ward's closed
+form $Q_B$ \cite{ward2008} rescaled from unit base to unit legs.)
 
 In total $116$ rational-polynomial certificates (degrees $\le40$) are
 verified by endpoint signs and exact Sturm root counts.  The Zalgaller
@@ -673,7 +689,7 @@ vertices $(\pm b,0)$ and $(\pm a,c)$, where
 and $|S|=2b+2\sqrt{(a-b)^2+c^2}$ as stated.
 
 \subsection{The Minkowski sum}
-By Corollary~\ref{cor:mink} with rotation matrices
+By Proposition~\ref{cor:mink} with rotation matrices
 \[
 R_{-\alpha_1}=\begin{pmatrix}0&-1\\ 1&0\end{pmatrix},\quad
 R_{-\alpha_{2,3}}=\begin{pmatrix}\pm\sin36^\circ&\cos36^\circ\\
@@ -711,7 +727,7 @@ symmetry of $H$ conjugates the two leg copies and fixes the base copy).
 sum $W=\gp R_{90^\circ}H\oplus R_{-54^\circ}H\oplus R_{-126^\circ}H$
 contains the closed disk of radius $2\operatorname{Area}(T)=\sin72^\circ$.
 Every edge line of $W$ keeps distance $\ge \sin72^\circ$ from the origin; by
-Corollary~\ref{cor:mink} the staple escapes.  Three of the twelve edges are
+Proposition~\ref{cor:mink} the staple escapes.  Three of the twelve edges are
 tangent to the disk to within $5\times10^{-7}$.}
 \label{fig:mink}
 \end{figure}
@@ -740,7 +756,7 @@ elements symbolically and asks SymPy for their exact algebraic signs; decimal
 evaluation is used only for the displayed values.  It also verifies exactly
 that all $64$ candidate vertex sums lie on or inside every edge half-plane,
 so the cycle of Table~\ref{tab:edges} is indeed the boundary of $W$.  Thus
-the disk is contained in $W$, and Corollary~\ref{cor:mink} proves that $S$
+the disk is contained in $W$, and Proposition~\ref{cor:mink} proves that $S$
 escapes $T$.
 
 \begin{table}[t]
@@ -870,6 +886,61 @@ of the staple family $S(u)$.
 \item \path{interval_certificate.py} verifies all $116$ Sturm certificates
 of Theorem~\ref{thm:interval} and Corollary~\ref{cor:trio}.
 \end{itemize}
+All three files, together with the numerical discovery code and its data,
+are maintained at \url{https://github.com/atemerev/bellman-staple}.
+
+
+\appendix
+\section{The coefficients of the staple family}\label{app:coeffs}
+
+Table~\ref{tab:coeffs} prints the construction of Theorem~\ref{thm:interval}
+in full.  The same numbers are listed as integer fractions in the ancillary
+file \texttt{interval\_construction.json}, together with the fixed
+support-test vertex choices used in the escape certificates; the
+verification script consumes the file, not this table.
+
+\begin{table}[t]
+\centering\tiny\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+\multicolumn{4}{@{}l}{\emph{piece 1}: $u\in[139/500,\,353/1000]$}\\[1pt]
+$k$ & $a_k$ & $b_k$ & $c_k$ \\
+\midrule
+$0$ & $0.2180623261593$ & $0.50834630972286$ & $-0.68618491542384$ \\
+$1$ & $-2.98683316746864$ & $-9.67586466442302$ & $16.00857768415038$ \\
+$2$ & $34.80963432476292$ & $88.60308231720582$ & $-120.98302430509386$ \\
+$3$ & $-165.44093496652428$ & $-407.4340115522607$ & $544.85319850303314$ \\
+$4$ & $419.36689348412628$ & $1052.77262491939776$ & $-1412.41888562475624$ \\
+$5$ & $-566.71412345478798$ & $-1463.96980815258684$ & $1965.72502529223156$ \\
+$6$ & $317.71808396659464$ & $860.8859714000805$ & $-1153.82147540598876$ \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{piece 2}: $u\in[353/1000,\,353399/1000000]$}\\[1pt]
+$k$ & $a_k$ & $b_k$ & $c_k$ \\
+\midrule
+$0$ & $-44.64121070435796$ & $64.82150688020952$ & $-53.83538739921426$ \\
+$1$ & $258.38271230989518$ & $-370.2997274914329$ & $310.226332252557$ \\
+$2$ & $-371.75125098832224$ & $530.4122974737888$ & $-443.04905105780508$ \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{piece 3}: $u\in[353399/1000000,\,771/2000]$}\\[1pt]
+$k$ & $a_k$ & $b_k$ & $c_k$ \\
+\midrule
+$0$ & $598.39329462654$ & $931.9350917140677$ & $-1000.1742396697317$ \\
+$1$ & $-9888.67910670574158$ & $-15411.81001925178432$ & $16547.06303226795252$ \\
+$2$ & $68135.45237045777328$ & $106266.35727563781996$ & $-114104.67388908582498$ \\
+$3$ & $-250502.62369568886828$ & $-391014.4027686377397$ & $419956.42011173402622$ \\
+$4$ & $518368.51791825810486$ & $809875.46729334615888$ & $-870074.61994937309994$ \\
+$5$ & $-572502.14475386179926$ & $-895368.13774997390718$ & $962241.70033218066126$ \\
+$6$ & $263679.85825187420358$ & $412866.98586667984212$ & $-443874.26394488674308$ \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The $51$ coefficients of the staple family: on each piece,
+$x(u)=\sum_k x_k u^k$ for $x\in\{a,b,c\}$.  Every value is an exact
+rational number whose denominator has the form $2^i5^j$, printed here as
+its full terminating decimal.}
+\label{tab:coeffs}
+\end{table}
+
 
 \begin{thebibliography}{99}
 
