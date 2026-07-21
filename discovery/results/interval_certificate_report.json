@@ -1,0 +1,930 @@
+[
+ {
+  "label": "branch1:SHAPE a>0",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:SHAPE b>0",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:SHAPE c>0",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir0",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir1",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir2 (LHS>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 14,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir2",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir3 (LHS>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 14,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir3",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir4",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir5",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir6 (LHS>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir6",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir7 (LHS>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir7",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir8",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir9",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir10 (LHS>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir10",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir11 (LHS>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ESC dir11",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:SQA (R-2b>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:SQA",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 20,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:CAL (R-2b>0)",
+  "lo": "141/500",
+  "hi": "353/1000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:CAL",
+  "lo": "141/500",
+  "hi": "353/1000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:DIA (R-2b>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:DIA",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ZEE (R^2>4b^2)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 20,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ZEE (Z>0)",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 20,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch1:ZEE",
+  "lo": "139/500",
+  "hi": "353/1000",
+  "deg": 40,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:SHAPE a>0",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 2,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:SHAPE b>0",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 2,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:SHAPE c>0",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 2,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir0",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir1",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir2 (LHS>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir2",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir3 (LHS>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir3",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir4",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir5",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir6 (LHS>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir6",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir7 (LHS>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir7",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir8",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir9",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir10 (LHS>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir10",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir11 (LHS>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ESC dir11",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:SQA (R-2b>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:SQA",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 12,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:CAL (R-2b>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 4,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:CAL",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:DIA (R-2b>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 4,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:DIA",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ZEE (R^2>4b^2)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 12,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ZEE (Z>0)",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 12,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "vertex:ZEE",
+  "lo": "353/1000",
+  "hi": "353399/1000000",
+  "deg": 24,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SHAPE a>0",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SHAPE b>0",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SHAPE c>0",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 6,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir0",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir1",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir2 (LHS>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 14,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir2",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir3 (LHS>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 14,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir3",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir4",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir5",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir6 (LHS>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir6",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir7 (LHS>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir7",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir8",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir9",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir10 (LHS>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir10",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir11 (LHS>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ESC dir11",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 32,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SQA (R-2b>0)",
+  "lo": "353399/1000000",
+  "hi": "73/200",
+  "deg": 10,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SQA",
+  "lo": "353399/1000000",
+  "hi": "73/200",
+  "deg": 20,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SQB (R-2b>0)",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:SQB",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:CAL (R-2b>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:CAL",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:DIA (R-2b>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 8,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:DIA",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 16,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ZEE (R^2>4b^2)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 20,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ZEE (Z>0)",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 20,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "branch2:ZEE",
+  "lo": "353399/1000000",
+  "hi": "771/2000",
+  "deg": 40,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v0 h0 contact",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v0 h1",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 5,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v0 h2",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 5,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v1 h0 contact",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v1 h1",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 5,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v1 h2",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 5,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v2 h0",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 3,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v2 h1 contact",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v2 h2",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 4,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v3 h0",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 3,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v3 h1",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 4,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Aplace v3 h2 contact",
+  "lo": "139/500",
+  "hi": "73/200",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v0 h0",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 3,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v0 h1 contact",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v0 h2",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 4,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v1 h0",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 1,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v1 h1 contact",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v1 h2 contact",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v2 h0",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 2,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v2 h1",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 1,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v2 h2",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 3,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v3 h0 contact",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 0,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v3 h1",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 1,
+  "roots": 0,
+  "ok": true
+ },
+ {
+  "label": "Bplace v3 h2",
+  "lo": "9/25",
+  "hi": "771/2000",
+  "deg": 5,
+  "roots": 0,
+  "ok": true
+ }
+]

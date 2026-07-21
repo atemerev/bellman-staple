@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+paper/*.aux
+paper/*.log
+paper/*.xdv
+.DS_Store
