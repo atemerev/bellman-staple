@@ -23,6 +23,8 @@
 Bellman's lost-in-a-forest problem in isosceles triangles}
 
 \author{Alexander Temerev}
+\address{University of Geneva, Geneva, Switzerland}
+\email{alexander.temerev@unige.ch}
 \thanks{The computations, the verification scripts, and the initial draft of
 this manuscript were produced with the assistance of Claude (Anthropic).
 Verification code is provided as ancillary files.}
@@ -248,13 +250,14 @@ the enlargement Ward predicted --- at both ends.
 % crossings (numerical, Section 6)
 \addplot[only marks, mark=*, mark size=1.6pt, black, forget plot] coordinates {
 (31.049,1.17215) (42.281,1.38951)};
-\node[font=\scriptsize, anchor=west] at (axis cs:31.15,1.155) {$31.05^\circ$};
+\draw[gray, thin] (axis cs:31.049,1.168) -- (axis cs:31.049,1.142);
+\node[font=\scriptsize, anchor=north] at (axis cs:31.049,1.140) {$31.05^\circ$};
 \node[font=\scriptsize, anchor=west] at (axis cs:42.38,1.375) {$42.28^\circ$};
 % Ward's interval and the certified interval
 \draw[blue!60!black, |-|, thick] (axis cs:32.36,1.125) -- (axis cs:41.34,1.125)
   node[midway, above, font=\scriptsize] {Ward's square-path range $(32.36^\circ,41.34^\circ)$};
-\draw[orange!95!black, |-|, thick] (axis cs:31.50,1.180) -- (axis cs:42.16,1.180)
-  node[pos=0.72, above, font=\scriptsize] {Corollary~\ref{cor:trio}: staple beats all four};
+\draw[black!75, |-|, thick] (axis cs:31.50,1.155) -- (axis cs:42.16,1.155)
+  node[pos=0.72, above, font=\scriptsize, black!75] {Corollary~\ref{cor:trio}: staple beats all four};
 \end{axis}
 \end{tikzpicture}
 \caption{The five candidate lengths against the base angle $\beta$.  The
