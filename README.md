@@ -40,6 +40,19 @@ endpoint signs and Sturm root counts in exact integer arithmetic. No
 floating point enters any accepted certificate. **Optimality is not
 claimed.**
 
+## New in v2: line-arc paths (with Alessio Doria)
+
+- Exact line-arc certificate at the golden gnomon: **l(T) <= 1.2826799**
+  (verification/arc_certificate.py; 18 direction-window checks, all exact).
+- The critical line-arc path characterized exactly: curvature radius forced
+  to sin(beta); tan-half-angles of degree 16 (palindromic minimal
+  polynomials); arc-angle sines are roots of explicit quartics over
+  Q(sqrt5); critical length 1.28267602545904805617809... (Zalgaller-form).
+- The "Zalgalloid" family (numerical): the smoothed staple deforms
+  continuously into the scaled Zalgaller caliper at beta* ~ 27.6 deg
+  (discovery/zalgalloid_family.py, figures/fig_zalgalloid_morph.png),
+  answering Ward's 2008 speculation affirmatively.
+
 ## Repository layout
 
 ```

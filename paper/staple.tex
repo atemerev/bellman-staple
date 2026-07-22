@@ -28,11 +28,14 @@ Bellman's lost-in-a-forest problem in isosceles triangles}
 \author{Alexander Temerev}
 \address{University of Geneva, Geneva, Switzerland}
 \email{alexander.temerev@unige.ch}
+
+\author{Alessio Doria}
+%% TODO: add affiliation and email for A. Doria before submission
 \thanks{The computations, the verification scripts, and the initial draft of
 this manuscript were produced with the assistance of Claude Fable 5 (Anthropic).
 Verification code is provided as ancillary files.}
 
-\date{July 21, 2026}
+\date{July 22, 2026}
 
 \begin{abstract}
 We prove a new upper bound for the escape length of isosceles triangles in
@@ -54,10 +57,18 @@ escape from a triangle reduces, via the planar case of a containment theorem
 of Lutwak, to the containment of a disk in an explicit Minkowski sum, and
 every resulting inequality is a rational-polynomial sign condition verified
 by exact Sturm certificates.  At the type example, the golden gnomon (apex
-$108^\circ$), the bound reads
-$\ell(T)\le\frac{3751558+2\sqrt{20693661817348}}{10^{7}}=1.2849616\ldots$
-against Ward's $1.2934740\ldots$, with the closed-form bracket
-$\tfrac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$.  Optimality is not claimed.
+$108^\circ$), the polygonal bound $1.2849616\ldots$ (against Ward's
+$1.2934740\ldots$) is improved further by an exact line--arc certificate to
+$\ell(T)\le1.2826799$, and the critical line--arc path is characterized
+exactly: window tangency forces the curvature radius $\sin\beta$ (the width
+of $T$), the sines of its arc angles are roots of explicit quartics over
+$\Q(\sqrt5)$, and the critical length $1.2826760\ldots$ has the same closed
+shape as Zalgaller's strip constant.  Numerically, the line--arc family
+continues below the staple range and terminates on the scaled Zalgaller
+caliper at $\beta\approx27.6^\circ$, realizing the ``Zalgalloid'' family
+Ward speculated about.  The closed-form bracket
+$\tfrac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$ stands.  Optimality is not
+claimed.
 \end{abstract}
 
 \maketitle
@@ -119,7 +130,12 @@ Zalgaller and Besicovitch.'' \cite[p.~49]{ward2008}
 \end{quote}
 He published no coordinates or lengths for this improvement.  Gibbs
 \cite{gibbs2016}, using an uncertified Monte-Carlo search, later placed a
-``trapezium'' phase near base angles $38^\circ$--$42^\circ$.  Recent work of
+``trapezium'' phase near base angles $38^\circ$--$42^\circ$ and line--arc
+``tunnel'' candidates below it; in a companion paper \cite{gibbs2016b} he
+argued that for convex polygonal forests some shortest escape path is
+piecewise linear--circular.  We return to Ward's ``Zalgalloid'' question in
+Sections~\ref{sec:arc} and \ref{sec:numerics}, with an affirmative
+(numerical) answer.  Recent work of
 Deng \cite{deng2025,deng2026} formulates the general problem as a
 boundary-intersection problem and studies finite traveling-salesman
 discretizations.  Our aim is complementary: for triangular forests the
@@ -330,10 +346,13 @@ For the golden gnomon,
 
 Figure~\ref{fig:panels} compares the path of Theorem~\ref{thm:gnomon} with
 the four standard candidates at the gnomon.  Sections
-\ref{sec:criterion}--\ref{sec:gnomon} contain the proofs;
+\ref{sec:criterion}--\ref{sec:gnomon} contain the proofs of
+Theorems~\ref{thm:interval} and~\ref{thm:gnomon};
+Section~\ref{sec:arc} sharpens the gnomon bound with an exact line--arc
+certificate and characterizes the critical line--arc path algebraically;
 Section~\ref{sec:numerics} separates out the numerical evidence (stationary
-staples, family crossings) that guided the constructions but enters no
-proof.  We emphasize what is \emph{not} claimed: optimality of the staple,
+staples, family crossings, the Zalgalloid family) that guided the
+constructions but enters no proof.  We emphasize what is \emph{not} claimed: optimality of the staple,
 within its family or otherwise.  All code and data accompanying the paper
 are available at \url{https://github.com/atemerev/bellman-staple} and as
 arXiv ancillary files.
@@ -828,6 +847,137 @@ and scaling therefore give
 The upper bound is Theorem~\ref{thm:gnomon}.
 \end{proof}
 
+\section{Line--arc paths: the smoothed staple}\label{sec:arc}
+
+The staple is not the last word at the gnomon.  Gibbs \cite{gibbs2016b}
+argued that for a convex polygonal forest some shortest escape path is
+piecewise linear--circular, the arcs arising as envelopes of placements
+touching three sides, and his isosceles search \cite{gibbs2016} proposed
+line--arc candidates on a range of base angles containing $36^\circ$.  Free
+polyline optimization against Proposition~\ref{cor:mink} confirms this at
+the gnomon: the staple's shoulders relax into shallow circular bends.  The
+second author certified the first sub-staple bound,
+$\ell(T)\le1.2826880$, with a rational $20$-gon witness \cite{doria2026};
+here we treat the line--arc geometry exactly.
+
+\subsection{An exact line--arc witness}
+Proposition~\ref{cor:mink} applies to any compact convex hull, and the
+window scheme of Remark~\ref{rem:edgenormals} extends as soon as every
+boundary feature of $H$ has support of the form
+$\langle p,u\rangle+\varrho\,|u|$ on a known window of directions: vertices
+($\varrho=0$) and circular arcs ($p$ the center, $\varrho$ the radius, on
+the arc's normal cone).  If all feature data are rational, every check is
+again a finite list of exact signs.  Rational line--arc data exist in
+abundance: on a circle with rational center and rational radius, rational
+points are dense, the tangent line at a rational point is rational, and a
+rational chord through a rational point meets the circle in a second one.
+
+\begin{theorem}[line--arc witness]\label{thm:arc}
+There is a symmetric line--arc path $S_{\mathrm{arc}}$
+(Figure~\ref{fig:arcwitness}) --- a bar, two tangent segments, two circular
+arcs of common rational radius $r$ with rational centers and rational
+endpoints, and two leg segments, all coordinates rational and listed in the
+ancillary file \path{arc_certificate.py} --- which escapes the golden
+gnomon, so that
+\[
+\ell(T)\;\le\;|S_{\mathrm{arc}}|
+\;=\;2q+2\sqrt{A}+2\sqrt{B}+2r\arccos C
+\;=\;1.2826798604\ldots\;<\;1.282680,
+\]
+with $q,A,B,C\in\Q$ explicit.
+\end{theorem}
+
+\begin{proof}
+The twenty-four rotated feature normals partition the direction circle into
+eighteen windows.  On each window one fixed feature per copy bounds $h_W$
+from below by $\langle P,u\rangle+\varrho|u|$; the window minimum is
+controlled by the two endpoint signs together with an antipode exclusion,
+and window coverage by the cyclic positivity of consecutive cross products
+--- all exact in $\Q(\sqrt5,\sin36^\circ)$, with minimum squared endpoint
+slack $1.5\times10^{-6}$.  The single $\arccos$ in the length is enclosed by
+directed evaluation.  The ancillary file re-derives all data and performs
+every check.
+\end{proof}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=3.1]
+\draw[very thick,green!45!black] (-0.80902,0) -- (0.80902,0) -- (0,0.58779) -- cycle;
+\draw[thick,densely dashed,blue!60!black]
+ (0.24310,0) -- (0.18758,0.45150) -- (-0.18758,0.45150) -- (-0.24310,0);
+\draw[line width=1.6pt,orange!85!black,line join=round] plot coordinates {
+(-0.2341,0.0000) (-0.2124,0.2980) (-0.2115,0.3073) (-0.2105,0.3165) (-0.2093,0.3257) (-0.2080,0.3349) (-0.2065,0.3441) (-0.2049,0.3533) (-0.2032,0.3624) (-0.2013,0.3715) (-0.1993,0.3806) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1982,0.3851) (0.2003,0.3761) (0.2023,0.3670) (0.2041,0.3579) (0.2057,0.3487) (0.2073,0.3395) (0.2087,0.3303) (0.2099,0.3211) (0.2110,0.3119) (0.2119,0.3026) (0.2127,0.2933) (0.2341,0.0000)};
+\node[font=\scriptsize,orange!75!black,anchor=west] at (0.42,0.47) {$S_{\mathrm{arc}}$};
+\draw[gray,thin] (0.41,0.46) -- (0.21,0.40);
+\node[font=\scriptsize,blue!60!black,anchor=west] at (0.52,0.30) {staple};
+\draw[gray,thin] (0.51,0.29) -- (0.235,0.20);
+\end{tikzpicture}
+\caption{The line--arc witness $S_{\mathrm{arc}}$ (solid) at its critical
+placement in the golden gnomon, against the polygonal staple of
+Theorem~\ref{thm:gnomon} (dashed).  The shoulders bend along circular arcs
+of radius $r\approx\sin36^\circ$; the saving is $2.28\times10^{-3}$.}
+\label{fig:arcwitness}
+\end{figure}
+
+
+\subsection{The critical line--arc path, exactly}\label{sub:critical}
+Fix the template: a bar $[-q,q]\times\{0\}$, corners at $(\pm q,0)$, tangent
+edges, two arcs of radius $r$ with normal spans $[\psi_1,\psi_2]$ (and
+mirror), and legs to the tips.  At the numerically optimal member the
+contact structure is: \emph{tangency along both windows in which the
+bar-copy arcs face the disk, plus one isolated contact at $u=(-1,0)$}.
+Tangency along a window already forces the curvature law: the bar copy
+carries weight $\varphi$, so its arcs map to arcs of radius $\varphi r$ in
+$W$, and coincidence with the disk requires
+$\varphi r=2\operatorname{Area}=\sin72^\circ$, i.e.
+\[
+r=\sin36^\circ=\text{width of }T
+\]
+--- the same law as the caliper's arcs in the strip, whose radius equals the
+strip width.
+
+\begin{proposition}[the critical smoothed staple]\label{prop:critical}
+Impose this contact structure and stationarity of the length within the
+template.  After the (linear) elimination of the arc center and leg length,
+the system reduces to two polynomial equations of bidegree $(4,4)$ in
+$t_i=\tan(\psi_i/2)$, with a unique solution in the staple region.  Both
+$t_1$ and $t_2$ are algebraic of degree $16$ over $\Q$ with palindromic
+minimal polynomials; e.g.\ $t_1$ is a root of
+\begin{multline*}
+919 t^{16}+21152 t^{15}+155604 t^{14}+357968 t^{13}-186516 t^{12}\\
+-1633584 t^{11}-1534804 t^{10}+1227584 t^{9}+3199738 t^{8}+1227584 t^{7}\\
+-1534804 t^{6}-1633584 t^{5}-186516 t^{4}+357968 t^{3}+155604 t^{2}\\
++21152 t+919\;=\;0.
+\end{multline*}
+Consequently $\sin\psi_1,\sin\psi_2$ have degree $8$ over $\Q$ and are roots
+of explicit quartics over $\Q(\sqrt5)$; the second, for $\sin\psi_2$, reads
+\[
+s^4+\tfrac{467+103\sqrt5}{682}\,s^3
+ +\Bigl(\tfrac{6\sqrt5}{31}-\tfrac{51}{124}\Bigr)s^2
+ +\tfrac{\sqrt5-99}{496}\,s-\tfrac{29+21\sqrt5}{5456}\;=\;0,
+\]
+and the critical length is
+\[
+L^{*}\;=\;L_{\mathrm{alg}}+2\sin36^\circ\,(\psi_2-\psi_1)
+\;=\;1.28267602545904805617809430664645\ldots
+\]
+with $L_{\mathrm{alg}}$ algebraic.
+\end{proposition}
+
+The computation is exact throughout: a resultant eliminates $t_2$; the two
+quadratic field relations reduce the norm to an integer polynomial of degree
+$128$, whose factorization isolates the degree-$16$ palindromic factors; the
+displayed decimal is evaluated from the exact roots (scripts in the
+repository).  Zalgaller's strip constant
+$\zeta=2(\tan\alpha+\tilde\beta+\tan\gamma)$ is built from angles whose
+sines satisfy a cubic over $\Q$; the gnomon's critical line--arc constant
+has the identical shape --- algebraic lengths plus a radius times an arc
+angle entering linearly --- one algebraic level up, quartics over
+$\Q(\sqrt5)$.  That this critical point is the in-template optimum, and that
+the template is the right structure, rests on the numerics of
+Section~\ref{sec:numerics}; the \emph{bound} of Theorem~\ref{thm:arc} is
+unconditional.
+
 \section{Numerical discovery and conjectural context}\label{sec:numerics}
 
 \emph{Everything in this section is numerical evidence.}  It is included to
@@ -852,7 +1002,8 @@ near $\beta\approx38.9^\circ$ --- the two interior breakpoints of the
 construction in Section~\ref{sec:interval}.
 
 Continuation of the same stationary branch suggests crossings with the
-scaled caliper at $\beta\approx31.05^\circ$ and with the zee at
+scaled caliper at $\beta\approx31.05^\circ$ (pushed to
+$\approx27.6^\circ$ by the line--arc family below) and with the zee at
 $\beta\approx42.28^\circ$ (the two dots in Figure~\ref{fig:curves}); the
 latter agrees strikingly with Gibbs's Monte-Carlo estimate $42.3^\circ$
 \cite{gibbs2016}.  These are crossings between three specified candidate
@@ -864,18 +1015,126 @@ $110^\circ$--$118^\circ$; these may be closer to Ward's proposed
 ``Zalgalloids'', and turning them into exact objects is a natural next
 problem.
 
+
+\subsection{The Zalgalloid family}\label{sub:zalgalloid}
+Ward asked whether the class that is optimal beyond the zee range might be a
+family of ``Zalgalloids'' containing the Zalgaller caliper as an instance.
+Numerically the answer appears to be yes, with the smoothed staple as its
+upper end.  Enlarge the template of Section~\ref{sub:critical} by an
+optional foot arc (radius again $\sin\beta$) at each bar corner; a member is
+then a convex line--arc hull, and the path is its boundary minus the chord
+joining the two tips.  Continuation in $\beta$ gives Figures~\ref{fig:morph}
+and~\ref{fig:junction}: as $\beta$ decreases from $36^\circ$ the bar
+shrinks and the arcs deepen; the family beats the scaled caliper strictly
+for all $\beta$ down to $\approx27.75^\circ$ --- well below the polygonal
+staple's caliper crossing at $31.05^\circ$ --- with margin collapsing from
+$5.3\times10^{-3}$ at $31^\circ$ to $1.0\times10^{-5}$ at $27.75^\circ$;
+between $27.5^\circ$ and $27.75^\circ$ the improvement vanishes, and by
+$27.25^\circ$ the optimized member \emph{is} the scaled caliper to solver
+precision: the bar length reaches zero (the vanished bar is the caliper's
+peak corner), the arc span locks onto Zalgaller's $\tilde\beta=18.27^\circ$,
+and the tips become the caliper's feet.  The family thus interpolates
+continuously from the trapezoid to the caliper itself --- precisely the
+family Ward speculated about, with the polygonal staple at one end and
+Zalgaller's caliper at the other.  All statements in this subsection are
+numerical; making the junction exact is an inviting next target.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.85]
+\begin{scope}[shift={(-2.62,0)}]
+\draw[very thick,green!45!black] (-0.80902,0) -- (0.80902,0) -- (0,0.58779) -- cycle;
+\draw[line width=1.5pt,orange!85!black,line join=round] plot coordinates {
+(-0.2341,0.0000) (-0.2124,0.2980) (-0.2115,0.3073) (-0.2105,0.3165) (-0.2093,0.3257) (-0.2080,0.3349) (-0.2065,0.3441) (-0.2049,0.3533) (-0.2032,0.3624) (-0.2013,0.3715) (-0.1993,0.3806) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (-0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1808,0.4564) (0.1982,0.3851) (0.2003,0.3761) (0.2023,0.3670) (0.2041,0.3579) (0.2057,0.3487) (0.2073,0.3395) (0.2087,0.3303) (0.2099,0.3211) (0.2110,0.3119) (0.2119,0.3026) (0.2127,0.2933) (0.2341,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.28) {$\beta=36.0^\circ$\\ $L=1.282676$};
+\end{scope}
+\begin{scope}[shift={(0,0)}]
+\draw[very thick,green!45!black] (-0.83867,0) -- (0.83867,0) -- (0,0.54464) -- cycle;
+\draw[line width=1.5pt,orange!85!black,line join=round] plot coordinates {
+(-0.2282,0.0000) (-0.2018,0.2943) (-0.2005,0.3050) (-0.1990,0.3158) (-0.1973,0.3265) (-0.1955,0.3372) (-0.1933,0.3478) (-0.1910,0.3584) (-0.1885,0.3689) (-0.1858,0.3794) (-0.1828,0.3899) (-0.1691,0.4348) (-0.1691,0.4348) (-0.1691,0.4348) (-0.1690,0.4348) (-0.1690,0.4348) (-0.1690,0.4348) (-0.1690,0.4348) (-0.1690,0.4349) (-0.1690,0.4349) (-0.1690,0.4349) (-0.1690,0.4349) (0.1690,0.4349) (0.1690,0.4349) (0.1690,0.4349) (0.1690,0.4349) (0.1690,0.4348) (0.1690,0.4348) (0.1690,0.4348) (0.1690,0.4348) (0.1690,0.4348) (0.1691,0.4348) (0.1691,0.4348) (0.1813,0.3951) (0.1843,0.3846) (0.1872,0.3742) (0.1898,0.3637) (0.1922,0.3531) (0.1944,0.3425) (0.1964,0.3318) (0.1982,0.3211) (0.1998,0.3104) (0.2012,0.2997) (0.2023,0.2889) (0.2282,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.28) {$\beta=33.0^\circ$\\ $L=1.218281$};
+\end{scope}
+\begin{scope}[shift={(2.62,0)}]
+\draw[very thick,green!45!black] (-0.85717,0) -- (0.85717,0) -- (0,0.51504) -- cycle;
+\draw[line width=1.5pt,orange!85!black,line join=round] plot coordinates {
+(-0.2374,0.0000) (-0.2208,0.1768) (-0.2181,0.1961) (-0.2146,0.2152) (-0.2104,0.2342) (-0.2055,0.2530) (-0.1998,0.2716) (-0.1935,0.2900) (-0.1865,0.3082) (-0.1788,0.3260) (-0.1704,0.3436) (-0.1168,0.4447) (-0.1168,0.4447) (-0.1168,0.4448) (-0.1168,0.4448) (-0.1168,0.4448) (-0.1168,0.4448) (-0.1168,0.4448) (-0.1168,0.4448) (-0.1168,0.4449) (-0.1168,0.4449) (-0.1168,0.4449) (0.1168,0.4449) (0.1168,0.4449) (0.1168,0.4449) (0.1168,0.4448) (0.1168,0.4448) (0.1168,0.4448) (0.1168,0.4448) (0.1168,0.4448) (0.1168,0.4448) (0.1168,0.4447) (0.1168,0.4447) (0.1660,0.3522) (0.1747,0.3348) (0.1827,0.3171) (0.1901,0.2991) (0.1968,0.2808) (0.2028,0.2623) (0.2080,0.2436) (0.2126,0.2247) (0.2164,0.2056) (0.2196,0.1864) (0.2220,0.1671) (0.2374,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.28) {$\beta=31.0^\circ$\\ $L=1.168117$};
+\end{scope}
+\begin{scope}[shift={(-2.62,-1.42)}]
+\draw[very thick,green!45!black] (-0.87462,0) -- (0.87462,0) -- (0,0.48481) -- cycle;
+\draw[line width=1.5pt,orange!85!black,line join=round] plot coordinates {
+(-0.2483,0.0000) (-0.2219,0.1179) (-0.2179,0.1331) (-0.2133,0.1481) (-0.2083,0.1629) (-0.2028,0.1776) (-0.1968,0.1921) (-0.1903,0.2064) (-0.1834,0.2205) (-0.1761,0.2344) (-0.1683,0.2480) (-0.0314,0.4673) (-0.0314,0.4673) (-0.0313,0.4673) (-0.0313,0.4673) (-0.0313,0.4674) (-0.0313,0.4674) (-0.0313,0.4674) (-0.0313,0.4674) (-0.0313,0.4674) (-0.0312,0.4675) (-0.0312,0.4675) (0.0312,0.4675) (0.0312,0.4675) (0.0313,0.4675) (0.0313,0.4674) (0.0313,0.4674) (0.0313,0.4674) (0.0313,0.4674) (0.0313,0.4673) (0.0313,0.4673) (0.0314,0.4673) (0.0314,0.4673) (0.1642,0.2547) (0.1722,0.2412) (0.1798,0.2275) (0.1870,0.2135) (0.1936,0.1993) (0.1998,0.1849) (0.2056,0.1703) (0.2109,0.1555) (0.2157,0.1406) (0.2200,0.1255) (0.2238,0.1103) (0.2483,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.28) {$\beta=29.0^\circ$\\ $L=1.104089$};
+\end{scope}
+\begin{scope}[shift={(0,-1.42)}]
+\draw[very thick,green!45!black] (-0.88295,0) -- (0.88295,0) -- (0,0.46947) -- cycle;
+\draw[line width=1.5pt,orange!85!black,line join=round] plot coordinates {
+(-0.2445,0.0000) (-0.2029,0.1422) (-0.1986,0.1552) (-0.1938,0.1681) (-0.1887,0.1809) (-0.1833,0.1935) (-0.1774,0.2059) (-0.1712,0.2182) (-0.1646,0.2303) (-0.1577,0.2421) (-0.1505,0.2538) (-0.0107,0.4624) (-0.0106,0.4626) (-0.0105,0.4628) (-0.0103,0.4630) (-0.0102,0.4632) (-0.0100,0.4634) (-0.0099,0.4636) (-0.0098,0.4638) (-0.0096,0.4640) (-0.0095,0.4642) (-0.0094,0.4644) (0.0093,0.4645) (0.0094,0.4643) (0.0096,0.4641) (0.0097,0.4639) (0.0098,0.4637) (0.0100,0.4635) (0.0101,0.4633) (0.0103,0.4631) (0.0104,0.4629) (0.0105,0.4627) (0.0107,0.4625) (0.1467,0.2595) (0.1542,0.2480) (0.1612,0.2362) (0.1680,0.2242) (0.1744,0.2121) (0.1804,0.1997) (0.1860,0.1872) (0.1913,0.1745) (0.1963,0.1617) (0.2008,0.1487) (0.2050,0.1356) (0.2445,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.28) {$\beta=28.0^\circ$\\ $L=1.069529$};
+\end{scope}
+\begin{scope}[shift={(2.62,-1.42)}]
+\draw[very thick,green!45!black] (-0.88902,0) -- (0.88902,0) -- (0,0.45787) -- cycle;
+\draw[line width=1.5pt,orange!85!black,line join=round] plot coordinates {
+(-0.2390,0.0000) (-0.1962,0.1424) (-0.1917,0.1555) (-0.1868,0.1684) (-0.1815,0.1812) (-0.1758,0.1939) (-0.1698,0.2063) (-0.1633,0.2186) (-0.1565,0.2307) (-0.1494,0.2425) (-0.1419,0.2542) (-0.0013,0.4561) (-0.0011,0.4562) (-0.0010,0.4564) (-0.0009,0.4566) (-0.0008,0.4567) (-0.0007,0.4569) (-0.0005,0.4571) (-0.0004,0.4573) (-0.0003,0.4574) (-0.0002,0.4576) (-0.0001,0.4578) (0.0000,0.4579) (0.0001,0.4577) (0.0002,0.4575) (0.0004,0.4574) (0.0005,0.4572) (0.0006,0.4570) (0.0007,0.4568) (0.0008,0.4567) (0.0010,0.4565) (0.0011,0.4563) (0.0012,0.4561) (0.1380,0.2599) (0.1457,0.2484) (0.1530,0.2366) (0.1600,0.2247) (0.1666,0.2125) (0.1728,0.2001) (0.1787,0.1876) (0.1842,0.1749) (0.1893,0.1620) (0.1940,0.1489) (0.1983,0.1358) (0.2390,0.0000)};
+\draw[line width=0.9pt,teal!75!black,densely dashed] plot coordinates {
+(-0.2389,0.0000) (-0.1998,0.1310) (-0.1984,0.1358) (-0.1968,0.1406) (-0.1953,0.1454) (-0.1937,0.1501) (-0.1920,0.1549) (-0.1902,0.1596) (-0.1885,0.1643) (-0.1866,0.1690) (-0.1847,0.1737) (-0.1828,0.1783) (-0.1808,0.1829) (-0.1788,0.1875) (-0.1767,0.1921) (-0.1746,0.1967) (-0.1724,0.2012) (-0.1701,0.2057) (-0.1679,0.2102) (-0.1655,0.2147) (-0.1631,0.2191) (-0.1607,0.2235) (-0.1582,0.2279) (-0.1557,0.2322) (-0.1531,0.2366) (-0.1505,0.2409) (-0.1478,0.2451) (-0.1451,0.2494) (-0.1423,0.2536) (-0.1395,0.2578) (-0.1367,0.2619) (0.0000,0.4579) (0.1367,0.2619) (0.1395,0.2578) (0.1423,0.2536) (0.1451,0.2494) (0.1478,0.2451) (0.1505,0.2409) (0.1531,0.2366) (0.1557,0.2322) (0.1582,0.2279) (0.1607,0.2235) (0.1631,0.2191) (0.1655,0.2147) (0.1679,0.2102) (0.1701,0.2057) (0.1724,0.2012) (0.1746,0.1967) (0.1767,0.1921) (0.1788,0.1875) (0.1808,0.1829) (0.1828,0.1783) (0.1847,0.1737) (0.1866,0.1690) (0.1885,0.1643) (0.1902,0.1596) (0.1920,0.1549) (0.1937,0.1501) (0.1953,0.1454) (0.1968,0.1406) (0.1984,0.1358) (0.1998,0.1310) (0.2389,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.28) {$\beta=27.25^\circ$ ($=$ caliper, dashed)\\ $L=1.043170$};
+\end{scope}
+\end{tikzpicture}
+\caption{The Zalgalloid family (numerical): optimized line--arc members at six base
+angles, each at its critical placement (tips on the base, bar or peak under the
+apex).  As $\beta$ decreases the bar shrinks and the arcs deepen; at
+$\beta=27.25^\circ$ the optimized member coincides with the scaled Zalgaller
+caliper (dashed): the vanished bar has become the caliper's peak corner, the
+shoulder arcs its arcs (span $\tilde\beta=18.27^\circ$), the tips its feet.}
+\label{fig:morph}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{semilogyaxis}[width=0.86\textwidth, height=5.6cm,
+  xlabel={base angle $\beta$ (degrees)},
+  legend style={at={(0.98,0.05)}, anchor=south east, font=\scriptsize},
+  tick label style={font=\scriptsize}, label style={font=\small},
+  grid=major, grid style={gray!25}, xmin=26, xmax=36.4]
+\addplot[teal!70!black, thick, mark=*, mark size=1pt] coordinates {
+(26.00,5.000e-08) (26.25,5.000e-08) (26.50,5.000e-08) (26.75,5.000e-08) (27.00,5.000e-08) (27.25,5.000e-08) (27.50,5.000e-08) (27.75,1.044e-05) (28.00,6.391e-05) (28.25,1.624e-04) (28.50,3.048e-04) (28.75,4.909e-04) (29.00,4.483e-04) (29.25,7.822e-04) (29.50,1.162e-03) (29.75,1.202e-03) (30.00,1.230e-03) (30.25,1.335e-03) (30.50,2.500e-03) (30.75,3.818e-03) (31.00,5.290e-03) (31.25,6.916e-03) (31.50,8.698e-03) (31.75,1.005e-02) (32.00,1.272e-02) (32.25,1.495e-02) (32.50,1.745e-02) (32.75,1.999e-02) (33.00,2.257e-02) (33.25,2.518e-02) (33.50,2.783e-02) (33.75,3.052e-02) (34.00,3.325e-02) (34.25,3.602e-02) (34.50,3.882e-02) (34.75,4.167e-02) (35.00,4.455e-02) (35.25,4.747e-02) (35.50,5.043e-02) (35.75,5.343e-02) (36.00,5.647e-02)};
+\addlegendentry{caliper length $-$ family length}
+\addplot[orange!95!black, thick, mark=square*, mark size=1pt] coordinates {
+(26.00,5.0000e-05) (26.25,5.0000e-05) (26.50,5.0000e-05) (26.75,5.0000e-05) (27.00,5.0000e-05) (27.25,5.0000e-05) (27.50,7.2088e-04) (27.75,4.8150e-03) (28.00,9.2752e-03) (28.25,1.3091e-02) (28.50,1.7185e-02) (28.75,2.3202e-02) (29.00,3.1234e-02) (29.25,3.5543e-02) (29.50,4.1252e-02) (29.75,4.7109e-02) (30.00,5.5324e-02) (30.25,8.9038e-02) (30.50,9.8665e-02) (30.75,1.0778e-01) (31.00,1.1676e-01) (31.25,1.2558e-01) (31.50,1.3405e-01) (31.75,1.6423e-01) (32.00,1.5006e-01) (32.25,1.6615e-01) (32.50,1.6711e-01) (32.75,1.6807e-01) (33.00,1.6903e-01) (33.25,1.6999e-01) (33.50,1.7117e-01) (33.75,1.7214e-01) (34.00,1.7308e-01) (34.25,1.7413e-01) (34.50,1.7508e-01) (34.75,1.7607e-01) (35.00,1.7704e-01) (35.25,1.7801e-01) (35.50,1.7896e-01) (35.75,1.7990e-01) (36.00,1.8083e-01)};
+\addlegendentry{bar half-length $q$}
+\draw[gray, dashed] (axis cs:27.6,1e-8) -- (axis cs:27.6,1);
+\node[font=\scriptsize, anchor=west, gray] at (axis cs:26.15,3e-7)
+  {$\le 10^{-7}$: coincides with the caliper};
+\end{semilogyaxis}
+\end{tikzpicture}
+\caption{Convergence of the line--arc family onto the scaled caliper
+(numerical; log scale).  Both the improvement over the caliper and the bar
+length vanish at $\beta^{*}\approx27.6^\circ$; clipped values at the floor
+of the plot are exact coincidence to solver precision.}
+\label{fig:junction}
+\end{figure}
+
+
 \section{Conclusion}
 
-The contribution of this paper is a new, exactly certified upper bound for
-the escape length of isosceles triangles on the interval
-$[31.07^\circ,42.16^\circ]$ of base angles: an explicit trapezoidal family
-that removes Ward's square path from the frontier everywhere and beats all
-four of his comparison families on $[31.50^\circ,42.16^\circ]$, together
-with a finite-certificate method that replaces the continuum of placements
-by polygon arithmetic.  No optimality is claimed; the gap in
-Corollary~\ref{cor:bracket} remains substantial, and determining whether the
-stationary staple, a nearby hybrid, or an entirely different path is optimal
-is open.
+The exact contributions of this paper are: a certified upper bound for the
+escape length of isosceles triangles on the whole interval
+$[31.07^\circ,42.16^\circ]$ of base angles, via an explicit trapezoidal
+family that removes Ward's square path from the frontier everywhere and
+beats all four of his comparison families on $[31.50^\circ,42.16^\circ]$; a
+finite-certificate method (for polygonal and line--arc data alike) that
+replaces the continuum of placements by exact arithmetic; the improved
+line--arc bound $\ell(T)\le1.2826799$ at the golden gnomon; and the exact
+algebraic characterization of the critical line--arc path there, with its
+Zalgaller-form constant.  The numerical contributions --- the curvature law
+$r=\sin\beta$, the Zalgalloid family joining the staple to the caliper at
+$\beta^{*}\approx27.6^\circ$ --- mark the places where theorems should come
+next: a proof of the curvature law via the linear-programming duality it
+suggests, an exact treatment of the junction, and certified interval bounds
+for the line--arc family.  No optimality is claimed anywhere; the gap in
+Corollary~\ref{cor:bracket} remains substantial.
 
 \subsection*{Ancillary files}
 \begin{itemize}
@@ -886,8 +1145,11 @@ Table~\ref{tab:edges}, and checks the length comparisons.
 of the staple family $S(u)$.
 \item \path{interval_certificate.py} verifies all $116$ Sturm certificates
 of Theorem~\ref{thm:interval} and Corollary~\ref{cor:trio}.
+\item \path{arc_certificate.py} constructs the rational line--arc witness of
+Theorem~\ref{thm:arc} and verifies its eighteen window certificates and the
+length enclosure.
 \end{itemize}
-All three files, together with the numerical discovery code and its data,
+All four files, together with the numerical discovery code and its data,
 are maintained at \url{https://github.com/atemerev/bellman-staple}.
 
 
@@ -984,6 +1246,12 @@ Z.~Deng,
 arXiv:2606.13987v2 (2026),
 \url{https://arxiv.org/abs/2606.13987}.
 
+\bibitem{doria2026}
+A.~Doria,
+\emph{Smoothed-Staple: certified escape paths beyond the staple},
+code repository (2026),
+\url{https://github.com/Alessio2405/Smoothed-Staple}.
+
 \bibitem{finchwetzel2004}
 S.~R. Finch and J.~E. Wetzel,
 \emph{Lost in a forest},
@@ -998,6 +1266,11 @@ Amer. Math. Monthly \textbf{81} (1974), 36--41.
 P.~Gibbs,
 \emph{Lost in an isosceles triangle},
 viXra:1607.0015 (2016).
+
+\bibitem{gibbs2016b}
+P.~Gibbs,
+\emph{Bellman's escape problem for convex polygons},
+viXra:1606.0050 (2016).
 
 \bibitem{gross1955}
 O.~Gross,

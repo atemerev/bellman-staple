@@ -22,7 +22,9 @@ is on line 2 for arXiv's autodetection).
 **Title:**
 An improved upper bound for Bellman's lost-in-a-forest problem in isosceles triangles
 
-**Authors:** Alexander Temerev (University of Geneva)
+**Authors:** Alexander Temerev (University of Geneva), Alessio Doria
+**(TODO: add Doria's affiliation + email in staple.tex before submitting;**
+**there is a marked %% TODO line in the preamble)**
 
 **Abstract:** (plain text, math in $...$)
 
@@ -48,14 +50,21 @@ condition verified by exact Sturm certificates. At the type example, the
 golden gnomon (apex $108^\circ$), the bound reads
 $\ell(T)\le(3751558+2\sqrt{20693661817348})/10^7=1.2849616\ldots$ against
 Ward's $1.2934740\ldots$, with the closed-form bracket
-$\frac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$. Optimality is not claimed.
+$\frac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$. Optimality is not claimed. At the golden gnomon the polygonal bound
+$1.2849616\ldots$ is improved by an exact line--arc certificate to
+$\ell(T)\le1.2826799$; the critical line--arc path is characterized
+exactly (curvature radius $\sin\beta$, arc-angle sines satisfying explicit
+quartics over $\Q(\sqrt5)$, critical length $1.2826760\ldots$ of the same
+closed shape as Zalgaller's strip constant); and numerically the line--arc
+family terminates on the scaled Zalgaller caliper at
+$\beta\approx27.6^\circ$, realizing Ward's ``Zalgalloid'' family.
 
 **Primary category:** math.MG (Metric Geometry)
 **Cross-list:** cs.CG (Computational Geometry)
 **MSC classes:** 52A10 (Primary), 52B55, 52A38 (Secondary)
 
 **Comments field:**
-12 pages, 6 figures, 2 tables. Ancillary files contain exact verification
+15 pages, 9 figures, 2 tables. Ancillary files contain exact verification
 code (Python/SymPy); code and data also at
 https://github.com/atemerev/bellman-staple
 
@@ -69,5 +78,6 @@ reuse, otherwise the arXiv non-exclusive license is the minimal option.
 - [x] `\pdfoutput=1` hint present (XeTeX-guarded)
 - [x] Ancillary scripts re-run from the packaged copies:
       `tight_staple_proof.py` → ALL CERTIFICATES PASS;
-      `interval_certificate.py` → 116/116 PASS
+      `interval_certificate.py` → 116/116 PASS;
+      `arc_certificate.py` → ALL WINDOW CERTIFICATES PASS (18 windows)
 - [ ] Final proofread of the compiled PDF by the author
