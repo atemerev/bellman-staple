@@ -31,7 +31,8 @@ The three regimes of escape paths for isosceles triangles in Bellman's lost-in-a
 
 We organize the best-known escape paths for isosceles triangles $T(\beta)$
 (unit legs, base angle $\beta$) in Bellman's lost-in-a-forest problem into
-three regimes, and determine the character of both regime boundaries. On
+three regimes on the window $26^\circ\le\beta\le60^\circ$, and determine
+the character of both regime boundaries. On
 $[45^\circ,60^\circ]$ the Besicovitch--Movshovich zee is optimal;
 numerically it remains the frontier down to $\beta_\times=42.287^\circ$.
 Below $\beta_\times$ the frontier is a single connected branch of line--arc
@@ -66,14 +67,16 @@ sines of its arc angles are roots of explicit quartics over $\Q(\sqrt5)$,
 and the critical length $1.2826760\ldots$ has the same closed shape as
 Zalgaller's strip constant. The branch ends above in an exact rectangle
 path of length $\sqrt2$ at $\beta=45^\circ$, tied with the diameter.
-Optimality is claimed nowhere below $45^\circ$.
+Outside the window, numerics indicate at least one further regime on the
+needle side $\beta>60^\circ$, where the width of the triangle switches
+to $\sin2\beta$. Optimality is claimed nowhere below $45^\circ$.
 
 **Primary category:** math.MG (Metric Geometry)
 **Cross-list:** cs.CG (Computational Geometry)
 **MSC classes:** 52A10 (Primary), 52B55, 52A38 (Secondary)
 
 **Comments field:**
-19 pages, 11 figures, 2 tables. Ancillary files contain exact verification
+20 pages, 11 figures, 2 tables. Ancillary files contain exact verification
 code (Python/SymPy); code and data also at
 https://github.com/atemerev/bellman-staple
 

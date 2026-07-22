@@ -40,7 +40,8 @@ Verification code is provided as ancillary files.}
 \begin{abstract}
 We organize the best-known escape paths for isosceles triangles $T(\beta)$
 (unit legs, base angle $\beta$) in Bellman's lost-in-a-forest problem into
-three regimes, and determine the character of both regime boundaries.  On
+three regimes on the window $26^\circ\le\beta\le60^\circ$, and determine
+the character of both regime boundaries.  On
 $[45^\circ,60^\circ]$ the Besicovitch--Movshovich zee is optimal;
 numerically it remains the frontier down to $\beta_\times=42.287^\circ$.
 Below $\beta_\times$ the frontier is a single connected branch of
@@ -77,7 +78,9 @@ $1.2826760\ldots$ has the same closed shape as Zalgaller's strip constant.
 The branch ends above in an exact rectangle path of length $\sqrt2$ at
 $\beta=45^\circ$, tied with the diameter.  The closed-form bracket
 $\tfrac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$ stands at the gnomon.
-Optimality is claimed nowhere below $45^\circ$.
+Outside the window, numerics indicate at least one further regime on the
+needle side $\beta>60^\circ$, where the width of the triangle switches to
+$\sin2\beta$.  Optimality is claimed nowhere below $45^\circ$.
 \end{abstract}
 
 \maketitle
@@ -156,8 +159,9 @@ proof below.
 
 \subsection*{The three regimes}
 This paper organizes everything that is known about escape paths for the
-family $T(\beta)$ --- proven or numerical --- into a single picture,
-Figure~\ref{fig:regimes}.  Three families take turns as the shortest known
+family $T(\beta)$ on the window $26^\circ\le\beta\le60^\circ$ --- proven
+or numerical --- into a single picture, Figure~\ref{fig:regimes}; the
+flanks of the window are discussed in Section~\ref{sub:flanks}.  Three families take turns as the shortest known
 escape path; one representative of each, at its critical placement, is
 drawn in Figure~\ref{fig:gallery}.
 \begin{itemize}
@@ -175,7 +179,11 @@ convex hull minus one chord.  Near $\beta_\times$ the hull is a
 near-polygonal isosceles trapezoid --- the \emph{staple}; as $\beta$
 decreases, circular arcs of curvature radius $\sin\beta$, the width of
 $T(\beta)$, grow along it
-(Sections~\ref{sec:staple}--\ref{sec:arc}).
+(Sections~\ref{sec:staple}--\ref{sec:arc}).  The names are stations on
+one family, not different families: \emph{staple} for the polygonal top,
+\emph{smoothed staple} once the shoulders round, \emph{Zalgalloid} ---
+Ward's coinage --- for the branch as a whole, whose lower endpoint is the
+caliper itself.
 \item The \textbf{scaled caliper}, for $\beta\le\beta^{*}$: Zalgaller's
 strip solution scaled to the width of the triangle,
 $\ell(T)\le\zeta\sin\beta$ (Section~\ref{sec:caliper}).
@@ -600,8 +608,10 @@ whose two middle vertices lie on the two arms --- exactly the contact
 pattern of our path at a critical placement (Figure~\ref{fig:panels}) ---
 and their Lemma~9 shows that in the zee range, base angles above
 $45^\circ$, every staple is too long to be optimal.
-Theorem~\ref{thm:interval} certifies that below $45^\circ$ the staples
-take the lead.
+Theorem~\ref{thm:interval} certifies that on a large interval below the
+crossing the staples take the lead over all four classical candidates;
+within the branch, the lead then passes to their own roundings
+(Section~\ref{sec:arc}).
 
 \begin{figure}[t]
 \centering
@@ -754,6 +764,16 @@ everything else in the band is proved.}
 \label{fig:curves}
 \end{figure}
 
+
+One clarification prevents a misreading.  The polygonal staple is
+nowhere the actual frontier: at every angle of the regime its own
+rounding is strictly shorter (Section~\ref{sec:arc}) --- by
+$2.29\times10^{-3}$ at the gnomon and still by $2.9\times10^{-4}$ at
+$42^\circ$ --- and above $\beta_\times$ the zee is shorter than both.  We
+certify the polygonal family because rational-polynomial data make the
+Sturm certificates transparent; Theorem~\ref{thm:interval} is a certified
+upper envelope for the branch and a complete elimination of the classical
+candidates, not a claim that corners are best.
 
 The rest of this section proves Theorem~\ref{thm:interval}.
 Parametrize by $u=\tan(\beta/2)$, so that $\sin\beta=\frac{2u}{1+u^2}$ and
@@ -1020,7 +1040,9 @@ $108^\circ$, diameter $1.6180340$), each drawn at a critical placement: each
 path's hull fits $T$ only in touching position.  The staple, square path, and
 caliper all touch the base with their endpoints; the caliper's peak sits
 exactly at the apex.  The staple of
-Theorem~\ref{thm:gnomon} achieves criticality at the smallest length.}
+Theorem~\ref{thm:gnomon} achieves criticality at the smallest of the
+four lengths shown; the line--arc path of Section~\ref{sec:arc} is
+shorter still.}
 \label{fig:panels}
 \end{figure}
 
@@ -1372,15 +1394,20 @@ and below $\beta^{*}\approx27.6^\circ$ nothing known beats it.  What
 remains is to understand the handover, and Ward guessed its shape in one
 word: he asked whether the class optimal beyond the zee range might be a
 family of ``Zalgalloids'' containing the caliper as an instance.
-Numerically the answer is yes, the smoothed staple is its upper end, and
-the handover is tangential.
+Numerically the answer is yes --- and the Zalgalloids are not a new
+family but the same branch, the smoothed staples of
+Section~\ref{sec:arc} continued downward; the handover is tangential.
 
 Enlarge the template of Section~\ref{sub:critical} by an
 optional foot arc (radius again $\sin\beta$) at each bar corner; a member is
 then a convex line--arc hull, and the path is its boundary minus the chord
-joining the two tips.  Continuation in $\beta$ gives Figures~\ref{fig:morph}
+joining the two tips.  (The enlargement is minor in practice: the optimal
+foot-arc spans stay below half a degree throughout; the family's action
+is in the shoulders and the shrinking bar.)  Continuation in $\beta$ gives Figures~\ref{fig:morph}
 and~\ref{fig:junction}: as $\beta$ decreases from $36^\circ$ the bar
-shrinks and the arcs deepen; the family beats the scaled caliper strictly
+shrinks and the arcs deepen (two stationary sub-branches, shallow-arc and
+deep-arc, exchange leadership near $32^\circ$; we plot the pointwise
+minimum); the family beats the scaled caliper strictly
 for all $\beta$ down to $\approx27.75^\circ$ --- well below the polygonal
 staple's caliper crossing at $31.05^\circ$ --- with margin collapsing from
 $5.3\times10^{-3}$ at $31^\circ$ to $1.0\times10^{-5}$ at $27.75^\circ$;
@@ -1400,6 +1427,25 @@ best-known frontier is precisely $[\beta^{*},\beta_\times]$.
 
 The line--arc ``tunnel'' candidates Gibbs sighted below his trapezium
 phase \cite{gibbs2016} are, we believe, members of this family.
+
+\subsection{Beyond the surveyed window}\label{sub:flanks}
+The window $[26^\circ,60^\circ]$ is where the regime structure lives, but
+the flanks deserve a word; everything here is numerical.  On the flat
+side ($\beta\to0$, apex angle $\to180^\circ$), $T(\beta)$ is squeezed
+into a strip of width $\sin\beta$, the scaled caliper continues at
+length $\zeta\sin\beta$, and nothing we searched beats it at any
+$\beta<\beta^{*}$; since the strip solution it scales from is exact, we
+expect no further boundary there, though even asymptotic optimality as
+$\beta\to0$ is open.  On the needle side ($\beta>60^\circ$, apex angle
+$\to0^\circ$) the picture must change again: the width of $T(\beta)$
+switches from $\sin\beta$ to $\sin2\beta$ at the equilateral corner, so
+the caliper bound becomes $\zeta\sin2\beta$, and the zee's optimality
+proof ends at $60^\circ$.  A wider numerical search (data in the
+repository) finds the zee giving way to five-segment W-shaped paths ---
+a certified example of length $0.9862301$ at $\beta=73^\circ$ --- before
+caliper-like sweeps take over toward $\beta\to90^\circ$.  At least one
+further regime boundary therefore lies on the needle side; charting it is
+beyond the scope of this paper.
 
 \begin{figure}[t]
 \centering
@@ -1504,8 +1550,9 @@ transversality of $\beta_\times$, the tangential junction at $\beta^{*}$
 --- mark the places where theorems should come next: a proof of the
 curvature law via the linear-programming duality it suggests, certified
 interval bounds for the line--arc family (closing in particular the
-uncertified sliver $(42.16^\circ,\beta_\times)$), and an exact treatment
-of both boundaries.  No optimality is claimed below $45^\circ$; the gap in
+uncertified sliver $(42.16^\circ,\beta_\times)$), an exact treatment of
+both boundaries, and the uncharted needle side ($\beta>60^\circ$,
+Section~\ref{sub:flanks}).  No optimality is claimed below $45^\circ$; the gap in
 Corollary~\ref{cor:bracket} remains substantial.
 
 \subsection*{Ancillary files}
