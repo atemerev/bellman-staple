@@ -1,9 +1,10 @@
-# An improved upper bound for Bellman's lost-in-a-forest problem in isosceles triangles
+# The three regimes of escape paths for isosceles triangles in Bellman's lost-in-a-forest problem
 
 Paper sources, machine-checkable proofs, and discovery code for:
 
-> A. Temerev, *An improved upper bound for Bellman's lost-in-a-forest problem
-> in isosceles triangles* (2026). Sources in [`paper/`](paper/).
+> A. Temerev and A. Doria, *The three regimes of escape paths for isosceles
+> triangles in Bellman's lost-in-a-forest problem* (2026). Sources in
+> [`paper/`](paper/).
 
 ## What this is
 
@@ -53,6 +54,40 @@ claimed.**
   (discovery/zalgalloid_family.py, figures/fig_zalgalloid_morph.png),
   answering Ward's 2008 speculation affirmatively.
 
+## New in v3: the three regimes (phase picture)
+
+The paper is now organized as a classification. The best-known escape paths
+for T(β) form three regimes:
+
+- **zee** (β ≥ β× = 42.287°): proven optimal on [45°, 60°]
+  (Coulton–Movshovich 2006, Movshovich 2012); best known down to β×.
+- **staple → Zalgalloid** (β* ≈ 27.6° ≤ β ≤ β×): one connected branch of
+  line-arc paths (hull boundary minus a chord), from near-polygonal
+  trapezoids at the top to Zalgaller's caliper at the bottom.
+- **caliper** (β ≤ β*): the scaled Zalgaller caliper, ℓ ≤ ζ·sin β.
+
+The two boundaries differ in kind — this is the paper's organizing
+observation:
+
+- **β× = 42.287° is first-order**: a transversal crossing (slopes −0.0163 vs
+  +0.0132 per degree); both families persist as local optima past it; the
+  zee refuses corner-rounding (a free rounding radius optimizes to 0 at
+  every angle); and the envelope kink is its **maximum** — the hardest
+  isosceles triangle sits exactly at the phase boundary (L = 1.38920).
+- **β\* ≈ 27.6° is second-order**: the branch merges tangentially into the
+  caliper — bar length and caliper gap vanish together, no kink.
+- Bonus exact fact: the branch terminates at β = 45° in an exact rectangle
+  path of length √2, tied with the diameter of the right isosceles triangle
+  (ten of the twelve certificate margins vanish — a maximally degenerate
+  endpoint).
+
+![regime diagram](figures/fig_regimes.png)
+
+New discovery code: `discovery/zigzag_branch.py` (diagonal vs boundary
+branches, with cutting-plane refinement of the escape constraints),
+`discovery/crossing_fine.py` (crossing localization and slopes),
+`discovery/regime_diagram.py` (the figure).
+
 ## Repository layout
 
 ```
@@ -98,8 +133,12 @@ Sturm root count (`sympy.Poly.count_roots`).
 | golden gnomon upper bound | 1.2849615334… |
 | golden gnomon lower bound | (3/10)√(25−5√5) = 1.1152441034… |
 | square-path regime switch (Ward's ≈39.1°) | β₀ = 39.1320…° |
-| staple–caliper crossing (numerical) | β ≈ 31.05° |
-| staple–zee crossing (numerical; Gibbs conjectured 42.3°) | β ≈ 42.28° |
+| staple–caliper crossing, polygonal (numerical) | β ≈ 31.05° |
+| branch–caliper junction with arcs, second-order (numerical) | β* ≈ 27.6° |
+| zee crossing, first-order (numerical; Gibbs conjectured 42.3°) | β× = 42.287° |
+| envelope maximum = hardest isosceles triangle (numerical) | L = 1.38920 at β× |
+| arc turn-on inside the branch (numerical) | β ≈ 42.9° |
+| branch endpoint (exact) | rectangle path, L = √2 at β = 45° |
 
 ## References
 

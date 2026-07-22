@@ -22,8 +22,8 @@
 
 \begin{document}
 
-\title[Escape paths for isosceles triangles]{An improved upper bound for
-Bellman's lost-in-a-forest problem in isosceles triangles}
+\title[Escape paths for isosceles triangles]{The three regimes of escape
+paths for isosceles triangles in Bellman's lost-in-a-forest problem}
 
 \author{Alexander Temerev}
 \address{University of Geneva, Geneva, Switzerland}
@@ -38,37 +38,46 @@ Verification code is provided as ancillary files.}
 \date{July 22, 2026}
 
 \begin{abstract}
-We prove a new upper bound for the escape length of isosceles triangles in
-Bellman's lost-in-a-forest problem, on an entire interval of base angles
-inside the unsolved range.  We construct an explicit piecewise-polynomial
-family of three-segment paths $S(u)$, $u=\tan(\beta/2)$, with
-isosceles-trapezoidal convex hull (``staples''), and prove that $S(u)$
-escapes the triangle $T(\beta)$ with unit legs and base angle $\beta$, and is
-strictly shorter than every escaping square path, for all
-$\beta\in[31.08^\circ,42.16^\circ]$; on $[31.50^\circ,42.16^\circ]$ it is also
-strictly shorter than the diameter, the scaled Zalgaller caliper, and the
-Besicovitch--Movshovich zee.  This interval strictly contains
-$(32.36^\circ,41.34^\circ)$, the range on which Ward's square path was the
-shortest known candidate, so the square path is removed from the frontier
-everywhere, and the trapezoidal improvement Ward reported numerically in 2008
-becomes a theorem, with the enlarged range he predicted certified at both
-ends.  The proofs eliminate the continuum of positions and headings exactly:
-escape from a triangle reduces, via the planar case of a containment theorem
-of Lutwak, to the containment of a disk in an explicit Minkowski sum, and
-every resulting inequality is a rational-polynomial sign condition verified
-by exact Sturm certificates.  At the type example, the golden gnomon (apex
-$108^\circ$), the polygonal bound $1.2849616\ldots$ (against Ward's
-$1.2934740\ldots$) is improved further by an exact line--arc certificate to
-$\ell(T)\le1.2826799$, and the critical line--arc path is characterized
-exactly: window tangency forces the curvature radius $\sin\beta$ (the width
-of $T$), the sines of its arc angles are roots of explicit quartics over
-$\Q(\sqrt5)$, and the critical length $1.2826760\ldots$ has the same closed
-shape as Zalgaller's strip constant.  Numerically, the line--arc family
-continues below the staple range and terminates on the scaled Zalgaller
-caliper at $\beta\approx27.6^\circ$, realizing the ``Zalgalloid'' family
-Ward speculated about.  The closed-form bracket
-$\tfrac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$ stands.  Optimality is not
-claimed.
+We organize the best-known escape paths for isosceles triangles $T(\beta)$
+(unit legs, base angle $\beta$) in Bellman's lost-in-a-forest problem into
+three regimes, and determine the character of both regime boundaries.  On
+$[45^\circ,60^\circ]$ the Besicovitch--Movshovich zee is optimal;
+numerically it remains the frontier down to $\beta_\times=42.287^\circ$.
+Below $\beta_\times$ the frontier is a single connected branch of
+line--arc paths that traverse the boundary of their convex hull minus a
+chord: near-polygonal trapezoidal \emph{staples} at the top, progressively
+rounded by arcs whose curvature radius is $\sin\beta$ (the width of the
+triangle), terminating on the scaled Zalgaller caliper at
+$\beta^{*}\approx27.6^\circ$ --- the ``Zalgalloid'' family Ward speculated
+about in 2008.  The boundaries differ in kind.  At $\beta_\times$ two
+combinatorially distinct branches cross transversally (slopes $-0.016$ and
+$+0.013$ per degree): each persists as a local optimum beyond the crossing,
+the zee resists rounding, and the upper-bound envelope has a corner there
+--- its maximum, so the hardest isosceles forest in the surveyed range sits
+at the phase boundary, with $\ell(T)\le L_\times=1.38920$.  At $\beta^{*}$
+nothing crosses: the branch merges tangentially into the caliper, bar
+length and caliper gap vanishing together.  Inside the middle regime we
+prove two anchors.  An explicit piecewise-polynomial family of polygonal
+staples $S(u)$, $u=\tan(\beta/2)$, escapes and is strictly shorter than
+every escaping square path for $\beta\in[31.08^\circ,42.16^\circ]$, and
+shorter than the diameter, the scaled caliper, and the zee on
+$[31.50^\circ,42.16^\circ]$ --- so Ward's square path is removed from the
+frontier everywhere, and the trapezoidal improvement he reported
+numerically in 2008 becomes a theorem.  The proofs eliminate the continuum
+of positions and headings exactly: escape from a triangle reduces, via the
+planar case of a containment theorem of Lutwak, to the containment of a
+disk in an explicit Minkowski sum, and every resulting inequality is a
+rational-polynomial sign condition verified by exact Sturm certificates.
+At the type example, the golden gnomon ($\beta=36^\circ$), an exact
+line--arc certificate gives $\ell(T)\le1.2826799$, and the critical
+line--arc path is characterized algebraically: window tangency forces the
+curvature radius $\sin\beta$, the sines of its arc angles are roots of
+explicit quartics over $\Q(\sqrt5)$, and the critical length
+$1.2826760\ldots$ has the same closed shape as Zalgaller's strip constant.
+The branch ends above in an exact rectangle path of length $\sqrt2$ at
+$\beta=45^\circ$, tied with the diameter.  The closed-form bracket
+$\tfrac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$ stands at the gnomon.
+Optimality is claimed nowhere below $45^\circ$.
 \end{abstract}
 
 \maketitle
@@ -145,7 +154,129 @@ path escapes if and only if one explicit Minkowski sum contains a disk
 checkable certificates.  No sampled positions or orientations occur in any
 proof below.
 
-\subsection*{Main result}
+\subsection*{The regime picture}
+Figure~\ref{fig:regimes} summarizes what this paper establishes and what it
+conjectures.  The best-known escape paths for the family $T(\beta)$
+organize into three regimes:
+\begin{itemize}
+\item \textbf{zee} ($\beta\ge\beta_\times=42.287^\circ$): the three-segment
+zigzag of Besicovitch and Movshovich, which visits the four vertices of its
+quadrilateral hull in diagonal order --- its middle segment crosses the
+hull.  Optimality is proven on $[45^\circ,60^\circ]$
+\cite{coultonmovshovich2006,movshovich2012}; on $[\beta_\times,45^\circ)$
+the zee remains the shortest known path.
+\item \textbf{staple, then Zalgalloid}
+($\beta^{*}\approx27.6^\circ\le\beta\le\beta_\times$): a single connected
+branch of \emph{boundary-type} paths --- each traverses the boundary of its
+convex hull minus one chord.  Near $\beta_\times$ the hull is a
+near-polygonal isosceles trapezoid (the \emph{staple}; the exactly
+polygonal trapezoid is the branch member only above $\approx42.9^\circ$);
+as $\beta$ decreases, circular arcs of curvature radius $\sin\beta$ --- the
+width of $T(\beta)$ --- grow along it, through the smoothed staples of
+Section~\ref{sec:arc} into the Zalgalloids of Section~\ref{sec:numerics}.
+\item \textbf{caliper} ($\beta\le\beta^{*}$): the scaled Zalgaller caliper,
+$\ell(T)\le\zeta\sin\beta$.
+\end{itemize}
+The two regime boundaries have different characters, and this difference
+is the organizing observation of the paper.  At $\beta_\times$ two
+combinatorially distinct families cross \emph{transversally}: the length
+curves meet with slopes $-0.016$ (zee) and $+0.013$ (branch) per degree;
+each family continues past the crossing as a strict local optimum (the
+branch up to an exact rectangle path of length $\sqrt2$ at $\beta=45^\circ$,
+the zee at least down to $36^\circ$); and no continuous deformation
+connects them --- freeing a corner-rounding radius in the zee returns zero
+at every tested angle.  The upper-bound envelope therefore has a corner at
+$\beta_\times$ --- a first-order phase boundary --- and the corner points
+\emph{up}: it is the maximum of the envelope, so the hardest isosceles
+forest with unit legs in the surveyed range is the one at the phase
+boundary, with $\ell(T(\beta_\times))\le L_\times=1.38920$.  At
+$\beta^{*}$, by contrast, nothing crosses: the branch itself deforms onto
+the caliper, its bar length and its margin over the caliper vanishing
+together, with no kink in the envelope --- a second-order boundary.  The
+boundary locations and slopes are numerical (Section~\ref{sec:numerics});
+the anchors below are theorems.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.98\textwidth, height=7.8cm, set layers,
+  xlabel={base angle $\beta$ (degrees)}, ylabel={path length (legs $=1$)},
+  xmin=26, xmax=60, ymin=0.96, ymax=1.47,
+  legend style={at={(0.5,-0.16)}, anchor=north, legend columns=4,
+                font=\scriptsize, /tikz/every even column/.append style={column sep=0.4cm}},
+  tick label style={font=\scriptsize}, label style={font=\small},
+  grid=major, grid style={gray!25}]
+\begin{pgfonlayer}{axis background}
+\fill[teal!9]   (axis cs:26,0.96)     rectangle (axis cs:27.62,1.47);
+\fill[orange!9] (axis cs:27.62,0.96)  rectangle (axis cs:42.287,1.47);
+\fill[green!8]  (axis cs:42.287,0.96) rectangle (axis cs:60,1.47);
+\draw[gray!45, thin] (axis cs:27.62,0.96)  -- (axis cs:27.62,1.47);
+\draw[gray!45, thin] (axis cs:42.287,0.96) -- (axis cs:42.287,1.47);
+\end{pgfonlayer}
+\addlegendimage{orange!95!black, line width=1.8pt}
+\addlegendentry{staple--Zalgalloid branch}
+\addlegendimage{magenta!65!black, line width=1.8pt}
+\addlegendentry{zee}
+\addlegendimage{teal!70!black, line width=1.8pt}
+\addlegendentry{scaled caliper}
+\addlegendimage{gray!70, thin, densely dotted}
+\addlegendentry{diameter}
+\addplot[gray!70, thin, densely dotted, domain=26:60, samples=120,
+  forget plot] {2*cos(x)};
+\addplot[teal!70!black, thin, domain=27.62:60, samples=120, forget plot]
+  {2.2782916*sin(x)};
+\addplot[teal!70!black, line width=1.8pt, domain=26:27.62, forget plot]
+  {2.2782916*sin(x)};
+\addplot[magenta!65!black, thin, densely dashed, domain=36:42.287,
+  samples=80, forget plot] {6*sin(x)*cos(x)/sqrt(1+8*(sin(x))^2)};
+\addplot[magenta!65!black, line width=1.8pt, domain=42.287:60, samples=140,
+  forget plot] {6*sin(x)*cos(x)/sqrt(1+8*(sin(x))^2)};
+\addplot[orange!95!black, line width=1.8pt, forget plot] coordinates {
+(26.00,0.998737) (26.50,1.016569) (27.00,1.034323) (27.50,1.052000) (28.00,1.069529) (28.50,1.086802) (29.00,1.104089) (29.50,1.120722) (30.00,1.137915) (30.50,1.153821) (31.00,1.168117) (31.50,1.181706) (32.00,1.194586) (32.50,1.206677) (33.00,1.218281) (33.50,1.229642) (34.00,1.240753) (34.50,1.251615) (35.00,1.262225) (35.50,1.272580) (36.00,1.282676) (36.50,1.292512) (37.00,1.302082) (37.50,1.311384) (38.00,1.320413) (38.50,1.329399) (39.00,1.338177) (39.50,1.346746) (40.00,1.355178) (40.50,1.363288) (41.00,1.371047) (41.50,1.378424) (42.00,1.385378) (42.10,1.386719) (42.20,1.388053) (42.287,1.389199)};
+\addplot[orange!95!black, thin, densely dashed, forget plot] coordinates {
+(42.287,1.389199) (42.35,1.390028) (42.45,1.391325) (42.55,1.392607) (42.70,1.394499) (42.90,1.396961) (43.10,1.399309) (43.50,1.403568) (44.00,1.408060) (44.50,1.411614) (45.00,1.414214)};
+\addplot[only marks, mark=diamond*, mark size=2.6pt, red!75!black,
+  forget plot] coordinates {(42.287,1.389199)};
+\addplot[only marks, mark=o, mark size=2.4pt, teal!70!black,
+  line width=0.9pt, forget plot] coordinates {(27.62,1.056164)};
+\addplot[only marks, mark=o, mark size=2.2pt, orange!95!black,
+  line width=0.9pt, forget plot] coordinates {(45,1.414214)};
+\node[font=\scriptsize\bfseries, teal!60!black, rotate=90]
+  at (axis cs:26.75,1.335) {caliper};
+\node[font=\scriptsize\bfseries, orange!75!black]
+  at (axis cs:34.9,1.448) {staple $\to$ Zalgalloid};
+\node[font=\scriptsize\bfseries, magenta!60!black]
+  at (axis cs:51.5,1.448) {zee};
+\node[font=\scriptsize, anchor=west]
+  at (axis cs:28.6,0.995)
+  {$\beta^{*}\!\approx27.6^\circ$: tangential junction (Fig.~\ref{fig:junction})};
+\node[font=\scriptsize, align=left, anchor=west]
+  at (axis cs:43.2,1.055)
+  {$\beta_\times=42.287^\circ$: transversal crossing,\\
+   envelope maximum $L_\times=1.38920$};
+\node[font=\scriptsize, anchor=south west, orange!75!black]
+  at (axis cs:45.2,1.4165) {$\sqrt2$ (exact)};
+\end{axis}
+\end{tikzpicture}
+\caption{The three regimes of best-known escape paths (legs $=1$): the
+scaled caliper for $\beta\le\beta^{*}\approx27.6^\circ$, the
+staple-to-Zalgalloid line--arc branch on $[\beta^{*},\beta_\times]$, and
+the zee beyond $\beta_\times=42.287^\circ$.  Thick curves are the frontier;
+dashed curves continue each branch past its regime, where it persists as a
+local optimum.  The crossing at $\beta_\times$ is transversal, and the kink
+is the \emph{maximum} of the envelope: the hardest isosceles forest sits at
+the regime boundary (diamond).  At $\beta^{*}$ the branch instead merges
+tangentially into the caliper (circle).  The branch terminates above in an
+exact rectangle path of length $\sqrt2$ at $\beta=45^\circ$
+(Proposition~\ref{prop:rect}), tied with the diameter.  Regime boundaries
+and dashed data are numerical (Section~\ref{sec:numerics}); the zee is
+proven optimal on $[45^\circ,60^\circ]$
+\cite{coultonmovshovich2006,movshovich2012}; Theorems~\ref{thm:interval}
+and~\ref{thm:arc} certify anchors inside the middle regime.}
+\label{fig:regimes}
+\end{figure}
+
+\subsection*{Certified anchors in the middle regime}
 A \emph{staple} is a three-segment path whose four vertices
 $(\pm b,0),(\pm a,c)$ form an isosceles trapezoid: a bar of length $2b$ with
 two equal legs attached at equal obtuse angles
@@ -350,9 +481,9 @@ the four standard candidates at the gnomon.  Sections
 Theorems~\ref{thm:interval} and~\ref{thm:gnomon};
 Section~\ref{sec:arc} sharpens the gnomon bound with an exact line--arc
 certificate and characterizes the critical line--arc path algebraically;
-Section~\ref{sec:numerics} separates out the numerical evidence (stationary
-staples, family crossings, the Zalgalloid family) that guided the
-constructions but enters no proof.  We emphasize what is \emph{not} claimed: optimality of the staple,
+Section~\ref{sec:numerics} separates out the numerical evidence
+(stationary staples, the two regime boundaries, the Zalgalloid family) that
+guided the constructions but enters no proof.  We emphasize what is \emph{not} claimed: optimality of the staple,
 within its family or otherwise.  All code and data accompanying the paper
 are available at \url{https://github.com/atemerev/bellman-staple} and as
 arXiv ancillary files.
@@ -767,8 +898,10 @@ Here $\rho^2=\tfrac{5+\sqrt5}{8}$ and all $w_k$ are explicit vectors
 with entries in $\Q(\sqrt5,\sqrt{10-2\sqrt5}\,)$, so each of
 (i)--(iii) is the sign of an element of that field. Table~\ref{tab:edges}
 lists the distances and the certificate values
-$D_k=(w_k\times w_{k+1})^2-\rho^2|w_{k+1}-w_k|^2$; by the axial symmetry
-of $W$ only seven are distinct. All are strictly positive, with minimum
+\[
+D_k=(w_k\times w_{k+1})^2-\rho^2\,|w_{k+1}-w_k|^2 ;
+\]
+by the axial symmetry of $W$ only seven are distinct. All are strictly positive, with minimum
 margin $D=5.13\times10^{-7}$.
 
 The ancillary file \texttt{tight\_staple\_proof.py} constructs these field
@@ -978,7 +1111,39 @@ the template is the right structure, rests on the numerics of
 Section~\ref{sec:numerics}; the \emph{bound} of Theorem~\ref{thm:arc} is
 unconditional.
 
-\section{Numerical discovery and conjectural context}\label{sec:numerics}
+\subsection{The upper end of the branch}\label{sub:upperend}
+The arcs do not persist across the whole staple range.  Continuing the
+line--arc template upward in $\beta$, the optimal shoulder-arc span
+shrinks --- $9.5^\circ$ at $36^\circ$, $2.3^\circ$ at the zee crossing ---
+and vanishes at $\beta\approx42.9^\circ$ (numerically): above that angle
+the branch member is exactly polygonal.  The polygonal branch then
+terminates at the right isosceles triangle in a closed-form configuration.
+
+\begin{proposition}[rectangle endpoint]\label{prop:rect}
+For $\beta=45^\circ$ the rectangle path with vertices
+$\bigl(\pm(1-\tfrac{\sqrt2}{2}),0\bigr)$ and
+$\bigl(\pm(1-\tfrac{\sqrt2}{2}),\sqrt2-1\bigr)$ escapes $T(45^\circ)$, and
+its length is exactly $\sqrt2=2\cos45^\circ$, the diameter of
+$T(45^\circ)$.
+\end{proposition}
+
+\begin{proof}
+The hull is the rectangle $H=[-b,b]\times[0,c]$ with $b=1-\frac{\sqrt2}{2}$
+and $c=\sqrt2-1$.  The edge normals of the Minkowski sum
+$W=2\cos\beta\,R_0(H)\oplus R_1(H)\oplus R_2(H)$ are among the twelve
+rotated rectangle normals $R_i\{\pm e_1,\pm e_2\}$, and at each of the
+twelve the exact margin $h_W(\nu)-\rho$, computed in $\Q(\sqrt2)$, equals
+either $0$ (ten directions) or $3\sqrt2/2-2>0$ (two directions).  Hence
+$W\supseteq\rho D$ and Proposition~\ref{cor:mink} applies; the length is
+$2b+2c=\sqrt2$.
+\end{proof}
+
+Ten active constraints out of twelve is a maximally degenerate
+configuration, as one expects at the end of a branch: numerically, for
+$\beta$ just above $45^\circ$ the trapezoid family collapses onto the
+diameter segment, whose length the endpoint already matches.
+
+\section{Numerical discovery and the regime boundaries}\label{sec:numerics}
 
 \emph{Everything in this section is numerical evidence.}  It is included to
 explain how the exact witnesses were found and to identify plausible next
@@ -1001,19 +1166,44 @@ makes it a theorem.  Along the family, the tangency pattern changes twice
 near $\beta\approx38.9^\circ$ --- the two interior breakpoints of the
 construction in Section~\ref{sec:interval}.
 
-Continuation of the same stationary branch suggests crossings with the
-scaled caliper at $\beta\approx31.05^\circ$ (pushed to
-$\approx27.6^\circ$ by the line--arc family below) and with the zee at
-$\beta\approx42.28^\circ$ (the two dots in Figure~\ref{fig:curves}); the
-latter agrees strikingly with Gibbs's Monte-Carlo estimate $42.3^\circ$
-\cite{gibbs2016}.  These are crossings between three specified candidate
+\subsection{The zee crossing is first-order}\label{sub:crossing}
+Continuation of the stationary staple branch suggests a crossing with the
+scaled caliper at $\beta\approx31.05^\circ$ (pushed down to
+$\beta^{*}\approx27.6^\circ$ by the arcs,
+Section~\ref{sub:zalgalloid}) and with the zee at
+$\beta\approx42.281^\circ$ (the two dots in Figure~\ref{fig:curves}).
+Rounding moves the latter only slightly: optimizing both families with
+cutting-plane refinement of the escape constraints gives
+\[
+\beta_\times=42.287^\circ,\qquad
+\ell\bigl(T(\beta_\times)\bigr)\;\le\;L_\times\;=\;1.38920,
+\]
+in striking agreement with Gibbs's Monte-Carlo estimate $42.3^\circ$
+\cite{gibbs2016}.  Three numerical observations make this boundary
+\emph{first-order} --- a transversal crossing of distinct branches, not a
+deformation of one into the other.  First, the slopes differ: near
+$\beta_\times$ the optimized zee length falls at $-0.0163$ per degree
+while the branch length rises at $+0.0132$ per degree, so the
+best-known-length envelope has a corner with slope gap $0.0294$ per degree
+--- and the corner points upward: $L_\times$ is the \emph{maximum} of the
+envelope over the surveyed range $[26^\circ,60^\circ]$, so the hardest
+isosceles forest is the one at the phase boundary.  Second, both families
+persist as strict local optima across the boundary: the boundary-type
+branch continues up to its exact rectangle endpoint at $45^\circ$
+(Proposition~\ref{prop:rect}), and the zee remains a valid, exactly
+critical escape path at least down to $36^\circ$.  Third, the two families
+do not connect: the zee realizes its quadrilateral hull in diagonal order
+(its middle segment crosses the hull), the branch in boundary order, and
+re-optimizing the zee with a free corner-rounding radius returns radius
+zero at every angle in $[36^\circ,60^\circ]$ (consistent, on
+$[45^\circ,60^\circ]$, with the proven optimality of the polygonal zee
+\cite{movshovich2012}), while the boundary branch demands arcs at every
+angle below $\approx42.9^\circ$.  These are statements about the specified
 families, not proven phase boundaries of the unrestricted problem; what is
-proved is the slightly smaller interval of Corollary~\ref{cor:trio}.  The
-wider numerical search also produces nonpolygonal-looking hybrids between
-the staple and caliper regimes, at apex angles roughly
-$110^\circ$--$118^\circ$; these may be closer to Ward's proposed
-``Zalgalloids'', and turning them into exact objects is a natural next
-problem.
+proved is the interval of Corollary~\ref{cor:trio}.  The
+nonpolygonal-looking hybrids that both Gibbs's search \cite{gibbs2016} and
+ours produce between the staple and caliper regimes are, we believe, the
+family of the next subsection.
 
 
 \subsection{The Zalgalloid family}\label{sub:zalgalloid}
@@ -1037,7 +1227,12 @@ and the tips become the caliper's feet.  The family thus interpolates
 continuously from the trapezoid to the caliper itself --- precisely the
 family Ward speculated about, with the polygonal staple at one end and
 Zalgaller's caliper at the other.  All statements in this subsection are
-numerical; making the junction exact is an inviting next target.
+numerical; making the junction exact is an inviting next target.  Together
+with Proposition~\ref{prop:rect}, the picture is of one connected
+boundary-type branch running from the exact rectangle at $\beta=45^\circ$,
+through the polygonal trapezoids ($\beta\gtrsim42.9^\circ$) and the
+smoothed staples, to Zalgaller's caliper at $\beta^{*}$; its reign as the
+best-known frontier is precisely $[\beta^{*},\beta_\times]$.
 
 \begin{figure}[t]
 \centering
@@ -1119,21 +1314,32 @@ of the plot are exact coincidence to solver precision.}
 
 \section{Conclusion}
 
-The exact contributions of this paper are: a certified upper bound for the
-escape length of isosceles triangles on the whole interval
+The picture this paper leaves is a phase diagram
+(Figure~\ref{fig:regimes}).  Across $26^\circ\le\beta\le60^\circ$ the
+best-known escape paths form three regimes --- caliper, the
+staple-to-Zalgalloid branch, zee --- separated by a second-order boundary
+at $\beta^{*}\approx27.6^\circ$, where the branch merges tangentially into
+the caliper, and a first-order boundary at $\beta_\times=42.287^\circ$,
+where two combinatorially distinct families cross transversally and the
+upper-bound envelope attains its maximum: the hardest isosceles forest
+sits at the phase boundary.  The exact contributions are the anchors
+inside the middle regime: a certified upper bound on the whole interval
 $[31.07^\circ,42.16^\circ]$ of base angles, via an explicit trapezoidal
 family that removes Ward's square path from the frontier everywhere and
-beats all four of his comparison families on $[31.50^\circ,42.16^\circ]$; a
-finite-certificate method (for polygonal and line--arc data alike) that
-replaces the continuum of placements by exact arithmetic; the improved
-line--arc bound $\ell(T)\le1.2826799$ at the golden gnomon; and the exact
-algebraic characterization of the critical line--arc path there, with its
-Zalgaller-form constant.  The numerical contributions --- the curvature law
-$r=\sin\beta$, the Zalgalloid family joining the staple to the caliper at
-$\beta^{*}\approx27.6^\circ$ --- mark the places where theorems should come
-next: a proof of the curvature law via the linear-programming duality it
-suggests, an exact treatment of the junction, and certified interval bounds
-for the line--arc family.  No optimality is claimed anywhere; the gap in
+beats all four of his comparison families on $[31.50^\circ,42.16^\circ]$;
+a finite-certificate method (for polygonal and line--arc data alike) that
+replaces the continuum of placements by exact arithmetic; the line--arc
+bound $\ell(T)\le1.2826799$ at the golden gnomon; the algebraic
+characterization of the critical line--arc path there, with its
+Zalgaller-form constant; and the exact rectangle endpoint of the branch at
+$\beta=45^\circ$ (Proposition~\ref{prop:rect}).  The numerical
+contributions --- the curvature law $r=\sin\beta$, the location and
+transversality of $\beta_\times$, the tangential junction at $\beta^{*}$
+--- mark the places where theorems should come next: a proof of the
+curvature law via the linear-programming duality it suggests, certified
+interval bounds for the line--arc family (closing in particular the
+uncertified sliver $(42.16^\circ,\beta_\times)$), and an exact treatment
+of both boundaries.  No optimality is claimed below $45^\circ$; the gap in
 Corollary~\ref{cor:bracket} remains substantial.
 
 \subsection*{Ancillary files}

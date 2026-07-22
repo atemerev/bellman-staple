@@ -1,6 +1,6 @@
 # arXiv submission package
 
-**File to upload:** `staple-arxiv.tar.gz` (24 KB)
+**File to upload:** `staple-arxiv.tar.gz` (39 KB)
 
 Contents:
 ```
@@ -10,6 +10,7 @@ anc/README.txt                  describes the ancillary files
 anc/tight_staple_proof.py       verifies Theorem 3 (exact algebraic signs)
 anc/interval_certificate.py     verifies the 116 Sturm certificates of Theorem 1
 anc/interval_construction.json  the 51 rational coefficients of S(u)
+anc/arc_certificate.py          constructs + verifies the line-arc witness (Thm 11)
 ```
 
 The `anc/` directory follows arXiv's ancillary-file convention; the files are
@@ -20,7 +21,7 @@ is on line 2 for arXiv's autodetection).
 ## Metadata for the submission form
 
 **Title:**
-An improved upper bound for Bellman's lost-in-a-forest problem in isosceles triangles
+The three regimes of escape paths for isosceles triangles in Bellman's lost-in-a-forest problem
 
 **Authors:** Alexander Temerev (University of Geneva), Alessio Doria
 **(TODO: add Doria's affiliation + email in staple.tex before submitting;**
@@ -28,43 +29,51 @@ An improved upper bound for Bellman's lost-in-a-forest problem in isosceles tria
 
 **Abstract:** (plain text, math in $...$)
 
-We prove a new upper bound for the escape length of isosceles triangles in
-Bellman's lost-in-a-forest problem, on an entire interval of base angles
-inside the unsolved range. We construct an explicit piecewise-polynomial
-family of three-segment paths $S(u)$, $u=\tan(\beta/2)$, with
-isosceles-trapezoidal convex hull ("staples"), and prove that $S(u)$ escapes
-the triangle $T(\beta)$ with unit legs and base angle $\beta$, and is
-strictly shorter than every escaping square path, for all
-$\beta\in[31.08^\circ,42.16^\circ]$; on $[31.50^\circ,42.16^\circ]$ it is
-also strictly shorter than the diameter, the scaled Zalgaller caliper, and
-the Besicovitch--Movshovich zee. This interval strictly contains
-$(32.36^\circ,41.34^\circ)$, the range on which Ward's square path was the
-shortest known candidate, so the square path is removed from the frontier
-everywhere, and the trapezoidal improvement Ward reported numerically in
-2008 becomes a theorem, with the enlarged range he predicted certified at
-both ends. The proofs eliminate the continuum of positions and headings
-exactly: escape from a triangle reduces, via the planar case of a
-containment theorem of Lutwak, to the containment of a disk in an explicit
-Minkowski sum, and every resulting inequality is a rational-polynomial sign
-condition verified by exact Sturm certificates. At the type example, the
-golden gnomon (apex $108^\circ$), the bound reads
-$\ell(T)\le(3751558+2\sqrt{20693661817348})/10^7=1.2849616\ldots$ against
-Ward's $1.2934740\ldots$, with the closed-form bracket
-$\frac{3}{10}\sqrt{25-5\sqrt5}\le\ell(T)$. Optimality is not claimed. At the golden gnomon the polygonal bound
-$1.2849616\ldots$ is improved by an exact line--arc certificate to
-$\ell(T)\le1.2826799$; the critical line--arc path is characterized
-exactly (curvature radius $\sin\beta$, arc-angle sines satisfying explicit
-quartics over $\Q(\sqrt5)$, critical length $1.2826760\ldots$ of the same
-closed shape as Zalgaller's strip constant); and numerically the line--arc
-family terminates on the scaled Zalgaller caliper at
-$\beta\approx27.6^\circ$, realizing Ward's ``Zalgalloid'' family.
+We organize the best-known escape paths for isosceles triangles $T(\beta)$
+(unit legs, base angle $\beta$) in Bellman's lost-in-a-forest problem into
+three regimes, and determine the character of both regime boundaries. On
+$[45^\circ,60^\circ]$ the Besicovitch--Movshovich zee is optimal;
+numerically it remains the frontier down to $\beta_\times=42.287^\circ$.
+Below $\beta_\times$ the frontier is a single connected branch of line--arc
+paths that traverse the boundary of their convex hull minus a chord:
+near-polygonal trapezoidal "staples" at the top, progressively rounded by
+arcs whose curvature radius is $\sin\beta$ (the width of the triangle),
+terminating on the scaled Zalgaller caliper at $\beta^*\approx27.6^\circ$
+--- the "Zalgalloid" family Ward speculated about in 2008. The boundaries
+differ in kind. At $\beta_\times$ two combinatorially distinct branches
+cross transversally (slopes $-0.016$ and $+0.013$ per degree): each
+persists as a local optimum beyond the crossing, the zee resists rounding,
+and the upper-bound envelope has a corner there --- its maximum, so the
+hardest isosceles forest in the surveyed range sits at the phase boundary,
+with $\ell(T)\le1.38920$. At $\beta^*$ nothing crosses: the branch merges
+tangentially into the caliper, bar length and caliper gap vanishing
+together. Inside the middle regime we prove two anchors. An explicit
+piecewise-polynomial family of polygonal staples $S(u)$, $u=\tan(\beta/2)$,
+escapes and is strictly shorter than every escaping square path for
+$\beta\in[31.08^\circ,42.16^\circ]$, and shorter than the diameter, the
+scaled caliper, and the zee on $[31.50^\circ,42.16^\circ]$ --- so Ward's
+square path is removed from the frontier everywhere, and the trapezoidal
+improvement he reported numerically in 2008 becomes a theorem. The proofs
+eliminate the continuum of positions and headings exactly: escape from a
+triangle reduces, via the planar case of a containment theorem of Lutwak,
+to the containment of a disk in an explicit Minkowski sum, and every
+resulting inequality is a rational-polynomial sign condition verified by
+exact Sturm certificates. At the type example, the golden gnomon
+($\beta=36^\circ$), an exact line--arc certificate gives
+$\ell(T)\le1.2826799$, and the critical line--arc path is characterized
+algebraically: window tangency forces the curvature radius $\sin\beta$, the
+sines of its arc angles are roots of explicit quartics over $\Q(\sqrt5)$,
+and the critical length $1.2826760\ldots$ has the same closed shape as
+Zalgaller's strip constant. The branch ends above in an exact rectangle
+path of length $\sqrt2$ at $\beta=45^\circ$, tied with the diameter.
+Optimality is claimed nowhere below $45^\circ$.
 
 **Primary category:** math.MG (Metric Geometry)
 **Cross-list:** cs.CG (Computational Geometry)
 **MSC classes:** 52A10 (Primary), 52B55, 52A38 (Secondary)
 
 **Comments field:**
-15 pages, 9 figures, 2 tables. Ancillary files contain exact verification
+17 pages, 10 figures, 2 tables. Ancillary files contain exact verification
 code (Python/SymPy); code and data also at
 https://github.com/atemerev/bellman-staple
 
@@ -81,3 +90,4 @@ reuse, otherwise the arXiv non-exclusive license is the minimal option.
       `interval_certificate.py` → 116/116 PASS;
       `arc_certificate.py` → ALL WINDOW CERTIFICATES PASS (18 windows)
 - [ ] Final proofread of the compiled PDF by the author
+- [ ] Doria's affiliation and email added (%% TODO in staple.tex preamble)
