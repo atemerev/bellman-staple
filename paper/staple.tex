@@ -436,34 +436,14 @@ $V(C,T)\le V(T,T)=\operatorname{Area}(T)$}. In this mixed-volume form
 (for simplices in all dimensions) the criterion is a result of Lutwak
 \cite[Prop., p.~230 and the remark following Cor.~3]{lutwak1998}, with
 ancestry in Weil's characterization of translative containment
-\cite{weil1974}. We include the short linear-programming proof both to
-keep the note self-contained and because its sufficiency half produces
-the explicit feasible translations used in our certificates.  We have not
-found this finite disk-containment specialization in the escape-path
-literature.
-
-\begin{proof}
-$C+t\subseteq T$ is equivalent to the linear system
-$\langle n_i,t\rangle\le c_i:=t_i-h_C(n_i)$, $i=1,2,3$.
-
-\emph{Necessity.} If $t$ solves the system then
-$0=\langle\sum_i s_i n_i,t\rangle\le\sum_i s_i c_i$, which rearranges to
-the stated inequality.
-
-\emph{Sufficiency.} Suppose
-$\lambda:=\bigl(\sum_i s_i c_i\bigr)/\bigl(2\operatorname{Area}(T)\bigr)\ge0$.
-The affine system $\langle n_i,t_0\rangle=c_i-\lambda t_i$ ($i=1,2,3$;
-three equations in two unknowns) is solvable: the unique linear
-dependency among the rows $n_i$ has coefficients $s_i$, and
-$\sum_i s_i(c_i-\lambda t_i)=\sum_i s_i c_i-\lambda\cdot2\operatorname{Area}(T)=0$
-is precisely its compatibility condition. For this $t_0$,
-\[
-\{t:\langle n_i,t\rangle\le c_i\}\;=\;\lambda T+t_0\;\neq\;\emptyset .\qedhere
-\]
-\end{proof}
+\cite{weil1974}. The short linear-programming proof is in
+Appendix~\ref{app:criterion}; its sufficiency half produces the explicit
+feasible translations used in our certificates.  We have not found this
+finite disk-containment specialization in the escape-path literature.
 
 Note the geometric content of sufficiency: \emph{the set of admissible
-translations is itself a homothet of the triangle}, of ratio $\lambda$.
+translations is itself a homothet of the triangle}
+(Appendix~\ref{app:criterion}).
 
 \begin{proposition}[escape criterion]\label{cor:mink}
 With $T$, $n_i=(\cos\alpha_i,\sin\alpha_i)$, $s_i$ as above, a path $P$
@@ -475,25 +455,6 @@ W\;:=\;s_1\,R_{-\alpha_1}H\;\oplus\;s_2\,R_{-\alpha_2}H\;\oplus\;s_3\,R_{-\alpha
 contains the closed disk of radius $2\operatorname{Area}(T)$ centered at
 the origin.  If $H$ is a polygon, then so is $W$.
 \end{proposition}
-
-\begin{proof}
-A placed congruent copy of $P$ lies in the open convex set
-$\operatorname{int}T$ if and only if its convex hull does, and rigid
-motions factor as a rotation followed by a translation; if a placed copy is
-not contained in the interior, the connected path, starting inside, must
-meet $\partial T$ --- the hiker escapes (cf.\ \cite{finchwetzel2004}).
-Thus $P$ escapes iff for every $\theta$ no translate of $R_\theta H$ lies
-in $\operatorname{int}T$; by Lemma~\ref{lem:fit} this holds iff for all
-$\theta$,
-$\sum_i s_i\,h_{R_\theta H}(n_i)\ge 2\operatorname{Area}(T)$
-(the closed inequality: a hull that can only be translated to touch
-$\partial T$ still reaches the boundary). Writing
-$h_{R_\theta H}(n_i)=h_H(R_{-\theta}u(\alpha_i))=h_{R_{-\alpha_i}H}(u(-\theta))$
-with $u(\psi)=(\cos\psi,\sin\psi)$ and summing,
-$\sum_i s_i h_{R_\theta H}(n_i)=h_W(u(-\theta))$. The condition
-$h_W(u)\ge 2\operatorname{Area}(T)$ for every unit $u$ is equivalent to
-$W\supseteq \overline{D}(0,2\operatorname{Area}(T))$.
-\end{proof}
 
 \begin{remark}\label{rem:edgenormals}
 Two computational forms of the inclusion are used below. For a fixed
@@ -917,48 +878,8 @@ shorter still.}
 
 Theorem~\ref{thm:gnomon} is the case $\beta=36^\circ$ of
 Theorem~\ref{thm:interval} with a fixed rational staple, and its
-certificate is short enough to display in full.
-
-\subsection{Exact data}
-Place $T$ with base from $(-\gp/2,0)$ to $(\gp/2,0)$ and apex
-$(0,\sin36^\circ)$; the legs have length $1$ since
-$\cos36^\circ=\gp/2$. The sides have lengths
-$(s_1,s_2,s_3)=(\gp,1,1)$ and unit outward normals
-\[
-n_1=(0,-1)=u(-90^\circ),\qquad
-n_{2,3}=(\pm\sin36^\circ,\ \cos36^\circ)=u(54^\circ),\,u(126^\circ),
-\]
-and one checks exactly that $\gp\,n_1+n_2+n_3=0$. Two golden identities
-drive all the arithmetic:
-\[
-2\operatorname{Area}(T)=\gp\sin36^\circ=\sin72^\circ,
-\qquad
-\bigl(2\operatorname{Area}(T)\bigr)^2=\frac{5+\sqrt5}{8},
-\]
-with $\sin36^\circ=\tfrac14\sqrt{10-2\sqrt5}$. All quantities below live
-in the real field $\Q\bigl(\sqrt5,\sqrt{10-2\sqrt5}\,\bigr)$.
-The hull $H$ of the staple is the isosceles trapezoid with
-vertices $(\pm b,0)$ and $(\pm a,c)$, where
-\[
- a=\frac{2430971}{10^7},\qquad
- b=\frac{1875779}{10^7},\qquad
- c=\frac{4515022}{10^7},
-\]
-and $|S|=2b+2\sqrt{(a-b)^2+c^2}$ as stated.
-
-\subsection{The Minkowski sum}
-By Proposition~\ref{cor:mink} with rotation matrices
-\[
-R_{-\alpha_1}=\begin{pmatrix}0&-1\\ 1&0\end{pmatrix},\quad
-R_{-\alpha_{2,3}}=\begin{pmatrix}\pm\sin36^\circ&\cos36^\circ\\
--\cos36^\circ&\pm\sin36^\circ\end{pmatrix},
-\]
-the path $S$ escapes $T$ iff
-$W=\gp R_{-\alpha_1}H\oplus R_{-\alpha_2}H\oplus R_{-\alpha_3}H$
-contains $\overline D(0,\sin72^\circ)$. The vertices of $W$ are sums of
-one vertex from each summand; $W$ is the twelve-edge polygon of
-Figure~\ref{fig:mink}, symmetric about the horizontal axis (the axial
-symmetry of $H$ conjugates the two leg copies and fixes the base copy).
+certificate is short enough to display in full; Appendix~\ref{app:gnomon}
+does so, and Figure~\ref{fig:mink} shows it in one picture.
 
 \begin{figure}[t]
 \centering
@@ -990,102 +911,17 @@ tangent to the disk to within $5\times10^{-7}$.}
 \label{fig:mink}
 \end{figure}
 
-\subsection{The twelve inequalities}
-For a convex polygon given by a positively oriented vertex cycle
-$w_1,\dots,w_{12}$, the inclusion
-$\overline D(0,\rho)\subseteq W$ is equivalent to: (i) all consecutive
-cross products $(w_{k+1}-w_k)\times(w_{k+2}-w_{k+1})>0$ (convexity),
-(ii) $w_k\times w_{k+1}>0$ for all $k$ (the origin lies inside), and
-(iii) for every edge,
-\[
-\bigl(w_k\times w_{k+1}\bigr)^2\;\ge\;\rho^2\,\lvert w_{k+1}-w_k\rvert^2 ,
-\]
-i.e., every edge line keeps distance at least $\rho$ from the origin.
-Here $\rho^2=\tfrac{5+\sqrt5}{8}$ and all $w_k$ are explicit vectors
-with entries in $\Q(\sqrt5,\sqrt{10-2\sqrt5}\,)$, so each of
-(i)--(iii) is the sign of an element of that field. Table~\ref{tab:edges}
-lists the distances and the certificate values
-\[
-D_k=(w_k\times w_{k+1})^2-\rho^2\,|w_{k+1}-w_k|^2 ;
-\]
-by the axial symmetry of $W$ only seven are distinct. All are strictly positive, with minimum
-margin $D=5.13\times10^{-7}$.
-
-The ancillary file \texttt{tight\_staple\_proof.py} constructs these field
-elements symbolically and asks SymPy for their exact algebraic signs; decimal
-evaluation is used only for the displayed values.  It also verifies exactly
-that all $64$ candidate vertex sums lie on or inside every edge half-plane,
-so the cycle of Table~\ref{tab:edges} is indeed the boundary of $W$.  Thus
-the disk is contained in $W$, and Proposition~\ref{cor:mink} proves that $S$
-escapes $T$.
-
-\begin{table}[t]
-\centering
-\begin{tabular}{@{}lccc@{}}
-\toprule
-edge of $W$ & multiplicity & distance to $0$ & certificate $D_k$ \\
-\midrule
-left vertical & 1 & $0.951056952$ & $+5.131\times10^{-7}$ \\
-$(-0.951,-0.393)\!\to\!(-0.731,-0.697)$ & 2 & $1.000620318$ & $+1.361\times10^{-2}$ \\
-$(-0.731,-0.697)\!\to\!(-0.398,-1.007)$ & 2 & $1.007883096$ & $+2.304\times10^{-2}$ \\
-$(-0.398,-1.007)\!\to\!(0.333,-0.917)$ & 2 & $0.951057083$ & $+5.837\times10^{-7}$ \\
-$(0.333,-0.917)\!\to\!(0.731,-0.697)$ & 2 & $0.963597925$ & $+4.969\times10^{-3}$ \\
-$(0.731,-0.697)\!\to\!(1.016,-0.304)$ & 2 & $1.000620318$ & $+2.287\times10^{-2}$ \\
-right vertical & 1 & $1.016323686$ & $+4.731\times10^{-2}$ \\
-\midrule
-\multicolumn{3}{r}{disk radius $\sin72^\circ$} & $0.9510565$ \\
-\bottomrule
-\end{tabular}
-\medskip
-\caption{The distance certificates for the twelve edges of $W$
-(mirror-symmetric edges listed once). $D_k>0$ is the exact inequality
-(iii); decimals are $60$-digit evaluations truncated for display.}
-\label{tab:edges}
-\end{table}
-
-\subsection{Length comparisons}
-With $t=\tan36^\circ=\sqrt{10-2\sqrt5}/(1+\sqrt5)$:
-\[
-\begin{array}{llll}
-\text{staple (Thm.~\ref{thm:gnomon}):} &
-\dfrac{3751558+2\sqrt{20693661817348}}{10^7}
- & =1.2849615\ldots \\[2pt]
-\text{square path \cite{ward2008}:} & \dfrac{3\gp\,t}{t+2} & =1.2934739\ldots
- & (+8.512\times10^{-3})\\[6pt]
-\text{scaled caliper \cite{zalgaller1961}:} & \zeta\sin36^\circ & =1.3391462\ldots
- & (+5.418\times10^{-2})\\[2pt]
-\text{zee \cite{movshovich2012}:} & \dfrac{3\gp\sqrt5}{\sqrt{50+2\sqrt5}} & =1.4706411\ldots
- & (+1.857\times10^{-1})\\[6pt]
-\text{diameter:} & \gp & =1.6180340\ldots & (+3.331\times10^{-1})
-\end{array}
-\]
-All five are explicit algebraic numbers except $\zeta$, for which the
-directed evaluation $\zeta>2.2782916$ of its published closed form suffices.
-This completes the proof of Theorem~\ref{thm:gnomon}. \qed
-
-\begin{remark}
-At $\beta=36^\circ$ the base-aligned construction gives the valid square
-path in the table.  The leg-aligned value $3s_B=1.2624233\ldots$ is smaller,
-but it is not an escape bound there: that square fits strictly inside $T$
-(with clearance $6.3\times10^{-3}$), illustrating why
-Appendix~\ref{app:proof} uses inscribed squares only as \emph{lower}
-bounds for escaping square paths.
-\end{remark}
-
-\begin{proof}[Proof of Corollary~\ref{cor:bracket}]
-Inside $T$ place the isosceles triangle with base angle $45^\circ$, with its
-base on the base of $T$ and its apex at the apex of $T$.  Its height is
-$h=\sin36^\circ$ and its legs have length $\sqrt2h$.  The escape length of a
-unit-leg $45^\circ$ triangle is $3/\sqrt5$ by
-\cite{coultonmovshovich2006,movshovich2012}.  Monotonicity under inclusion
-and scaling therefore give
-\[
- \ell(T)\ge \sqrt2h\,\frac3{\sqrt5}
- =\frac6{\sqrt{10}}\sin36^\circ
- =\frac3{10}\sqrt{25-5\sqrt5}.
-\]
-The upper bound is Theorem~\ref{thm:gnomon}.
-\end{proof}
+Everything lives in the real field $\Q\bigl(\sqrt5,\sqrt{10-2\sqrt5}\,\bigr)$:
+$W$ is the twelve-edge polygon of Figure~\ref{fig:mink}, the requirement
+that its twelve edge lines keep distance at least $\sin72^\circ$ from the
+origin is twelve exact sign conditions, and all twelve hold strictly ---
+the smallest margin, on the near-tangent edges, is $5.13\times10^{-7}$
+(Table~\ref{tab:edges}).  The length comparisons against the square path,
+the caliper, the zee, and the diameter are exact evaluations, and the
+lower bound of Corollary~\ref{cor:bracket} comes from inscribing a
+$45^\circ$ Besicovitch--Movshovich triangle sharing the apex.  All
+details are in Appendix~\ref{app:gnomon}; the ancillary file
+\path{tight_staple_proof.py} re-derives everything.
 
 
 \section{Rounding the staple: line--arc paths}\label{sec:arc}
@@ -1183,21 +1019,9 @@ template.  After the (linear) elimination of the arc center and leg length,
 the system reduces to two polynomial equations of bidegree $(4,4)$ in
 $t_i=\tan(\psi_i/2)$, with a unique solution in the staple region.  Both
 $t_1$ and $t_2$ are algebraic of degree $16$ over $\Q$ with palindromic
-minimal polynomials; e.g.\ $t_1$ is a root of
-\begin{multline*}
-919 t^{16}+21152 t^{15}+155604 t^{14}+357968 t^{13}-186516 t^{12}\\
--1633584 t^{11}-1534804 t^{10}+1227584 t^{9}+3199738 t^{8}+1227584 t^{7}\\
--1534804 t^{6}-1633584 t^{5}-186516 t^{4}+357968 t^{3}+155604 t^{2}\\
-+21152 t+919\;=\;0.
-\end{multline*}
-Consequently $\sin\psi_1,\sin\psi_2$ have degree $8$ over $\Q$ and are roots
-of explicit quartics over $\Q(\sqrt5)$; the second, for $\sin\psi_2$, reads
-\[
-s^4+\tfrac{467+103\sqrt5}{682}\,s^3
- +\Bigl(\tfrac{6\sqrt5}{31}-\tfrac{51}{124}\Bigr)s^2
- +\tfrac{\sqrt5-99}{496}\,s-\tfrac{29+21\sqrt5}{5456}\;=\;0,
-\]
-and the critical length is
+minimal polynomials, and $\sin\psi_1,\sin\psi_2$ have degree $8$ over
+$\Q$: they are roots of explicit quartics over $\Q(\sqrt5)$, displayed in
+Appendix~\ref{app:algebra}.  The critical length is
 \[
 L^{*}\;=\;L_{\mathrm{alg}}+2\sin36^\circ\,(\psi_2-\psi_1)
 \;=\;1.28267602545904805617809430664645\ldots
@@ -1205,11 +1029,8 @@ L^{*}\;=\;L_{\mathrm{alg}}+2\sin36^\circ\,(\psi_2-\psi_1)
 with $L_{\mathrm{alg}}$ algebraic.
 \end{proposition}
 
-The computation is exact throughout: a resultant eliminates $t_2$; the two
-quadratic field relations reduce the norm to an integer polynomial of degree
-$128$, whose factorization isolates the degree-$16$ palindromic factors; the
-displayed decimal is evaluated from the exact roots (scripts in the
-repository).  Zalgaller's strip constant
+The exact elimination behind Proposition~\ref{prop:critical} is outlined
+in Appendix~\ref{app:algebra}.  Zalgaller's strip constant
 $\zeta=2(\tan\alpha+\tilde\beta+\tan\gamma)$ is built from angles whose
 sines satisfy a cubic over $\Q$; the gnomon's critical line--arc constant
 has the identical shape --- algebraic lengths plus a radius times an arc
@@ -1444,6 +1265,47 @@ are maintained at \url{https://github.com/atemerev/bellman-staple}.
 
 \clearpage
 \appendix
+\section{Proofs for the escape criterion}\label{app:criterion}
+
+\begin{proof}[Proof of Lemma~\ref{lem:fit}]
+$C+t\subseteq T$ is equivalent to the linear system
+$\langle n_i,t\rangle\le c_i:=t_i-h_C(n_i)$, $i=1,2,3$.
+
+\emph{Necessity.} If $t$ solves the system then
+$0=\langle\sum_i s_i n_i,t\rangle\le\sum_i s_i c_i$, which rearranges to
+the stated inequality.
+
+\emph{Sufficiency.} Suppose
+$\lambda:=\bigl(\sum_i s_i c_i\bigr)/\bigl(2\operatorname{Area}(T)\bigr)\ge0$.
+The affine system $\langle n_i,t_0\rangle=c_i-\lambda t_i$ ($i=1,2,3$;
+three equations in two unknowns) is solvable: the unique linear
+dependency among the rows $n_i$ has coefficients $s_i$, and
+$\sum_i s_i(c_i-\lambda t_i)=\sum_i s_i c_i-\lambda\cdot2\operatorname{Area}(T)=0$
+is precisely its compatibility condition. For this $t_0$,
+\[
+\{t:\langle n_i,t\rangle\le c_i\}\;=\;\lambda T+t_0\;\neq\;\emptyset .\qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{cor:mink}]
+A placed congruent copy of $P$ lies in the open convex set
+$\operatorname{int}T$ if and only if its convex hull does, and rigid
+motions factor as a rotation followed by a translation; if a placed copy is
+not contained in the interior, the connected path, starting inside, must
+meet $\partial T$ --- the hiker escapes (cf.\ \cite{finchwetzel2004}).
+Thus $P$ escapes iff for every $\theta$ no translate of $R_\theta H$ lies
+in $\operatorname{int}T$; by Lemma~\ref{lem:fit} this holds iff for all
+$\theta$,
+$\sum_i s_i\,h_{R_\theta H}(n_i)\ge 2\operatorname{Area}(T)$
+(the closed inequality: a hull that can only be translated to touch
+$\partial T$ still reaches the boundary). Writing
+$h_{R_\theta H}(n_i)=h_H(R_{-\theta}u(\alpha_i))=h_{R_{-\alpha_i}H}(u(-\theta))$
+with $u(\psi)=(\cos\psi,\sin\psi)$ and summing,
+$\sum_i s_i h_{R_\theta H}(n_i)=h_W(u(-\theta))$. The condition
+$h_W(u)\ge 2\operatorname{Area}(T)$ for every unit $u$ is equivalent to
+$W\supseteq \overline{D}(0,2\operatorname{Area}(T))$.
+\end{proof}
+
 \section{Proof of Theorem~\ref{thm:interval}}\label{app:proof}
 
 Parametrize by $u=\tan(\beta/2)$, so that $\sin\beta=\frac{2u}{1+u^2}$ and
@@ -1599,6 +1461,169 @@ Corollary~\ref{cor:trio} follows by intersecting the intervals in
 Theorem~\ref{thm:interval}(ii)--(iii): all four comparisons hold
 simultaneously for $u\in[0.282,0.3855]\supseteq[31.50^\circ,42.16^\circ]$
 in base angle. \qed
+
+\section{The golden-gnomon certificate in full}\label{app:gnomon}
+
+\subsection{Exact data}
+Place $T$ with base from $(-\gp/2,0)$ to $(\gp/2,0)$ and apex
+$(0,\sin36^\circ)$; the legs have length $1$ since
+$\cos36^\circ=\gp/2$. The sides have lengths
+$(s_1,s_2,s_3)=(\gp,1,1)$ and unit outward normals
+\[
+n_1=(0,-1)=u(-90^\circ),\qquad
+n_{2,3}=(\pm\sin36^\circ,\ \cos36^\circ)=u(54^\circ),\,u(126^\circ),
+\]
+and one checks exactly that $\gp\,n_1+n_2+n_3=0$. Two golden identities
+drive all the arithmetic:
+\[
+2\operatorname{Area}(T)=\gp\sin36^\circ=\sin72^\circ,
+\qquad
+\bigl(2\operatorname{Area}(T)\bigr)^2=\frac{5+\sqrt5}{8},
+\]
+with $\sin36^\circ=\tfrac14\sqrt{10-2\sqrt5}$. All quantities below live
+in the real field $\Q\bigl(\sqrt5,\sqrt{10-2\sqrt5}\,\bigr)$.
+The hull $H$ of the staple is the isosceles trapezoid with
+vertices $(\pm b,0)$ and $(\pm a,c)$, where
+\[
+ a=\frac{2430971}{10^7},\qquad
+ b=\frac{1875779}{10^7},\qquad
+ c=\frac{4515022}{10^7},
+\]
+and $|S|=2b+2\sqrt{(a-b)^2+c^2}$ as stated.
+
+\subsection{The Minkowski sum}
+By Proposition~\ref{cor:mink} with rotation matrices
+\[
+R_{-\alpha_1}=\begin{pmatrix}0&-1\\ 1&0\end{pmatrix},\quad
+R_{-\alpha_{2,3}}=\begin{pmatrix}\pm\sin36^\circ&\cos36^\circ\\
+-\cos36^\circ&\pm\sin36^\circ\end{pmatrix},
+\]
+the path $S$ escapes $T$ iff
+$W=\gp R_{-\alpha_1}H\oplus R_{-\alpha_2}H\oplus R_{-\alpha_3}H$
+contains $\overline D(0,\sin72^\circ)$. The vertices of $W$ are sums of
+one vertex from each summand; $W$ is the twelve-edge polygon of
+Figure~\ref{fig:mink}, symmetric about the horizontal axis (the axial
+symmetry of $H$ conjugates the two leg copies and fixes the base copy).
+
+\subsection{The twelve inequalities}
+For a convex polygon given by a positively oriented vertex cycle
+$w_1,\dots,w_{12}$, the inclusion
+$\overline D(0,\rho)\subseteq W$ is equivalent to: (i) all consecutive
+cross products $(w_{k+1}-w_k)\times(w_{k+2}-w_{k+1})>0$ (convexity),
+(ii) $w_k\times w_{k+1}>0$ for all $k$ (the origin lies inside), and
+(iii) for every edge,
+\[
+\bigl(w_k\times w_{k+1}\bigr)^2\;\ge\;\rho^2\,\lvert w_{k+1}-w_k\rvert^2 ,
+\]
+i.e., every edge line keeps distance at least $\rho$ from the origin.
+Here $\rho^2=\tfrac{5+\sqrt5}{8}$ and all $w_k$ are explicit vectors
+with entries in $\Q(\sqrt5,\sqrt{10-2\sqrt5}\,)$, so each of
+(i)--(iii) is the sign of an element of that field. Table~\ref{tab:edges}
+lists the distances and the certificate values
+\[
+D_k=(w_k\times w_{k+1})^2-\rho^2\,|w_{k+1}-w_k|^2 ;
+\]
+by the axial symmetry of $W$ only seven are distinct. All are strictly positive, with minimum
+margin $D=5.13\times10^{-7}$.
+
+The ancillary file \texttt{tight\_staple\_proof.py} constructs these field
+elements symbolically and asks SymPy for their exact algebraic signs; decimal
+evaluation is used only for the displayed values.  It also verifies exactly
+that all $64$ candidate vertex sums lie on or inside every edge half-plane,
+so the cycle of Table~\ref{tab:edges} is indeed the boundary of $W$.  Thus
+the disk is contained in $W$, and Proposition~\ref{cor:mink} proves that $S$
+escapes $T$.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+edge of $W$ & multiplicity & distance to $0$ & certificate $D_k$ \\
+\midrule
+left vertical & 1 & $0.951056952$ & $+5.131\times10^{-7}$ \\
+$(-0.951,-0.393)\!\to\!(-0.731,-0.697)$ & 2 & $1.000620318$ & $+1.361\times10^{-2}$ \\
+$(-0.731,-0.697)\!\to\!(-0.398,-1.007)$ & 2 & $1.007883096$ & $+2.304\times10^{-2}$ \\
+$(-0.398,-1.007)\!\to\!(0.333,-0.917)$ & 2 & $0.951057083$ & $+5.837\times10^{-7}$ \\
+$(0.333,-0.917)\!\to\!(0.731,-0.697)$ & 2 & $0.963597925$ & $+4.969\times10^{-3}$ \\
+$(0.731,-0.697)\!\to\!(1.016,-0.304)$ & 2 & $1.000620318$ & $+2.287\times10^{-2}$ \\
+right vertical & 1 & $1.016323686$ & $+4.731\times10^{-2}$ \\
+\midrule
+\multicolumn{3}{r}{disk radius $\sin72^\circ$} & $0.9510565$ \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The distance certificates for the twelve edges of $W$
+(mirror-symmetric edges listed once). $D_k>0$ is the exact inequality
+(iii); decimals are $60$-digit evaluations truncated for display.}
+\label{tab:edges}
+\end{table}
+
+\subsection{Length comparisons}
+With $t=\tan36^\circ=\sqrt{10-2\sqrt5}/(1+\sqrt5)$:
+\[
+\begin{array}{llll}
+\text{staple (Thm.~\ref{thm:gnomon}):} &
+\dfrac{3751558+2\sqrt{20693661817348}}{10^7}
+ & =1.2849615\ldots \\[2pt]
+\text{square path \cite{ward2008}:} & \dfrac{3\gp\,t}{t+2} & =1.2934739\ldots
+ & (+8.512\times10^{-3})\\[6pt]
+\text{scaled caliper \cite{zalgaller1961}:} & \zeta\sin36^\circ & =1.3391462\ldots
+ & (+5.418\times10^{-2})\\[2pt]
+\text{zee \cite{movshovich2012}:} & \dfrac{3\gp\sqrt5}{\sqrt{50+2\sqrt5}} & =1.4706411\ldots
+ & (+1.857\times10^{-1})\\[6pt]
+\text{diameter:} & \gp & =1.6180340\ldots & (+3.331\times10^{-1})
+\end{array}
+\]
+All five are explicit algebraic numbers except $\zeta$, for which the
+directed evaluation $\zeta>2.2782916$ of its published closed form suffices.
+This completes the proof of Theorem~\ref{thm:gnomon}. \qed
+
+\begin{remark}
+At $\beta=36^\circ$ the base-aligned construction gives the valid square
+path in the table.  The leg-aligned value $3s_B=1.2624233\ldots$ is smaller,
+but it is not an escape bound there: that square fits strictly inside $T$
+(with clearance $6.3\times10^{-3}$), illustrating why
+Appendix~\ref{app:proof} uses inscribed squares only as \emph{lower}
+bounds for escaping square paths.
+\end{remark}
+
+\begin{proof}[Proof of Corollary~\ref{cor:bracket}]
+Inside $T$ place the isosceles triangle with base angle $45^\circ$, with its
+base on the base of $T$ and its apex at the apex of $T$.  Its height is
+$h=\sin36^\circ$ and its legs have length $\sqrt2h$.  The escape length of a
+unit-leg $45^\circ$ triangle is $3/\sqrt5$ by
+\cite{coultonmovshovich2006,movshovich2012}.  Monotonicity under inclusion
+and scaling therefore give
+\[
+ \ell(T)\ge \sqrt2h\,\frac3{\sqrt5}
+ =\frac6{\sqrt{10}}\sin36^\circ
+ =\frac3{10}\sqrt{25-5\sqrt5}.
+\]
+The upper bound is Theorem~\ref{thm:gnomon}.
+\end{proof}
+
+\section{The critical-member polynomials}\label{app:algebra}
+
+At the critical smoothed staple of Proposition~\ref{prop:critical},
+$t_1=\tan(\psi_1/2)$ is a root of the palindromic degree-$16$ polynomial
+\begin{multline*}
+919 t^{16}+21152 t^{15}+155604 t^{14}+357968 t^{13}-186516 t^{12}\\
+-1633584 t^{11}-1534804 t^{10}+1227584 t^{9}+3199738 t^{8}+1227584 t^{7}\\
+-1534804 t^{6}-1633584 t^{5}-186516 t^{4}+357968 t^{3}+155604 t^{2}\\
++21152 t+919\;=\;0.
+\end{multline*}
+($t_2$ satisfies a companion palindromic polynomial of the same degree),
+and the quartic over $\Q(\sqrt5)$ for $\sin\psi_2$ reads
+\[
+s^4+\tfrac{467+103\sqrt5}{682}\,s^3
+ +\Bigl(\tfrac{6\sqrt5}{31}-\tfrac{51}{124}\Bigr)s^2
+ +\tfrac{\sqrt5-99}{496}\,s-\tfrac{29+21\sqrt5}{5456}\;=\;0.
+\]
+The computation is exact throughout: a resultant eliminates $t_2$; the
+two quadratic field relations reduce the norm to an integer polynomial of
+degree $128$, whose factorization isolates the degree-$16$ palindromic
+factors; the decimal displayed in Proposition~\ref{prop:critical} is
+evaluated from the exact roots (scripts in the repository).
 
 \section{The coefficients of the staple family}\label{app:coeffs}
 

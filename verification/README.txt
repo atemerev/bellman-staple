@@ -11,7 +11,7 @@ triangles in Bellman's lost-in-a-forest problem" (A. Temerev, A. Doria).
 
   interval_construction.json  The 51 rational coefficients of the piecewise-
                               polynomial staple family S(u) of the interval
-                              theorem (Theorem 4.1; printed in Appendix B of
+                              theorem (Theorem 4.1; printed in Appendix E of
                               the paper), together with the fixed
                               support-test vertex choices used in the escape
                               certificates.

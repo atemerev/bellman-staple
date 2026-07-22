@@ -95,7 +95,7 @@ paper/          staple.tex, staple.pdf — the manuscript (amsart; builds with t
 verification/   the complete machine-checkable proofs (arXiv ancillary files)
   tight_staple_proof.py         verifies the golden-gnomon theorem
   interval_construction.json    exact rational coefficients of the family S(u)
-                                (printed in Appendix B of the paper)
+                                (printed in Appendix E of the paper)
   interval_certificate.py       verifies all 116 Sturm certificates of the
                                 interval theorem
 discovery/      numerical code that found the witnesses (not used in proofs)
