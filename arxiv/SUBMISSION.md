@@ -1,16 +1,16 @@
 # arXiv submission package
 
-**File to upload:** `staple-arxiv.tar.gz` (39 KB)
+**File to upload:** `staple-arxiv.tar.gz` (41 KB)
 
 Contents:
 ```
 staple.tex                      main source (self-contained: inline TikZ/pgfplots
                                 figures, inline bibliography — no .bbl, no image files)
 anc/README.txt                  describes the ancillary files
-anc/tight_staple_proof.py       verifies Theorem 3 (exact algebraic signs)
-anc/interval_certificate.py     verifies the 116 Sturm certificates of Theorem 1
+anc/tight_staple_proof.py       verifies the gnomon theorem (Thm 5.1, exact signs)
+anc/interval_certificate.py     verifies the 116 Sturm certificates of Thm 4.1
 anc/interval_construction.json  the 51 rational coefficients of S(u)
-anc/arc_certificate.py          constructs + verifies the line-arc witness (Thm 11)
+anc/arc_certificate.py          constructs + verifies the line-arc witness (Thm 6.1)
 ```
 
 The `anc/` directory follows arXiv's ancillary-file convention; the files are
@@ -73,7 +73,7 @@ Optimality is claimed nowhere below $45^\circ$.
 **MSC classes:** 52A10 (Primary), 52B55, 52A38 (Secondary)
 
 **Comments field:**
-17 pages, 10 figures, 2 tables. Ancillary files contain exact verification
+19 pages, 11 figures, 2 tables. Ancillary files contain exact verification
 code (Python/SymPy); code and data also at
 https://github.com/atemerev/bellman-staple
 

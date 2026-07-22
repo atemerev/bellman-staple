@@ -9,7 +9,7 @@
 \pgfplotsset{compat=1.17}
 \usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
 
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -143,7 +143,7 @@ He published no coordinates or lengths for this improvement.  Gibbs
 ``tunnel'' candidates below it; in a companion paper \cite{gibbs2016b} he
 argued that for convex polygonal forests some shortest escape path is
 piecewise linear--circular.  We return to Ward's ``Zalgalloid'' question in
-Sections~\ref{sec:arc} and \ref{sec:numerics}, with an affirmative
+Sections~\ref{sec:arc} and~\ref{sec:caliper}, with an affirmative
 (numerical) answer.  Recent work of
 Deng \cite{deng2025,deng2026} formulates the general problem as a
 boundary-intersection problem and studies finite traveling-salesman
@@ -154,47 +154,32 @@ path escapes if and only if one explicit Minkowski sum contains a disk
 checkable certificates.  No sampled positions or orientations occur in any
 proof below.
 
-\subsection*{The regime picture}
-Figure~\ref{fig:regimes} summarizes what this paper establishes and what it
-conjectures.  The best-known escape paths for the family $T(\beta)$
-organize into three regimes:
+\subsection*{The three regimes}
+This paper organizes everything that is known about escape paths for the
+family $T(\beta)$ --- proven or numerical --- into a single picture,
+Figure~\ref{fig:regimes}.  Three families take turns as the shortest known
+escape path; one representative of each, at its critical placement, is
+drawn in Figure~\ref{fig:gallery}.
 \begin{itemize}
-\item \textbf{zee} ($\beta\ge\beta_\times=42.287^\circ$): the three-segment
-zigzag of Besicovitch and Movshovich, which visits the four vertices of its
-quadrilateral hull in diagonal order --- its middle segment crosses the
-hull.  Optimality is proven on $[45^\circ,60^\circ]$
-\cite{coultonmovshovich2006,movshovich2012}; on $[\beta_\times,45^\circ)$
-the zee remains the shortest known path.
-\item \textbf{staple, then Zalgalloid}
-($\beta^{*}\approx27.6^\circ\le\beta\le\beta_\times$): a single connected
-branch of \emph{boundary-type} paths --- each traverses the boundary of its
+\item The \textbf{zee} of Besicovitch and Movshovich, for
+$\beta\ge\beta_\times=42.287^\circ$: a three-segment zigzag that visits
+the four vertices of its quadrilateral hull in \emph{diagonal} order, so
+its middle segment crosses the hull.  On $[45^\circ,60^\circ]$ it is
+proven optimal \cite{coultonmovshovich2006,movshovich2012}; on
+$[\beta_\times,45^\circ)$ it remains the shortest known path
+(Section~\ref{sec:zee}).
+\item The \textbf{staple--Zalgalloid branch}, for
+$\beta^{*}\approx27.6^\circ\le\beta\le\beta_\times$: a single connected
+family of \emph{boundary-type} paths, each traversing the boundary of its
 convex hull minus one chord.  Near $\beta_\times$ the hull is a
-near-polygonal isosceles trapezoid (the \emph{staple}; the exactly
-polygonal trapezoid is the branch member only above $\approx42.9^\circ$);
-as $\beta$ decreases, circular arcs of curvature radius $\sin\beta$ --- the
-width of $T(\beta)$ --- grow along it, through the smoothed staples of
-Section~\ref{sec:arc} into the Zalgalloids of Section~\ref{sec:numerics}.
-\item \textbf{caliper} ($\beta\le\beta^{*}$): the scaled Zalgaller caliper,
-$\ell(T)\le\zeta\sin\beta$.
+near-polygonal isosceles trapezoid --- the \emph{staple}; as $\beta$
+decreases, circular arcs of curvature radius $\sin\beta$, the width of
+$T(\beta)$, grow along it
+(Sections~\ref{sec:staple}--\ref{sec:arc}).
+\item The \textbf{scaled caliper}, for $\beta\le\beta^{*}$: Zalgaller's
+strip solution scaled to the width of the triangle,
+$\ell(T)\le\zeta\sin\beta$ (Section~\ref{sec:caliper}).
 \end{itemize}
-The two regime boundaries have different characters, and this difference
-is the organizing observation of the paper.  At $\beta_\times$ two
-combinatorially distinct families cross \emph{transversally}: the length
-curves meet with slopes $-0.016$ (zee) and $+0.013$ (branch) per degree;
-each family continues past the crossing as a strict local optimum (the
-branch up to an exact rectangle path of length $\sqrt2$ at $\beta=45^\circ$,
-the zee at least down to $36^\circ$); and no continuous deformation
-connects them --- freeing a corner-rounding radius in the zee returns zero
-at every tested angle.  The upper-bound envelope therefore has a corner at
-$\beta_\times$ --- a first-order phase boundary --- and the corner points
-\emph{up}: it is the maximum of the envelope, so the hardest isosceles
-forest with unit legs in the surveyed range is the one at the phase
-boundary, with $\ell(T(\beta_\times))\le L_\times=1.38920$.  At
-$\beta^{*}$, by contrast, nothing crosses: the branch itself deforms onto
-the caliper, its bar length and its margin over the caliper vanishing
-together, with no kink in the envelope --- a second-order boundary.  The
-boundary locations and slopes are numerical (Section~\ref{sec:numerics});
-the anchors below are theorems.
 
 \begin{figure}[t]
 \centering
@@ -269,14 +254,340 @@ the regime boundary (diamond).  At $\beta^{*}$ the branch instead merges
 tangentially into the caliper (circle).  The branch terminates above in an
 exact rectangle path of length $\sqrt2$ at $\beta=45^\circ$
 (Proposition~\ref{prop:rect}), tied with the diameter.  Regime boundaries
-and dashed data are numerical (Section~\ref{sec:numerics}); the zee is
+and dashed data are numerical (Sections~\ref{sub:crossing} and~\ref{sec:caliper}); the zee is
 proven optimal on $[45^\circ,60^\circ]$
 \cite{coultonmovshovich2006,movshovich2012}; Theorems~\ref{thm:interval}
 and~\ref{thm:arc} certify anchors inside the middle regime.}
 \label{fig:regimes}
 \end{figure}
 
-\subsection*{Certified anchors in the middle regime}
+\subsection*{Two boundaries, two characters}
+The organizing observation of the paper is that the two regime boundaries
+could hardly be more different.
+
+At $\beta_\times$ two combinatorially distinct families cross
+\emph{transversally}.  The length curves meet with slopes $-0.016$ (zee)
+and $+0.013$ (branch) per degree; each family continues past the crossing
+as a strict local optimum --- the branch up to an exact rectangle path of
+length $\sqrt2$ at $\beta=45^\circ$ (Proposition~\ref{prop:rect}), the zee
+at least down to $36^\circ$ --- and no continuous deformation connects
+them: freeing a corner-rounding radius in the zee returns zero at every
+tested angle.  The envelope of best known lengths therefore has a corner
+at $\beta_\times$ --- a \emph{first-order} phase boundary --- and the
+corner points up: it is the \emph{maximum} of the envelope, so the hardest
+isosceles forest with unit legs in the surveyed range is the one at the
+phase boundary, with $\ell(T(\beta_\times))\le L_\times=1.38920$
+(Section~\ref{sub:crossing}).
+
+At $\beta^{*}$, by contrast, nothing crosses.  The branch itself deforms
+onto the caliper: its bar length and its margin over the caliper vanish
+together, tangentially, leaving no kink in the envelope --- a
+\emph{second-order} boundary (Section~\ref{sec:caliper}).
+
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.9]
+\begin{scope}[shift={(0,0)}]
+\draw[very thick,green!45!black] (-0.64279,0) -- (0.64279,0) -- (0,0.76604) -- cycle;
+\draw[line width=1.4pt,violet!80!black]
+ (-0.6428,0) -- (-0.2454,0.1112) -- (0.1521,0) -- (0.5495,0.1112);
+\node[font=\scriptsize,align=center] at (0,-0.27)
+ {zee, $\beta=50^\circ$\\ $L=1.238059$};
+\end{scope}
+\begin{scope}[shift={(1.70,0)}]
+\draw[very thick,green!45!black] (-0.75471,0) -- (0.75471,0) -- (0,0.65606) -- cycle;
+\draw[line width=1.4pt,orange!85!black,line join=round] plot coordinates {
+(0.2502,0.0000) (0.2455,0.1254) (0.2452,0.1321) (0.2449,0.1387)
+(0.2445,0.1454) (0.2440,0.1521) (0.2434,0.1587) (0.2428,0.1654)
+(0.2131,0.4669) (0.2130,0.4680) (0.2129,0.4690) (0.2128,0.4701)
+(0.2127,0.4712) (-0.2127,0.4712) (-0.2128,0.4701) (-0.2129,0.4690)
+(-0.2130,0.4680) (-0.2131,0.4669) (-0.2428,0.1654) (-0.2434,0.1587)
+(-0.2440,0.1521) (-0.2445,0.1454) (-0.2449,0.1387) (-0.2452,0.1321)
+(-0.2455,0.1254) (-0.2502,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.27)
+ {smoothed staple, $\beta=41^\circ$\\ $L=1.371047$};
+\end{scope}
+\begin{scope}[shift={(3.62,0)}]
+\draw[very thick,green!45!black] (-0.86603,0) -- (0.86603,0) -- (0,0.50000) -- cycle;
+\draw[line width=1.4pt,orange!85!black,line join=round] plot coordinates {
+(0.2529,0.0000) (0.2415,0.0750) (0.2389,0.0902) (0.2359,0.1053)
+(0.2325,0.1203) (0.2285,0.1351) (0.2241,0.1499) (0.2193,0.1645)
+(0.2140,0.1789) (0.2083,0.1932) (0.2021,0.2073) (0.1955,0.2212)
+(0.1885,0.2349) (0.1811,0.2484) (0.0553,0.4681) (-0.0553,0.4681)
+(-0.1811,0.2484) (-0.1885,0.2349) (-0.1955,0.2212) (-0.2021,0.2073)
+(-0.2083,0.1932) (-0.2140,0.1789) (-0.2193,0.1645) (-0.2241,0.1499)
+(-0.2285,0.1351) (-0.2325,0.1203) (-0.2359,0.1053) (-0.2389,0.0902)
+(-0.2415,0.0750) (-0.2529,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.27)
+ {Zalgalloid, $\beta=30^\circ$\\ $L=1.137915$};
+\end{scope}
+\begin{scope}[shift={(5.69,0)}]
+\draw[very thick,green!45!black] (-0.89879,0) -- (0.89879,0) -- (0,0.43837) -- cycle;
+\draw[line width=1.4pt,teal!75!black,line join=round] plot coordinates {
+(0.2288,0.0000) (0.1911,0.1258) (0.1877,0.1368) (0.1839,0.1478)
+(0.1798,0.1587) (0.1755,0.1694) (0.1709,0.1801) (0.1660,0.1906)
+(0.1608,0.2010) (0.1553,0.2112) (0.1496,0.2213) (0.1436,0.2313)
+(0.1373,0.2410) (0.1308,0.2507) (0.0000,0.4384) (-0.1308,0.2507)
+(-0.1373,0.2410) (-0.1436,0.2313) (-0.1496,0.2213) (-0.1553,0.2112)
+(-0.1608,0.2010) (-0.1660,0.1906) (-0.1709,0.1801) (-0.1755,0.1694)
+(-0.1798,0.1587) (-0.1839,0.1478) (-0.1877,0.1368) (-0.1911,0.1258)
+(-0.2288,0.0000)};
+\node[font=\scriptsize,align=center] at (0,-0.27)
+ {scaled caliper, $\beta=26^\circ$\\ $L=0.998737$};
+\end{scope}
+\end{tikzpicture}
+\caption{One escape path per regime, each at a critical placement in its
+triangle $T(\beta)$ (legs $=1$; the hull fits only in touching position).
+Left to right: the \emph{zee} at $\beta=50^\circ$ --- diagonal type, the
+middle segment crosses the hull; the \emph{smoothed staple} at
+$\beta=41^\circ$ --- boundary type: bar under the apex, shoulder arcs of
+radius $\sin\beta$ and span $3.5^\circ$, to the eye still a trapezoid; a
+\emph{Zalgalloid} at $\beta=30^\circ$ --- the same branch with deep arcs
+and a short bar; and the \emph{scaled caliper} at $\beta=26^\circ$, which
+the branch has joined (bar length zero).  Lengths are the best known
+values at each angle; placements are computed, not sketched.}
+\label{fig:gallery}
+\end{figure}
+
+
+\subsection*{Certified results, and what is numerical}
+The regime picture is numerical where it must be --- the boundary
+locations, the slopes, the identity of the frontier family --- and exact
+where we can make it so.  Four anchors are theorems.
+\begin{itemize}
+\item \emph{The interval theorem} (Theorem~\ref{thm:interval}): an
+explicit piecewise-polynomial family of polygonal staples $S(u)$,
+$u=\tan(\beta/2)$, escapes $T(\beta)$ and is strictly shorter than every
+escaping square path on $[31.08^\circ,42.16^\circ]$, and shorter than
+Ward's full quartet --- diameter, caliper, zee, squares --- on
+$[31.50^\circ,42.16^\circ]$.  This removes the square path from the
+frontier everywhere and turns the trapezoidal improvement Ward reported
+in 2008 into a theorem, with the enlarged range he predicted certified at
+both ends.
+\item \emph{The gnomon certificates} (Theorems~\ref{thm:gnomon}
+and~\ref{thm:arc}): at the type example $\beta=36^\circ$, the golden
+gnomon, the closed-form polygonal bound $1.2849616$, improved by the
+first exact arc-window certificate in this problem area to
+$\ell(T)\le1.2826799$.
+\item \emph{The critical smoothed staple}
+(Proposition~\ref{prop:critical}): window tangency forces arcs of
+curvature radius $\sin\beta$, the width of $T$; at the gnomon the sines
+of the critical arc angles are roots of explicit quartics over
+$\Q(\sqrt5)$, and the critical length $1.2826760\ldots$ has the same
+closed shape as Zalgaller's strip constant.
+\item \emph{The rectangle endpoint} (Proposition~\ref{prop:rect}): the
+branch terminates at $\beta=45^\circ$ in an exact rectangle path of
+length $\sqrt2$, tied with the diameter of the right isosceles triangle.
+\end{itemize}
+The engine behind all four is the same finite certificate
+(Section~\ref{sec:criterion}): escape from a triangle reduces, via the
+planar case of a containment theorem of Lutwak, to the containment of a
+disk in one explicit Minkowski sum, and each containment becomes a finite
+list of exact sign conditions --- Sturm certificates over an interval of
+angles, algebraic signs at a single triangle.  Conversely, every
+statement obtained by numerical optimization is labeled as such where it
+appears and enters no proof; the boundaries $\beta_\times$ and
+$\beta^{*}$ are of this kind.  We emphasize what is \emph{not} claimed:
+optimality of any path below $45^\circ$.  The sections walk down the
+$\beta$ axis: the criterion (Section~\ref{sec:criterion}), the zee regime
+and its first-order end (Section~\ref{sec:zee}), the certified staple
+interval (Section~\ref{sec:staple}) and its exact type example
+(Section~\ref{sec:gnomon}), the rounded staple (Section~\ref{sec:arc}),
+and the caliper regime with the second-order junction
+(Section~\ref{sec:caliper}).  All code and data accompanying the paper
+are available at \url{https://github.com/atemerev/bellman-staple} and as
+arXiv ancillary files.
+
+
+\section{The escape criterion}\label{sec:criterion}
+
+Throughout, $h_C(u)=\sup_{x\in C}\langle x,u\rangle$ denotes the support
+function of a compact convex set $C$, and $R_\theta$ the rotation of
+$\R^2$ by angle $\theta$. We use two standard facts: $h_{C\oplus D}=h_C+h_D$
+for the Minkowski sum, and $h_{RC}(u)=h_C(R^{-1}u)$.
+
+\begin{lemma}[fit criterion for triangles]\label{lem:fit}
+Let $T=\{x:\langle n_i,x\rangle\le t_i,\ i=1,2,3\}$ be a triangle with
+unit outward normals $n_i$ and side lengths $s_i$, so that
+$\sum_i s_i n_i=0$ and $\sum_i s_i t_i = 2\operatorname{Area}(T)$.
+For a compact convex $C$ there exists a translation $t$ with
+$C+t\subseteq T$ if and only if
+\[
+s_1 h_C(n_1)+s_2 h_C(n_2)+s_3 h_C(n_3)\;\le\;2\operatorname{Area}(T).
+\]
+\end{lemma}
+
+Since $\sum_i s_i\,h_C(n_i)=2V(C,T)$, twice the mixed area, the
+criterion reads: \emph{$C$ translates into $T$ if and only if
+$V(C,T)\le V(T,T)=\operatorname{Area}(T)$}. In this mixed-volume form
+(for simplices in all dimensions) the criterion is a result of Lutwak
+\cite[Prop., p.~230 and the remark following Cor.~3]{lutwak1998}, with
+ancestry in Weil's characterization of translative containment
+\cite{weil1974}. We include the short linear-programming proof both to
+keep the note self-contained and because its sufficiency half produces
+the explicit feasible translations used in our certificates.  We have not
+found this finite disk-containment specialization in the escape-path
+literature.
+
+\begin{proof}
+$C+t\subseteq T$ is equivalent to the linear system
+$\langle n_i,t\rangle\le c_i:=t_i-h_C(n_i)$, $i=1,2,3$.
+
+\emph{Necessity.} If $t$ solves the system then
+$0=\langle\sum_i s_i n_i,t\rangle\le\sum_i s_i c_i$, which rearranges to
+the stated inequality.
+
+\emph{Sufficiency.} Suppose
+$\lambda:=\bigl(\sum_i s_i c_i\bigr)/\bigl(2\operatorname{Area}(T)\bigr)\ge0$.
+The affine system $\langle n_i,t_0\rangle=c_i-\lambda t_i$ ($i=1,2,3$;
+three equations in two unknowns) is solvable: the unique linear
+dependency among the rows $n_i$ has coefficients $s_i$, and
+$\sum_i s_i(c_i-\lambda t_i)=\sum_i s_i c_i-\lambda\cdot2\operatorname{Area}(T)=0$
+is precisely its compatibility condition. For this $t_0$,
+\[
+\{t:\langle n_i,t\rangle\le c_i\}\;=\;\lambda T+t_0\;\neq\;\emptyset .\qedhere
+\]
+\end{proof}
+
+Note the geometric content of sufficiency: \emph{the set of admissible
+translations is itself a homothet of the triangle}, of ratio $\lambda$.
+
+\begin{proposition}[escape criterion]\label{cor:mink}
+With $T$, $n_i=(\cos\alpha_i,\sin\alpha_i)$, $s_i$ as above, a path $P$
+with $H=\operatorname{conv}(P)$ is an escape path for $T$ if and only if
+the Minkowski sum
+\[
+W\;:=\;s_1\,R_{-\alpha_1}H\;\oplus\;s_2\,R_{-\alpha_2}H\;\oplus\;s_3\,R_{-\alpha_3}H
+\]
+contains the closed disk of radius $2\operatorname{Area}(T)$ centered at
+the origin.  If $H$ is a polygon, then so is $W$.
+\end{proposition}
+
+\begin{proof}
+A placed congruent copy of $P$ lies in the open convex set
+$\operatorname{int}T$ if and only if its convex hull does, and rigid
+motions factor as a rotation followed by a translation; if a placed copy is
+not contained in the interior, the connected path, starting inside, must
+meet $\partial T$ --- the hiker escapes (cf.\ \cite{finchwetzel2004}).
+Thus $P$ escapes iff for every $\theta$ no translate of $R_\theta H$ lies
+in $\operatorname{int}T$; by Lemma~\ref{lem:fit} this holds iff for all
+$\theta$,
+$\sum_i s_i\,h_{R_\theta H}(n_i)\ge 2\operatorname{Area}(T)$
+(the closed inequality: a hull that can only be translated to touch
+$\partial T$ still reaches the boundary). Writing
+$h_{R_\theta H}(n_i)=h_H(R_{-\theta}u(\alpha_i))=h_{R_{-\alpha_i}H}(u(-\theta))$
+with $u(\psi)=(\cos\psi,\sin\psi)$ and summing,
+$\sum_i s_i h_{R_\theta H}(n_i)=h_W(u(-\theta))$. The condition
+$h_W(u)\ge 2\operatorname{Area}(T)$ for every unit $u$ is equivalent to
+$W\supseteq \overline{D}(0,2\operatorname{Area}(T))$.
+\end{proof}
+
+\begin{remark}\label{rem:edgenormals}
+Two computational forms of the inclusion are used below. For a fixed
+triangle, $W$ is an explicit polygon and the inclusion is a list of
+edge-distance inequalities (Section~\ref{sec:gnomon} and
+Figure~\ref{fig:mink}). For a one-parameter family it is more convenient to
+avoid tracking the boundary of $W$: a convex polygon is the intersection of
+its edge half-planes, and every edge normal of a Minkowski sum is an edge
+normal of one of the summands, so it suffices to verify
+$h_W(\nu)\ge 2\operatorname{Area}(T)\cdot|\nu|$ for the twelve candidate
+directions $\nu=R_{-\alpha_i}g$, with $g$ ranging over the four edge normals
+of $H$ --- and $h_W(\nu)$ may be replaced by any convenient lower bound,
+e.g.\ by evaluating each summand's support at a fixed vertex
+(Section~\ref{sec:interval}).
+\end{remark}
+
+\begin{remark}
+For the unit equilateral triangle the criterion reads: a path escapes iff
+the Minkowski sum of three copies of its hull rotated by
+$0^\circ,120^\circ,240^\circ$ contains the disk of radius
+$2\operatorname{Area}=\tfrac{\sqrt3}{2}$. Besicovitch's zigzag
+\cite{besicovitch1965,coultonmovshovich2006} is exactly critical in this
+sense: its Minkowski sum circumscribes that disk.
+\end{remark}
+
+
+\section{The zee regime}\label{sec:zee}
+
+For base angles in $[45^\circ,60^\circ]$ the problem is solved, and the
+solution is the \emph{zee} $z_\beta$: three segments of equal length
+making angles $+\delta,\,-\delta,\,+\delta$ with a common axis, where
+\[
+|z_\beta|=\frac{6\sin\beta\cos\beta}{\sqrt{1+8\sin^2\beta}},
+\qquad
+\tan\delta=\frac{1}{3\tan\beta}
+\]
+(the $z_\beta$ of \cite{movshovichwetzel2011,movshovich2012}; the closed
+form is Ward's \cite{ward2008}, rescaled to legs $1$).  At the
+equilateral corner $\beta=60^\circ$ this is Besicovitch's zigzag
+\cite{besicovitch1965}, of length $0.981980\ldots$, proven optimal by
+Coulton and Movshovich \cite{coultonmovshovich2006}; Movshovich
+\cite{movshovich2012} extended optimality to the whole range
+$[45^\circ,60^\circ]$.  Combinatorially the zee is the \emph{diagonal}
+realization of its convex hull: the four path vertices span a
+quadrilateral, and the path visits them in the order that sends its
+middle segment across the interior (Figure~\ref{fig:gallery}, first
+panel).
+
+Below $45^\circ$, two numerical facts about the zee frame the rest of the
+paper.  First, nothing happens to the zee itself: it remains a valid and
+\emph{exactly critical} escape path at least down to $\beta=36^\circ$ ---
+critical in the sense that its Minkowski sum
+(Proposition~\ref{cor:mink}) circumscribes the disk --- and it is
+irreducibly polygonal: re-optimizing its combinatorial type with a free
+corner-rounding radius returns radius zero at every angle in
+$[36^\circ,60^\circ]$, consistent on $[45^\circ,60^\circ]$ with the
+proven optimality of the polygonal path.  Second, the zee is nonetheless
+overtaken --- and abruptly so.
+
+\subsection{The crossing at the end of the zee regime is
+first-order}\label{sub:crossing}
+\emph{Everything in this subsection is numerical; it enters no proof.}
+Optimizing the zee family and the boundary-type branch of
+Sections~\ref{sec:staple}--\ref{sec:arc} against the escape criterion,
+with cutting-plane refinement of the direction constraints, the two
+length curves cross at
+\[
+\beta_\times=42.287^\circ,\qquad
+\ell\bigl(T(\beta_\times)\bigr)\;\le\;L_\times\;=\;1.38920,
+\]
+in striking agreement with Gibbs's Monte-Carlo estimate $42.3^\circ$
+\cite{gibbs2016}; the purely polygonal crossing --- optimal trapezoid
+against zee, the right-hand dot in Figure~\ref{fig:curves} --- lies at
+$42.281^\circ$, and Ward's square-path crossover at $41.34^\circ$
+\cite{ward2008} is superseded together with the square path itself
+(Theorem~\ref{thm:interval}).  Three observations make this boundary
+\emph{first-order} --- a transversal crossing of distinct branches, not a
+deformation of one branch into the other.
+\begin{enumerate}
+\item \emph{The slopes differ.}  Near $\beta_\times$ the zee curve falls
+at $-0.0163$ per degree while the branch curve rises at $+0.0132$ per
+degree: the envelope of best known lengths has a corner with slope gap
+$0.0294$ per degree.  And the corner points \emph{up}, so $L_\times$ is
+the maximum of the envelope over the surveyed range $[26^\circ,60^\circ]$:
+the hardest isosceles forest with unit legs sits exactly at the phase
+boundary.
+\item \emph{Both families outlive the crossing.}  The boundary-type
+branch continues above $\beta_\times$ as a strict local optimum all the
+way to an exact rectangle endpoint at $45^\circ$
+(Proposition~\ref{prop:rect}); the zee continues below, valid and
+critical, at least to $36^\circ$.
+\item \emph{No family connects them.}  The zee realizes its hull in
+diagonal order and refuses curvature; the branch realizes its hull in
+boundary order and, below $\approx42.9^\circ$, demands curvature
+(Section~\ref{sub:upperend}).
+\end{enumerate}
+These are statements about the two specified families, not proven phase
+boundaries of the unrestricted problem; what is proved is the interval of
+Corollary~\ref{cor:trio}.
+
+
+\section{The staple regime: a certified interval}\label{sec:staple}
+\label{sec:interval}
+
+Below $\beta_\times$ the frontier belongs to paths that wrap their hull,
+and the simplest of these are polygonal.
 A \emph{staple} is a three-segment path whose four vertices
 $(\pm b,0),(\pm a,c)$ form an isosceles trapezoid: a bar of length $2b$ with
 two equal legs attached at equal obtuse angles
@@ -314,7 +625,7 @@ Let $u=\tan(\beta/2)$, and let $S(u)$ be the staple whose parameters
 $a(u),b(u),c(u)$ are the explicit rational polynomials of
 Section~\ref{sec:interval} (degrees at most $6$; $51$ rational coefficients
 in total, printed in Appendix~\ref{app:coeffs} and listed in the ancillary
-file \texttt{interval\_construction.json}).  Then for every
+file \path{interval_construction.json}).  Then for every
 $u\in[0.278,\,0.3855]$, that is for every base angle
 $\beta=2\arctan u\in[31.0719^\circ,\,42.1633^\circ]$:
 \begin{enumerate}
@@ -438,220 +749,13 @@ Theorem~\ref{thm:interval}: there the staple $S(u)$ (thick) escapes and lies
 strictly below the square-path curve, whose two regimes meet in the visible
 kink at $\beta_0=39.132^\circ$.  On $[31.50^\circ,42.16^\circ]$ it lies below all
 four competitors (Corollary~\ref{cor:trio}).  Dotted continuations and the two crossing points at
-$31.05^\circ$ and $42.28^\circ$ are numerical (Section~\ref{sec:numerics});
+$31.05^\circ$ and $42.28^\circ$ are numerical (Sections~\ref{sub:crossing} and~\ref{sec:caliper});
 everything else in the band is proved.}
 \label{fig:curves}
 \end{figure}
 
-\subsection*{The type example}
-At a single pleasant triangle the bound becomes a closed-form statement.
-The \emph{golden gnomon} is the isosceles triangle with unit legs, apex
-$108^\circ$ (base angles $36^\circ$), and base $\gp=(1+\sqrt5)/2$.
 
-\begin{theorem}\label{thm:gnomon}
-Let $T$ be the golden gnomon, and let $S$ be the polygonal path through
-\[
-\left(-\frac{2430971}{10^{7}},\frac{4515022}{10^{7}}\right),\quad
-\left(-\frac{1875779}{10^{7}},0\right),\quad
-\left( \frac{1875779}{10^{7}},0\right),\quad
-\left( \frac{2430971}{10^{7}},\frac{4515022}{10^{7}}\right).
-\]
-Then $S$ escapes $T$, and
-\[
- \ell(T)\le |S|
- =\frac{3751558+2\sqrt{20693661817348}}{10^{7}}
- =1.28496153349145\ldots <1.284962 .
-\]
-In particular $|S|$ is smaller than Ward's square-path length
-$1.293473869\ldots$, by $8.512\times10^{-3}$.
-\end{theorem}
-
-\begin{corollary}[a rigorous bracket]\label{cor:bracket}
-For the golden gnomon,
-\[
- \frac{3}{10}\sqrt{25-5\sqrt5}
- \;=\;1.115244103\ldots
- \;\le\;\ell(T)\;<\;1.284962.
-\]
-\end{corollary}
-
-Figure~\ref{fig:panels} compares the path of Theorem~\ref{thm:gnomon} with
-the four standard candidates at the gnomon.  Sections
-\ref{sec:criterion}--\ref{sec:gnomon} contain the proofs of
-Theorems~\ref{thm:interval} and~\ref{thm:gnomon};
-Section~\ref{sec:arc} sharpens the gnomon bound with an exact line--arc
-certificate and characterizes the critical line--arc path algebraically;
-Section~\ref{sec:numerics} separates out the numerical evidence
-(stationary staples, the two regime boundaries, the Zalgalloid family) that
-guided the constructions but enters no proof.  We emphasize what is \emph{not} claimed: optimality of the staple,
-within its family or otherwise.  All code and data accompanying the paper
-are available at \url{https://github.com/atemerev/bellman-staple} and as
-arXiv ancillary files.
-
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[scale=2.2]
-\newcommand{\gnomon}{\draw[very thick,green!45!black]
- (-0.80902,0) -- (0.80902,0) -- (0,0.58779) -- cycle;}
-\begin{scope}[shift={(-1.05,0)}]
-\gnomon
-\draw[line width=1.6pt,orange!85!black]
- (0.24310,0) -- (0.18758,0.45150) -- (-0.18758,0.45150) -- (-0.24310,0);
-\node[font=\scriptsize,align=center] at (0,-0.17)
- {staple (Thm.~\ref{thm:gnomon})\\ $1.2849615\ldots$};
-\end{scope}
-\begin{scope}[shift={(1.05,0)}]
-\gnomon
-\draw[line width=1.4pt,densely dashed,blue!60!black]
- (-0.21558,0) -- (-0.21558,0.43116) -- (0.21558,0.43116) -- (0.21558,0);
-\node[font=\scriptsize,align=center] at (0,-0.17)
- {square path \cite{ward2008}\\ $1.2934739\ldots$};
-\end{scope}
-\begin{scope}[shift={(-1.05,-1.12)}]
-\gnomon
-\draw[line width=1.4pt,teal!75!black] plot coordinates {
-(-0.30670,0.00000) (-0.25653,0.16810) (-0.25415,0.17590) (-0.25165,0.18366)
-(-0.24905,0.19138) (-0.24635,0.19907) (-0.24353,0.20671) (-0.24061,0.21432)
-(-0.23759,0.22189) (-0.23446,0.22942) (-0.23123,0.23690) (-0.22789,0.24433)
-(-0.22445,0.25172) (-0.22091,0.25906) (-0.21727,0.26635) (-0.21353,0.27359)
-(-0.20968,0.28078) (-0.20574,0.28791) (-0.20170,0.29498) (-0.19756,0.30201)
-(-0.19333,0.30897) (-0.18900,0.31587) (-0.18457,0.32271) (-0.18005,0.32949)
-(-0.17543,0.33621) (0.00000,0.58779) (0.17543,0.33621) (0.18005,0.32949)
-(0.18457,0.32271) (0.18900,0.31587) (0.19333,0.30897) (0.19756,0.30201)
-(0.20170,0.29498) (0.20574,0.28791) (0.20968,0.28078) (0.21353,0.27359)
-(0.21727,0.26635) (0.22091,0.25906) (0.22445,0.25172) (0.22789,0.24433)
-(0.23123,0.23690) (0.23446,0.22942) (0.23759,0.22189) (0.24061,0.21432)
-(0.24353,0.20671) (0.24635,0.19907) (0.24905,0.19138) (0.25165,0.18366)
-(0.25415,0.17590) (0.25653,0.16810) (0.30670,0.00000)};
-\node[font=\scriptsize,align=center] at (0,-0.17)
- {scaled caliper \cite{zalgaller1961}\\ $1.3391462\ldots$};
-\end{scope}
-\begin{scope}[shift={(1.05,-1.12)}]
-\gnomon
-\draw[line width=1.4pt,violet!80!black]
- (-0.80902,0) -- (-0.36346,0.20442) -- (0.08210,0) -- (0.52766,0.20442);
-\node[font=\scriptsize,align=center] at (0,-0.17)
- {zee \cite{movshovich2012}\\ $1.4706411\ldots$};
-\end{scope}
-\end{tikzpicture}
-\caption{The four candidates at the golden gnomon (legs $1$, apex
-$108^\circ$, diameter $1.6180340$), each drawn at a critical placement: each
-path's hull fits $T$ only in touching position.  The staple, square path, and
-caliper all touch the base with their endpoints; the caliper's peak sits
-exactly at the apex.  The staple of
-Theorem~\ref{thm:gnomon} achieves criticality at the smallest length.}
-\label{fig:panels}
-\end{figure}
-
-\section{The escape criterion}\label{sec:criterion}
-
-Throughout, $h_C(u)=\sup_{x\in C}\langle x,u\rangle$ denotes the support
-function of a compact convex set $C$, and $R_\theta$ the rotation of
-$\R^2$ by angle $\theta$. We use two standard facts: $h_{C\oplus D}=h_C+h_D$
-for the Minkowski sum, and $h_{RC}(u)=h_C(R^{-1}u)$.
-
-\begin{lemma}[fit criterion for triangles]\label{lem:fit}
-Let $T=\{x:\langle n_i,x\rangle\le t_i,\ i=1,2,3\}$ be a triangle with
-unit outward normals $n_i$ and side lengths $s_i$, so that
-$\sum_i s_i n_i=0$ and $\sum_i s_i t_i = 2\operatorname{Area}(T)$.
-For a compact convex $C$ there exists a translation $t$ with
-$C+t\subseteq T$ if and only if
-\[
-s_1 h_C(n_1)+s_2 h_C(n_2)+s_3 h_C(n_3)\;\le\;2\operatorname{Area}(T).
-\]
-\end{lemma}
-
-Since $\sum_i s_i\,h_C(n_i)=2V(C,T)$, twice the mixed area, the
-criterion reads: \emph{$C$ translates into $T$ if and only if
-$V(C,T)\le V(T,T)=\operatorname{Area}(T)$}. In this mixed-volume form
-(for simplices in all dimensions) the criterion is a result of Lutwak
-\cite[Prop., p.~230 and the remark following Cor.~3]{lutwak1998}, with
-ancestry in Weil's characterization of translative containment
-\cite{weil1974}. We include the short linear-programming proof both to
-keep the note self-contained and because its sufficiency half produces
-the explicit feasible translations used in our certificates.  We have not
-found this finite disk-containment specialization in the escape-path
-literature.
-
-\begin{proof}
-$C+t\subseteq T$ is equivalent to the linear system
-$\langle n_i,t\rangle\le c_i:=t_i-h_C(n_i)$, $i=1,2,3$.
-
-\emph{Necessity.} If $t$ solves the system then
-$0=\langle\sum_i s_i n_i,t\rangle\le\sum_i s_i c_i$, which rearranges to
-the stated inequality.
-
-\emph{Sufficiency.} Suppose
-$\lambda:=\bigl(\sum_i s_i c_i\bigr)/\bigl(2\operatorname{Area}(T)\bigr)\ge0$.
-The affine system $\langle n_i,t_0\rangle=c_i-\lambda t_i$ ($i=1,2,3$;
-three equations in two unknowns) is solvable: the unique linear
-dependency among the rows $n_i$ has coefficients $s_i$, and
-$\sum_i s_i(c_i-\lambda t_i)=\sum_i s_i c_i-\lambda\cdot2\operatorname{Area}(T)=0$
-is precisely its compatibility condition. For this $t_0$,
-\[
-\{t:\langle n_i,t\rangle\le c_i\}\;=\;\lambda T+t_0\;\neq\;\emptyset .\qedhere
-\]
-\end{proof}
-
-Note the geometric content of sufficiency: \emph{the set of admissible
-translations is itself a homothet of the triangle}, of ratio $\lambda$.
-
-\begin{proposition}[escape criterion]\label{cor:mink}
-With $T$, $n_i=(\cos\alpha_i,\sin\alpha_i)$, $s_i$ as above, a path $P$
-with $H=\operatorname{conv}(P)$ is an escape path for $T$ if and only if
-the Minkowski sum
-\[
-W\;:=\;s_1\,R_{-\alpha_1}H\;\oplus\;s_2\,R_{-\alpha_2}H\;\oplus\;s_3\,R_{-\alpha_3}H
-\]
-contains the closed disk of radius $2\operatorname{Area}(T)$ centered at
-the origin.  If $H$ is a polygon, then so is $W$.
-\end{proposition}
-
-\begin{proof}
-A placed congruent copy of $P$ lies in the open convex set
-$\operatorname{int}T$ if and only if its convex hull does, and rigid
-motions factor as a rotation followed by a translation; if a placed copy is
-not contained in the interior, the connected path, starting inside, must
-meet $\partial T$ --- the hiker escapes (cf.\ \cite{finchwetzel2004}).
-Thus $P$ escapes iff for every $\theta$ no translate of $R_\theta H$ lies
-in $\operatorname{int}T$; by Lemma~\ref{lem:fit} this holds iff for all
-$\theta$,
-$\sum_i s_i\,h_{R_\theta H}(n_i)\ge 2\operatorname{Area}(T)$
-(the closed inequality: a hull that can only be translated to touch
-$\partial T$ still reaches the boundary). Writing
-$h_{R_\theta H}(n_i)=h_H(R_{-\theta}u(\alpha_i))=h_{R_{-\alpha_i}H}(u(-\theta))$
-with $u(\psi)=(\cos\psi,\sin\psi)$ and summing,
-$\sum_i s_i h_{R_\theta H}(n_i)=h_W(u(-\theta))$. The condition
-$h_W(u)\ge 2\operatorname{Area}(T)$ for every unit $u$ is equivalent to
-$W\supseteq \overline{D}(0,2\operatorname{Area}(T))$.
-\end{proof}
-
-\begin{remark}\label{rem:edgenormals}
-Two computational forms of the inclusion are used below. For a fixed
-triangle, $W$ is an explicit polygon and the inclusion is a list of
-edge-distance inequalities (Section~\ref{sec:gnomon} and
-Figure~\ref{fig:mink}). For a one-parameter family it is more convenient to
-avoid tracking the boundary of $W$: a convex polygon is the intersection of
-its edge half-planes, and every edge normal of a Minkowski sum is an edge
-normal of one of the summands, so it suffices to verify
-$h_W(\nu)\ge 2\operatorname{Area}(T)\cdot|\nu|$ for the twelve candidate
-directions $\nu=R_{-\alpha_i}g$, with $g$ ranging over the four edge normals
-of $H$ --- and $h_W(\nu)$ may be replaced by any convenient lower bound,
-e.g.\ by evaluating each summand's support at a fixed vertex
-(Section~\ref{sec:interval}).
-\end{remark}
-
-\begin{remark}
-For the unit equilateral triangle the criterion reads: a path escapes iff
-the Minkowski sum of three copies of its hull rotated by
-$0^\circ,120^\circ,240^\circ$ contains the disk of radius
-$2\operatorname{Area}=\tfrac{\sqrt3}{2}$. Besicovitch's zigzag
-\cite{besicovitch1965,coultonmovshovich2006} is exactly critical in this
-sense: its Minkowski sum circumscribes that disk.
-\end{remark}
-
-\section{Proof of Theorem \ref{thm:interval}}\label{sec:interval}
-
+The rest of this section proves Theorem~\ref{thm:interval}.
 Parametrize by $u=\tan(\beta/2)$, so that $\sin\beta=\frac{2u}{1+u^2}$ and
 $\cos\beta=\frac{1-u^2}{1+u^2}$ are rational functions of $u$.  All triangle
 data --- normals, side lengths, the rotations of Proposition~\ref{cor:mink},
@@ -678,7 +782,7 @@ verification script, which certifies $a_i,b_i,c_i>0$ together with every
 inequality used below.  Figure~\ref{fig:family} shows the family at three
 angles.  The middle piece is a deliberately thin bridge: near
 $u\approx0.3534$ the numerically optimal staple changes which edges of its
-Minkowski sum touch the disk (Section~\ref{sec:numerics}), and the two
+Minkowski sum touch the disk (Section~\ref{sub:discovery}), and the two
 outer fits track the two contact regimes; the quadratic bridge hands over
 between them, and its exact endpoints are immaterial --- every certificate
 is checked on each piece separately.
@@ -806,11 +910,124 @@ Theorem~\ref{thm:interval}(ii)--(iii): all four comparisons hold
 simultaneously for $u\in[0.282,0.3855]\supseteq[31.50^\circ,42.16^\circ]$
 in base angle. \qed
 
-\section{The golden gnomon: an exact certificate at the type
-example}\label{sec:gnomon}
 
-Theorem~\ref{thm:gnomon} is the case $\beta=36^\circ$ with a fixed rational
-staple, and its certificate is short enough to display in full.
+\subsection{How the witnesses were found}\label{sub:discovery}
+\emph{This subsection is numerical; it enters no proof.}  A stationary
+point within a family proves nothing about optimality, within the family
+or otherwise; it only tells us where to place a certificate.
+
+For a symmetric staple at the gnomon, numerical constrained optimization
+suggests a Karush--Kuhn--Tucker stationary point at
+\[
+a=0.2430970\ldots,\quad b=0.1875777\ldots,\quad c=0.4515020\ldots,\quad
+L=1.2849609182\ldots,
+\]
+at which one self-symmetric edge and one mirror pair of edges of $W$ are
+tangent to the disk.  The rational witness of Theorem~\ref{thm:gnomon} is a
+nearby rational point on the feasible side, only $6.16\times10^{-7}$ longer;
+the exact disk-containment check, not the stationarity computation, is what
+makes it a theorem.  Along the family, the tangency pattern changes twice
+near $\beta\approx38.9^\circ$ --- the two interior breakpoints of the
+construction in Section~\ref{sec:interval}.
+
+
+\section{The type example: the golden gnomon, exactly}\label{sec:gnomon}
+
+At a single pleasant triangle the bound becomes a closed-form statement.
+The \emph{golden gnomon} is the isosceles triangle with unit legs, apex
+$108^\circ$ (base angles $36^\circ$), and base $\gp=(1+\sqrt5)/2$.
+
+\begin{theorem}\label{thm:gnomon}
+Let $T$ be the golden gnomon, and let $S$ be the polygonal path through
+\[
+\left(-\frac{2430971}{10^{7}},\frac{4515022}{10^{7}}\right),\quad
+\left(-\frac{1875779}{10^{7}},0\right),\quad
+\left( \frac{1875779}{10^{7}},0\right),\quad
+\left( \frac{2430971}{10^{7}},\frac{4515022}{10^{7}}\right).
+\]
+Then $S$ escapes $T$, and
+\[
+ \ell(T)\le |S|
+ =\frac{3751558+2\sqrt{20693661817348}}{10^{7}}
+ =1.28496153349145\ldots <1.284962 .
+\]
+In particular $|S|$ is smaller than Ward's square-path length
+$1.293473869\ldots$, by $8.512\times10^{-3}$.
+\end{theorem}
+
+\begin{corollary}[a rigorous bracket]\label{cor:bracket}
+For the golden gnomon,
+\[
+ \frac{3}{10}\sqrt{25-5\sqrt5}
+ \;=\;1.115244103\ldots
+ \;\le\;\ell(T)\;<\;1.284962.
+\]
+\end{corollary}
+
+
+Figure~\ref{fig:panels} compares the path of Theorem~\ref{thm:gnomon}
+with the four standard candidates at the gnomon, each at a critical
+placement.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=2.2]
+\newcommand{\gnomon}{\draw[very thick,green!45!black]
+ (-0.80902,0) -- (0.80902,0) -- (0,0.58779) -- cycle;}
+\begin{scope}[shift={(-1.05,0)}]
+\gnomon
+\draw[line width=1.6pt,orange!85!black]
+ (0.24310,0) -- (0.18758,0.45150) -- (-0.18758,0.45150) -- (-0.24310,0);
+\node[font=\scriptsize,align=center] at (0,-0.17)
+ {staple (Thm.~\ref{thm:gnomon})\\ $1.2849615\ldots$};
+\end{scope}
+\begin{scope}[shift={(1.05,0)}]
+\gnomon
+\draw[line width=1.4pt,densely dashed,blue!60!black]
+ (-0.21558,0) -- (-0.21558,0.43116) -- (0.21558,0.43116) -- (0.21558,0);
+\node[font=\scriptsize,align=center] at (0,-0.17)
+ {square path \cite{ward2008}\\ $1.2934739\ldots$};
+\end{scope}
+\begin{scope}[shift={(-1.05,-1.12)}]
+\gnomon
+\draw[line width=1.4pt,teal!75!black] plot coordinates {
+(-0.30670,0.00000) (-0.25653,0.16810) (-0.25415,0.17590) (-0.25165,0.18366)
+(-0.24905,0.19138) (-0.24635,0.19907) (-0.24353,0.20671) (-0.24061,0.21432)
+(-0.23759,0.22189) (-0.23446,0.22942) (-0.23123,0.23690) (-0.22789,0.24433)
+(-0.22445,0.25172) (-0.22091,0.25906) (-0.21727,0.26635) (-0.21353,0.27359)
+(-0.20968,0.28078) (-0.20574,0.28791) (-0.20170,0.29498) (-0.19756,0.30201)
+(-0.19333,0.30897) (-0.18900,0.31587) (-0.18457,0.32271) (-0.18005,0.32949)
+(-0.17543,0.33621) (0.00000,0.58779) (0.17543,0.33621) (0.18005,0.32949)
+(0.18457,0.32271) (0.18900,0.31587) (0.19333,0.30897) (0.19756,0.30201)
+(0.20170,0.29498) (0.20574,0.28791) (0.20968,0.28078) (0.21353,0.27359)
+(0.21727,0.26635) (0.22091,0.25906) (0.22445,0.25172) (0.22789,0.24433)
+(0.23123,0.23690) (0.23446,0.22942) (0.23759,0.22189) (0.24061,0.21432)
+(0.24353,0.20671) (0.24635,0.19907) (0.24905,0.19138) (0.25165,0.18366)
+(0.25415,0.17590) (0.25653,0.16810) (0.30670,0.00000)};
+\node[font=\scriptsize,align=center] at (0,-0.17)
+ {scaled caliper \cite{zalgaller1961}\\ $1.3391462\ldots$};
+\end{scope}
+\begin{scope}[shift={(1.05,-1.12)}]
+\gnomon
+\draw[line width=1.4pt,violet!80!black]
+ (-0.80902,0) -- (-0.36346,0.20442) -- (0.08210,0) -- (0.52766,0.20442);
+\node[font=\scriptsize,align=center] at (0,-0.17)
+ {zee \cite{movshovich2012}\\ $1.4706411\ldots$};
+\end{scope}
+\end{tikzpicture}
+\caption{The four candidates at the golden gnomon (legs $1$, apex
+$108^\circ$, diameter $1.6180340$), each drawn at a critical placement: each
+path's hull fits $T$ only in touching position.  The staple, square path, and
+caliper all touch the base with their endpoints; the caliper's peak sits
+exactly at the apex.  The staple of
+Theorem~\ref{thm:gnomon} achieves criticality at the smallest length.}
+\label{fig:panels}
+\end{figure}
+
+
+Theorem~\ref{thm:gnomon} is the case $\beta=36^\circ$ of
+Theorem~\ref{thm:interval} with a fixed rational staple, and its
+certificate is short enough to display in full.
 
 \subsection{Exact data}
 Place $T$ with base from $(-\gp/2,0)$ to $(\gp/2,0)$ and apex
@@ -980,7 +1197,8 @@ and scaling therefore give
 The upper bound is Theorem~\ref{thm:gnomon}.
 \end{proof}
 
-\section{Line--arc paths: the smoothed staple}\label{sec:arc}
+
+\section{Rounding the staple: line--arc paths}\label{sec:arc}
 
 The staple is not the last word at the gnomon.  Gibbs \cite{gibbs2016b}
 argued that for a convex polygonal forest some shortest escape path is
@@ -1108,7 +1326,7 @@ has the identical shape --- algebraic lengths plus a radius times an arc
 angle entering linearly --- one algebraic level up, quartics over
 $\Q(\sqrt5)$.  That this critical point is the in-template optimum, and that
 the template is the right structure, rests on the numerics of
-Section~\ref{sec:numerics}; the \emph{bound} of Theorem~\ref{thm:arc} is
+Sections~\ref{sub:discovery} and~\ref{sec:caliper}; the \emph{bound} of Theorem~\ref{thm:arc} is
 unconditional.
 
 \subsection{The upper end of the branch}\label{sub:upperend}
@@ -1143,74 +1361,21 @@ configuration, as one expects at the end of a branch: numerically, for
 $\beta$ just above $45^\circ$ the trapezoid family collapses onto the
 diameter segment, whose length the endpoint already matches.
 
-\section{Numerical discovery and the regime boundaries}\label{sec:numerics}
 
-\emph{Everything in this section is numerical evidence.}  It is included to
-explain how the exact witnesses were found and to identify plausible next
-questions.  It is not used in Theorems~\ref{thm:interval}
-or~\ref{thm:gnomon}.  In particular, a stationary point within the staple
-family is not a proof of optimality, either within that family or among all
-escape paths.
+\section{The caliper regime and the Zalgalloid junction}\label{sec:caliper}
 
-For a symmetric staple at the gnomon, numerical constrained optimization
-suggests a Karush--Kuhn--Tucker stationary point at
-\[
-a=0.2430970\ldots,\quad b=0.1875777\ldots,\quad c=0.4515020\ldots,\quad
-L=1.2849609182\ldots,
-\]
-at which one self-symmetric edge and one mirror pair of edges of $W$ are
-tangent to the disk.  The rational witness of Theorem~\ref{thm:gnomon} is a
-nearby rational point on the feasible side, only $6.16\times10^{-7}$ longer;
-the exact disk-containment check, not the stationarity computation, is what
-makes it a theorem.  Along the family, the tangency pattern changes twice
-near $\beta\approx38.9^\circ$ --- the two interior breakpoints of the
-construction in Section~\ref{sec:interval}.
+\emph{Everything in this section is numerical; it enters no proof.}
+Below the staple range the width mechanism of the introduction takes
+over: the scaled caliper --- Zalgaller's strip solution scaled to the
+width $\sin\beta$ of $T(\beta)$ --- escapes at length $\zeta\sin\beta$,
+and below $\beta^{*}\approx27.6^\circ$ nothing known beats it.  What
+remains is to understand the handover, and Ward guessed its shape in one
+word: he asked whether the class optimal beyond the zee range might be a
+family of ``Zalgalloids'' containing the caliper as an instance.
+Numerically the answer is yes, the smoothed staple is its upper end, and
+the handover is tangential.
 
-\subsection{The zee crossing is first-order}\label{sub:crossing}
-Continuation of the stationary staple branch suggests a crossing with the
-scaled caliper at $\beta\approx31.05^\circ$ (pushed down to
-$\beta^{*}\approx27.6^\circ$ by the arcs,
-Section~\ref{sub:zalgalloid}) and with the zee at
-$\beta\approx42.281^\circ$ (the two dots in Figure~\ref{fig:curves}).
-Rounding moves the latter only slightly: optimizing both families with
-cutting-plane refinement of the escape constraints gives
-\[
-\beta_\times=42.287^\circ,\qquad
-\ell\bigl(T(\beta_\times)\bigr)\;\le\;L_\times\;=\;1.38920,
-\]
-in striking agreement with Gibbs's Monte-Carlo estimate $42.3^\circ$
-\cite{gibbs2016}.  Three numerical observations make this boundary
-\emph{first-order} --- a transversal crossing of distinct branches, not a
-deformation of one into the other.  First, the slopes differ: near
-$\beta_\times$ the optimized zee length falls at $-0.0163$ per degree
-while the branch length rises at $+0.0132$ per degree, so the
-best-known-length envelope has a corner with slope gap $0.0294$ per degree
---- and the corner points upward: $L_\times$ is the \emph{maximum} of the
-envelope over the surveyed range $[26^\circ,60^\circ]$, so the hardest
-isosceles forest is the one at the phase boundary.  Second, both families
-persist as strict local optima across the boundary: the boundary-type
-branch continues up to its exact rectangle endpoint at $45^\circ$
-(Proposition~\ref{prop:rect}), and the zee remains a valid, exactly
-critical escape path at least down to $36^\circ$.  Third, the two families
-do not connect: the zee realizes its quadrilateral hull in diagonal order
-(its middle segment crosses the hull), the branch in boundary order, and
-re-optimizing the zee with a free corner-rounding radius returns radius
-zero at every angle in $[36^\circ,60^\circ]$ (consistent, on
-$[45^\circ,60^\circ]$, with the proven optimality of the polygonal zee
-\cite{movshovich2012}), while the boundary branch demands arcs at every
-angle below $\approx42.9^\circ$.  These are statements about the specified
-families, not proven phase boundaries of the unrestricted problem; what is
-proved is the interval of Corollary~\ref{cor:trio}.  The
-nonpolygonal-looking hybrids that both Gibbs's search \cite{gibbs2016} and
-ours produce between the staple and caliper regimes are, we believe, the
-family of the next subsection.
-
-
-\subsection{The Zalgalloid family}\label{sub:zalgalloid}
-Ward asked whether the class that is optimal beyond the zee range might be a
-family of ``Zalgalloids'' containing the Zalgaller caliper as an instance.
-Numerically the answer appears to be yes, with the smoothed staple as its
-upper end.  Enlarge the template of Section~\ref{sub:critical} by an
+Enlarge the template of Section~\ref{sub:critical} by an
 optional foot arc (radius again $\sin\beta$) at each bar corner; a member is
 then a convex line--arc hull, and the path is its boundary minus the chord
 joining the two tips.  Continuation in $\beta$ gives Figures~\ref{fig:morph}
@@ -1226,13 +1391,15 @@ peak corner), the arc span locks onto Zalgaller's $\tilde\beta=18.27^\circ$,
 and the tips become the caliper's feet.  The family thus interpolates
 continuously from the trapezoid to the caliper itself --- precisely the
 family Ward speculated about, with the polygonal staple at one end and
-Zalgaller's caliper at the other.  All statements in this subsection are
-numerical; making the junction exact is an inviting next target.  Together
+Zalgaller's caliper at the other.  Making the junction exact is an inviting next target.  Together
 with Proposition~\ref{prop:rect}, the picture is of one connected
 boundary-type branch running from the exact rectangle at $\beta=45^\circ$,
 through the polygonal trapezoids ($\beta\gtrsim42.9^\circ$) and the
 smoothed staples, to Zalgaller's caliper at $\beta^{*}$; its reign as the
 best-known frontier is precisely $[\beta^{*},\beta_\times]$.
+
+The line--arc ``tunnel'' candidates Gibbs sighted below his trapezium
+phase \cite{gibbs2016} are, we believe, members of this family.
 
 \begin{figure}[t]
 \centering
@@ -1310,7 +1477,6 @@ length vanish at $\beta^{*}\approx27.6^\circ$; clipped values at the floor
 of the plot are exact coincidence to solver precision.}
 \label{fig:junction}
 \end{figure}
-
 
 \section{Conclusion}
 
@@ -1528,4 +1694,4 @@ Matematicheskoe Prosveshchenie \textbf{6} (1961), 191--195.
 
 \end{thebibliography}
 
-\end{document}
+\end{document}\end{document}
