@@ -29,10 +29,14 @@ From the equilateral triangle to the flat limit: the zee-to-caliper frontier in 
 
 **Abstract:** (plain text, math in $...$)
 
-Let $T_\alpha$ be the isosceles triangle with unit legs and apex angle
-$60^\circ\le\alpha<180^\circ$.  At the equilateral end the
-Besicovitch--Movshovich zee is optimal through $\alpha=90^\circ$; at the flat
-end the natural construction is Zalgaller's strip caliper.  We study the
+In Bellman's lost-in-a-forest problem (Bellman, 1956), a hiker lost in a
+forest of known shape -- but at an unknown position and heading -- seeks the
+shortest path that is guaranteed to reach the boundary.  For a convex forest
+this is the shortest escape path: a path no congruent copy of which fits in
+the forest's interior.  We study the isosceles triangles $T_\alpha$ with unit
+legs and apex angle $60^\circ\le\alpha<180^\circ$.  At the equilateral end
+the Besicovitch--Movshovich zee is optimal through $\alpha=90^\circ$; at the
+flat end the natural construction is Zalgaller's strip caliper.  We map the
 unresolved upper-bound frontier between them.
 
 Our exact result removes Ward's proposed square phase.  We construct an
