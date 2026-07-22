@@ -372,7 +372,9 @@ Ward's full quartet --- diameter, caliper, zee, squares --- on
 $[31.50^\circ,42.16^\circ]$.  This removes the square path from the
 frontier everywhere and turns the trapezoidal improvement Ward reported
 in 2008 into a theorem, with the enlarged range he predicted certified at
-both ends.
+both ends.  The polygonal family is the foundation, never the frontier:
+at every angle of the middle regime its own rounding is strictly
+shorter (Section~\ref{sub:role}).
 \item \emph{The gnomon certificates} (Theorems~\ref{thm:gnomon}
 and~\ref{thm:arc}): at the type example $\beta=36^\circ$, the golden
 gnomon, the closed-form polygonal bound $1.2849616$, improved by the
@@ -399,8 +401,9 @@ appears and enters no proof; the boundaries $\beta_\times$ and
 $\beta^{*}$ are of this kind.  We emphasize what is \emph{not} claimed:
 optimality of any path below $45^\circ$.  The sections walk down the
 $\beta$ axis: the criterion (Section~\ref{sec:criterion}), the zee regime
-and its first-order end (Section~\ref{sec:zee}), the certified staple
-interval (Section~\ref{sec:staple}) and its exact type example
+and its first-order end (Section~\ref{sec:zee}), the certified
+polygonal foundation (Section~\ref{sec:staple}) and its exact type
+example
 (Section~\ref{sec:gnomon}), the rounded staple (Section~\ref{sec:arc}),
 and the caliper regime with the second-order junction
 (Section~\ref{sec:caliper}).  All code and data accompanying the paper
@@ -503,7 +506,7 @@ $h_W(\nu)\ge 2\operatorname{Area}(T)\cdot|\nu|$ for the twelve candidate
 directions $\nu=R_{-\alpha_i}g$, with $g$ ranging over the four edge normals
 of $H$ --- and $h_W(\nu)$ may be replaced by any convenient lower bound,
 e.g.\ by evaluating each summand's support at a fixed vertex
-(Section~\ref{sec:interval}).
+(Appendix~\ref{app:proof}).
 \end{remark}
 
 \begin{remark}
@@ -591,11 +594,13 @@ boundaries of the unrestricted problem; what is proved is the interval of
 Corollary~\ref{cor:trio}.
 
 
-\section{The staple regime: a certified interval}\label{sec:staple}
+\section{The certified foundation: polygonal staples}\label{sec:staple}
 \label{sec:interval}
 
-Below $\beta_\times$ the frontier belongs to paths that wrap their hull,
-and the simplest of these are polygonal.
+Below $\beta_\times$ the frontier belongs to paths that wrap their hull.
+We begin with the polygonal ones --- not because they are ever the
+frontier (they are not; Section~\ref{sub:role}), but because they carry
+the certificates on which everything rounded rests.
 A \emph{staple} is a three-segment path whose four vertices
 $(\pm b,0),(\pm a,c)$ form an isosceles trapezoid: a bar of length $2b$ with
 two equal legs attached at equal obtuse angles
@@ -633,7 +638,7 @@ completing the hull.}
 \begin{theorem}\label{thm:interval}
 Let $u=\tan(\beta/2)$, and let $S(u)$ be the staple whose parameters
 $a(u),b(u),c(u)$ are the explicit rational polynomials of
-Section~\ref{sec:interval} (degrees at most $6$; $51$ rational coefficients
+Appendix~\ref{app:proof} (degrees at most $6$; $51$ rational coefficients
 in total, printed in Appendix~\ref{app:coeffs} and listed in the ancillary
 file \path{interval_construction.json}).  Then for every
 $u\in[0.278,\,0.3855]$, that is for every base angle
@@ -765,170 +770,32 @@ everything else in the band is proved.}
 \end{figure}
 
 
-One clarification prevents a misreading.  The polygonal staple is
-nowhere the actual frontier: at every angle of the regime its own
-rounding is strictly shorter (Section~\ref{sec:arc}) --- by
-$2.29\times10^{-3}$ at the gnomon and still by $2.9\times10^{-4}$ at
-$42^\circ$ --- and above $\beta_\times$ the zee is shorter than both.  We
-certify the polygonal family because rational-polynomial data make the
-Sturm certificates transparent; Theorem~\ref{thm:interval} is a certified
-upper envelope for the branch and a complete elimination of the classical
-candidates, not a claim that corners are best.
+\subsection{The role of the polygonal family}\label{sub:role}
+Is there any interval on which the pure trapezoid --- no arcs --- is the
+best known path?  No.  At every angle of the branch's reign
+$[\beta^{*},\beta_\times]$ the optimal member carries arcs: the shoulder
+span is $2.3^\circ$ at $\beta_\times$ and grows as $\beta$ decreases.
+The exactly polygonal members of the branch exist only on
+$[\approx42.9^\circ,\,45^\circ]$, between the arc turn-off of
+Section~\ref{sub:upperend} and the rectangle endpoint of
+Proposition~\ref{prop:rect} --- an interval that lies wholly inside the
+zee regime, where the zee is shorter.  Quantitatively, the rounding gain
+over the certified staple is $2.29\times10^{-3}$ at the gnomon and still
+$2.9\times10^{-4}$ at $42^\circ$.
 
-The rest of this section proves Theorem~\ref{thm:interval}.
-Parametrize by $u=\tan(\beta/2)$, so that $\sin\beta=\frac{2u}{1+u^2}$ and
-$\cos\beta=\frac{1-u^2}{1+u^2}$ are rational functions of $u$.  All triangle
-data --- normals, side lengths, the rotations of Proposition~\ref{cor:mink},
-the disk radius $2\operatorname{Area}=\sin2\beta$ --- are then rational in
-$u$, and for a staple whose parameters $a,b,c$ are \emph{polynomials} in $u$
-with rational coefficients, every certificate of
-Remark~\ref{rem:edgenormals}, after clearing the (positive) denominators and
-squaring away the (sign-certified) square roots, is the strict positivity of
-a polynomial in $\Q[u]$ on a rational interval --- decidable by Sturm's
-theorem in exact integer arithmetic.
-
-\subsection{The construction}
-The ancillary file \texttt{interval\_construction.json} defines three
-polynomial triples $(a_i,b_i,c_i)\in\Q[u]^3$, of degrees $6$, $2$, and $6$
-on the respective pieces
-\[
-[0.278,\,0.3530],\qquad [0.3530,\,0.353399],\qquad [0.353399,\,0.3855],
-\]
-and $S(u)$ is the path through
-$(-a_i(u),c_i(u)),\,(-b_i(u),0),\,(b_i(u),0),\,(a_i(u),c_i(u))$.
-All $51$ coefficients are rational numbers, printed in full in
-Appendix~\ref{app:coeffs}; the machine-readable copy is read afresh by the
-verification script, which certifies $a_i,b_i,c_i>0$ together with every
-inequality used below.  Figure~\ref{fig:family} shows the family at three
-angles.  The middle piece is a deliberately thin bridge: near
-$u\approx0.3534$ the numerically optimal staple changes which edges of its
-Minkowski sum touch the disk (Section~\ref{sub:discovery}), and the two
-outer fits track the two contact regimes; the quadratic bridge hands over
-between them, and its exact endpoints are immaterial --- every certificate
-is checked on each piece separately.
-
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[scale=2.1]
-\begin{scope}[shift={(-1.74,0)}]
-\draw[very thick,green!45!black] (-0.84805,0) -- (0.84805,0) -- (0,0.52992) -- cycle;
-\draw[line width=1.2pt,orange!85!black]
- (0.23631,0) -- (0.17087,0.42315) -- (-0.17087,0.42315) -- (-0.23631,0);
-\node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=32^\circ$\\ $|S|=1.19812$};
-\end{scope}
-\begin{scope}[shift={(0,0)}]
-\draw[very thick,green!45!black] (-0.77715,0) -- (0.77715,0) -- (0,0.62932) -- cycle;
-\draw[line width=1.2pt,orange!85!black]
- (0.24298,0) -- (0.20207,0.46569) -- (-0.20207,0.46569) -- (-0.24298,0);
-\node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=39^\circ$\\ $|S|=1.33913$};
-\end{scope}
-\begin{scope}[shift={(1.74,0)}]
-\draw[very thick,green!45!black] (-0.74314,0) -- (0.74314,0) -- (0,0.66913) -- cycle;
-\draw[line width=1.2pt,orange!85!black]
- (0.25843,0) -- (0.22794,0.46390) -- (-0.22794,0.46390) -- (-0.25843,0);
-\node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=42^\circ$\\ $|S|=1.38569$};
-\end{scope}
-\end{tikzpicture}
-\caption{The certified family $S(u)$ inside $T(\beta)$ at
-$\beta=32^\circ$, $39^\circ$, $42^\circ$, each at a critical placement
-(the hull fits only in touching position).}
-\label{fig:family}
-\end{figure}
-
-\subsection{Eliminating square paths}
-\begin{lemma}[square paths from inscribed squares]\label{lem:square}
-Fix $\beta$ and suppose some square $Q_0$ of side $s_0$ satisfies
-$Q_0\subseteq T(\beta)$. Then every square path of side $s<s_0$ fails
-to escape $T(\beta)$; consequently every escaping square path has
-length $\ge 3s_0$.
-\end{lemma}
-
-\begin{proof}
-The hull of a square path of side $s$ is the full square. Shrinking
-$Q_0$ about its center by the factor $s/s_0<1$ places a congruent copy
-of that hull in $\operatorname{int}Q_0\subseteq\operatorname{int}T(\beta)$.
-\end{proof}
-
-The two inscribed squares we use are Ward's, in exact form
-(Figure~\ref{fig:squares}): the base-aligned square of side
-\[
-s_A=\frac{2\sin\beta\cos\beta}{\sin\beta+2\cos\beta},
-\]
-with both bottom corners on the base and both top corners on the legs, and
-the leg-aligned square of side
-\[
-s_B=\frac{\sin\beta}{\sin\beta+\cos\beta},
-\]
-with one full side on a leg, its far corner \emph{at the apex}, and one
-corner on the base.  The stated incidences are polynomial identities in
-$u$; the remaining vertex--halfplane constraints are certified by Sturm
-checks.  Ward's two square-path formulas $3s_A$ and $3s_B$ exchange at the
-root $\beta_0=39.1320\ldots^\circ$ of
-$\sin\beta\,(2\cos\beta-1)=2\cos\beta\,(1-\cos\beta)$ (his ``approximately
-$39.1^\circ$''), the kink visible in Figure~\ref{fig:curves}.
-
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[scale=2.35]
-\begin{scope}[shift={(-1.13,0)}]
-\draw[very thick,green!45!black] (-0.80902,0) -- (0.80902,0) -- (0,0.58779) -- cycle;
-\fill[blue!8] (-0.21558,0) rectangle (0.21558,0.43116);
-\draw[thick,blue!60!black] (-0.21558,0) rectangle (0.21558,0.43116);
-\foreach \p in {(-0.21558,0),(0.21558,0),(0.21558,0.43116),(-0.21558,0.43116)}
-  \fill[blue!60!black] \p circle (0.014);
-\node[font=\scriptsize,align=center] at (0,-0.17)
- {$\beta=36^\circ$: base-aligned,\\ side $s_A$};
-\end{scope}
-\begin{scope}[shift={(1.13,0)}]
-\draw[very thick,green!45!black] (-0.74896,0) -- (0.74896,0) -- (0,0.66262) -- cycle;
-\fill[blue!8] (0.35157,0.35157) -- (0.00000,0.66262) -- (-0.31105,0.31105)
- -- (0.04053,0.00000) -- cycle;
-\draw[thick,blue!60!black] (0.35157,0.35157) -- (0.00000,0.66262)
- -- (-0.31105,0.31105) -- (0.04053,0.00000) -- cycle;
-\foreach \p in {(0.35157,0.35157),(0.00000,0.66262),(0.04053,0.00000)}
-  \fill[blue!60!black] \p circle (0.014);
-\node[font=\scriptsize,align=center] at (0,-0.17)
- {$\beta=41.5^\circ$: leg-aligned,\\ side $s_B$};
-\end{scope}
-\end{tikzpicture}
-\caption{The two inscribed squares behind Lemma~\ref{lem:square}.  Left: the
-base-aligned square, with both bottom corners on the base and both top
-corners on the legs.  Right: the leg-aligned square, with one full side on a
-leg, its far corner at the apex, and one corner on the base (contacts
-marked).  Any escaping square path must have side at least $\max(s_A,s_B)$;
-the certificates prove $|S(u)|<3s_A$ for $u\le0.365$ and $|S(u)|<3s_B$ for
-$u\ge0.36$, which together cover the whole interval.}
-\label{fig:squares}
-\end{figure}
-
-\subsection{The certificates}
-Every assertion of Theorem~\ref{thm:interval} is now a strict polynomial
-inequality on a rational interval.  (i): the twelve support-dominance
-inequalities of Remark~\ref{rem:edgenormals} per piece, with fixed
-support-test vertices (their values are lower bounds for $h_W$); for the
-four leg-normal directions the inequality is squared once, with
-$h$-positivity certified separately. (ii): by Lemma~\ref{lem:square} it
-suffices that $|S(u)|<3s_A(u)$ for $u\le0.365$ and $|S(u)|<3s_B(u)$ for
-$u\ge0.36$, once the two squares are certified inscribed; each comparison
-squares away the single root in $|S(u)|$. (iii): the diameter and caliper
-comparisons are of the same shape, using the outward-rounded bracket
-$\zeta>2.2782916$ from the published closed form; the zee comparison
-carries one further square root and is squared twice, with both
-intermediate signs certified.  (The zee length in (iii) is Ward's closed
-form $Q_B$ \cite{ward2008} rescaled from unit base to unit legs.)
-
-In total $116$ rational-polynomial certificates (degrees $\le40$) are
-verified by endpoint signs and exact Sturm root counts.  The Zalgaller
-constant is the only transcendental input and is handled separately by
-directed evaluation.  The verification script is the ancillary file
-\texttt{interval\_certificate.py}; it re-derives every polynomial from the
-construction data and the exact triangle geometry.  No floating point
-enters any accepted certificate. \qed
-
-Corollary~\ref{cor:trio} follows by intersecting the intervals in
-Theorem~\ref{thm:interval}(ii)--(iii): all four comparisons hold
-simultaneously for $u\in[0.282,0.3855]\supseteq[31.50^\circ,42.16^\circ]$
-in base angle. \qed
+The polygonal family earns its place in three ways.  First, it carries
+the only interval-wide certified statement in this problem area: the
+best known path at each angle is at most as long as the certified staple
+there, so Theorem~\ref{thm:interval} is a certified upper envelope for
+the whole branch, and its elimination of the square path, the diameter,
+the caliper, and the zee transfers rigorously to the frontier.  Second,
+rational-polynomial data are what make the Sturm certificates of
+Appendix~\ref{app:proof} possible, and the arc-window certificates of
+Section~\ref{sec:arc} are their direct extension.  Third, its stationary
+points are where the rounded template was found
+(Section~\ref{sub:discovery}).  Theorem~\ref{thm:interval} should be
+read accordingly: the foundation under the frontier, not a claim that
+corners are best.  Its proof is deferred to Appendix~\ref{app:proof}.
 
 
 \subsection{How the witnesses were found}\label{sub:discovery}
@@ -948,7 +815,7 @@ nearby rational point on the feasible side, only $6.16\times10^{-7}$ longer;
 the exact disk-containment check, not the stationarity computation, is what
 makes it a theorem.  Along the family, the tangency pattern changes twice
 near $\beta\approx38.9^\circ$ --- the two interior breakpoints of the
-construction in Section~\ref{sec:interval}.
+construction in Appendix~\ref{app:proof}.
 
 
 \section{The type example: the golden gnomon, exactly}\label{sec:gnomon}
@@ -1200,7 +1067,7 @@ At $\beta=36^\circ$ the base-aligned construction gives the valid square
 path in the table.  The leg-aligned value $3s_B=1.2624233\ldots$ is smaller,
 but it is not an escape bound there: that square fits strictly inside $T$
 (with clearance $6.3\times10^{-3}$), illustrating why
-Section~\ref{sec:interval} uses inscribed squares only as \emph{lower}
+Appendix~\ref{app:proof} uses inscribed squares only as \emph{lower}
 bounds for escaping square paths.
 \end{remark}
 
@@ -1537,7 +1404,9 @@ upper-bound envelope attains its maximum: the hardest isosceles forest
 sits at the phase boundary.  The exact contributions are the anchors
 inside the middle regime: a certified upper bound on the whole interval
 $[31.07^\circ,42.16^\circ]$ of base angles, via an explicit trapezoidal
-family that removes Ward's square path from the frontier everywhere and
+family --- the certified foundation of the branch, never itself the
+frontier --- that removes Ward's square path from the frontier everywhere
+and
 beats all four of his comparison families on $[31.50^\circ,42.16^\circ]$;
 a finite-certificate method (for polygonal and line--arc data alike) that
 replaces the continuum of placements by exact arithmetic; the line--arc
@@ -1574,6 +1443,162 @@ are maintained at \url{https://github.com/atemerev/bellman-staple}.
 
 \clearpage
 \appendix
+\section{Proof of Theorem~\ref{thm:interval}}\label{app:proof}
+
+Parametrize by $u=\tan(\beta/2)$, so that $\sin\beta=\frac{2u}{1+u^2}$ and
+$\cos\beta=\frac{1-u^2}{1+u^2}$ are rational functions of $u$.  All triangle
+data --- normals, side lengths, the rotations of Proposition~\ref{cor:mink},
+the disk radius $2\operatorname{Area}=\sin2\beta$ --- are then rational in
+$u$, and for a staple whose parameters $a,b,c$ are \emph{polynomials} in $u$
+with rational coefficients, every certificate of
+Remark~\ref{rem:edgenormals}, after clearing the (positive) denominators and
+squaring away the (sign-certified) square roots, is the strict positivity of
+a polynomial in $\Q[u]$ on a rational interval --- decidable by Sturm's
+theorem in exact integer arithmetic.
+
+\subsection{The construction}
+The ancillary file \texttt{interval\_construction.json} defines three
+polynomial triples $(a_i,b_i,c_i)\in\Q[u]^3$, of degrees $6$, $2$, and $6$
+on the respective pieces
+\[
+[0.278,\,0.3530],\qquad [0.3530,\,0.353399],\qquad [0.353399,\,0.3855],
+\]
+and $S(u)$ is the path through
+$(-a_i(u),c_i(u)),\,(-b_i(u),0),\,(b_i(u),0),\,(a_i(u),c_i(u))$.
+All $51$ coefficients are rational numbers, printed in full in
+Appendix~\ref{app:coeffs}; the machine-readable copy is read afresh by the
+verification script, which certifies $a_i,b_i,c_i>0$ together with every
+inequality used below.  Figure~\ref{fig:family} shows the family at three
+angles.  The middle piece is a deliberately thin bridge: near
+$u\approx0.3534$ the numerically optimal staple changes which edges of its
+Minkowski sum touch the disk (Section~\ref{sub:discovery}), and the two
+outer fits track the two contact regimes; the quadratic bridge hands over
+between them, and its exact endpoints are immaterial --- every certificate
+is checked on each piece separately.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=2.1]
+\begin{scope}[shift={(-1.74,0)}]
+\draw[very thick,green!45!black] (-0.84805,0) -- (0.84805,0) -- (0,0.52992) -- cycle;
+\draw[line width=1.2pt,orange!85!black]
+ (0.23631,0) -- (0.17087,0.42315) -- (-0.17087,0.42315) -- (-0.23631,0);
+\node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=32^\circ$\\ $|S|=1.19812$};
+\end{scope}
+\begin{scope}[shift={(0,0)}]
+\draw[very thick,green!45!black] (-0.77715,0) -- (0.77715,0) -- (0,0.62932) -- cycle;
+\draw[line width=1.2pt,orange!85!black]
+ (0.24298,0) -- (0.20207,0.46569) -- (-0.20207,0.46569) -- (-0.24298,0);
+\node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=39^\circ$\\ $|S|=1.33913$};
+\end{scope}
+\begin{scope}[shift={(1.74,0)}]
+\draw[very thick,green!45!black] (-0.74314,0) -- (0.74314,0) -- (0,0.66913) -- cycle;
+\draw[line width=1.2pt,orange!85!black]
+ (0.25843,0) -- (0.22794,0.46390) -- (-0.22794,0.46390) -- (-0.25843,0);
+\node[font=\scriptsize,align=center] at (0,-0.21) {$\beta=42^\circ$\\ $|S|=1.38569$};
+\end{scope}
+\end{tikzpicture}
+\caption{The certified family $S(u)$ inside $T(\beta)$ at
+$\beta=32^\circ$, $39^\circ$, $42^\circ$, each at a critical placement
+(the hull fits only in touching position).}
+\label{fig:family}
+\end{figure}
+
+\subsection{Eliminating square paths}
+\begin{lemma}[square paths from inscribed squares]\label{lem:square}
+Fix $\beta$ and suppose some square $Q_0$ of side $s_0$ satisfies
+$Q_0\subseteq T(\beta)$. Then every square path of side $s<s_0$ fails
+to escape $T(\beta)$; consequently every escaping square path has
+length $\ge 3s_0$.
+\end{lemma}
+
+\begin{proof}
+The hull of a square path of side $s$ is the full square. Shrinking
+$Q_0$ about its center by the factor $s/s_0<1$ places a congruent copy
+of that hull in $\operatorname{int}Q_0\subseteq\operatorname{int}T(\beta)$.
+\end{proof}
+
+The two inscribed squares we use are Ward's, in exact form
+(Figure~\ref{fig:squares}): the base-aligned square of side
+\[
+s_A=\frac{2\sin\beta\cos\beta}{\sin\beta+2\cos\beta},
+\]
+with both bottom corners on the base and both top corners on the legs, and
+the leg-aligned square of side
+\[
+s_B=\frac{\sin\beta}{\sin\beta+\cos\beta},
+\]
+with one full side on a leg, its far corner \emph{at the apex}, and one
+corner on the base.  The stated incidences are polynomial identities in
+$u$; the remaining vertex--halfplane constraints are certified by Sturm
+checks.  Ward's two square-path formulas $3s_A$ and $3s_B$ exchange at the
+root $\beta_0=39.1320\ldots^\circ$ of
+$\sin\beta\,(2\cos\beta-1)=2\cos\beta\,(1-\cos\beta)$ (his ``approximately
+$39.1^\circ$''), the kink visible in Figure~\ref{fig:curves}.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=2.35]
+\begin{scope}[shift={(-1.13,0)}]
+\draw[very thick,green!45!black] (-0.80902,0) -- (0.80902,0) -- (0,0.58779) -- cycle;
+\fill[blue!8] (-0.21558,0) rectangle (0.21558,0.43116);
+\draw[thick,blue!60!black] (-0.21558,0) rectangle (0.21558,0.43116);
+\foreach \p in {(-0.21558,0),(0.21558,0),(0.21558,0.43116),(-0.21558,0.43116)}
+  \fill[blue!60!black] \p circle (0.014);
+\node[font=\scriptsize,align=center] at (0,-0.17)
+ {$\beta=36^\circ$: base-aligned,\\ side $s_A$};
+\end{scope}
+\begin{scope}[shift={(1.13,0)}]
+\draw[very thick,green!45!black] (-0.74896,0) -- (0.74896,0) -- (0,0.66262) -- cycle;
+\fill[blue!8] (0.35157,0.35157) -- (0.00000,0.66262) -- (-0.31105,0.31105)
+ -- (0.04053,0.00000) -- cycle;
+\draw[thick,blue!60!black] (0.35157,0.35157) -- (0.00000,0.66262)
+ -- (-0.31105,0.31105) -- (0.04053,0.00000) -- cycle;
+\foreach \p in {(0.35157,0.35157),(0.00000,0.66262),(0.04053,0.00000)}
+  \fill[blue!60!black] \p circle (0.014);
+\node[font=\scriptsize,align=center] at (0,-0.17)
+ {$\beta=41.5^\circ$: leg-aligned,\\ side $s_B$};
+\end{scope}
+\end{tikzpicture}
+\caption{The two inscribed squares behind Lemma~\ref{lem:square}.  Left: the
+base-aligned square, with both bottom corners on the base and both top
+corners on the legs.  Right: the leg-aligned square, with one full side on a
+leg, its far corner at the apex, and one corner on the base (contacts
+marked).  Any escaping square path must have side at least $\max(s_A,s_B)$;
+the certificates prove $|S(u)|<3s_A$ for $u\le0.365$ and $|S(u)|<3s_B$ for
+$u\ge0.36$, which together cover the whole interval.}
+\label{fig:squares}
+\end{figure}
+
+\subsection{The certificates}
+Every assertion of Theorem~\ref{thm:interval} is now a strict polynomial
+inequality on a rational interval.  (i): the twelve support-dominance
+inequalities of Remark~\ref{rem:edgenormals} per piece, with fixed
+support-test vertices (their values are lower bounds for $h_W$); for the
+four leg-normal directions the inequality is squared once, with
+$h$-positivity certified separately. (ii): by Lemma~\ref{lem:square} it
+suffices that $|S(u)|<3s_A(u)$ for $u\le0.365$ and $|S(u)|<3s_B(u)$ for
+$u\ge0.36$, once the two squares are certified inscribed; each comparison
+squares away the single root in $|S(u)|$. (iii): the diameter and caliper
+comparisons are of the same shape, using the outward-rounded bracket
+$\zeta>2.2782916$ from the published closed form; the zee comparison
+carries one further square root and is squared twice, with both
+intermediate signs certified.  (The zee length in (iii) is Ward's closed
+form $Q_B$ \cite{ward2008} rescaled from unit base to unit legs.)
+
+In total $116$ rational-polynomial certificates (degrees $\le40$) are
+verified by endpoint signs and exact Sturm root counts.  The Zalgaller
+constant is the only transcendental input and is handled separately by
+directed evaluation.  The verification script is the ancillary file
+\texttt{interval\_certificate.py}; it re-derives every polynomial from the
+construction data and the exact triangle geometry.  No floating point
+enters any accepted certificate. \qed
+
+Corollary~\ref{cor:trio} follows by intersecting the intervals in
+Theorem~\ref{thm:interval}(ii)--(iii): all four comparisons hold
+simultaneously for $u\in[0.282,0.3855]\supseteq[31.50^\circ,42.16^\circ]$
+in base angle. \qed
+
 \section{The coefficients of the staple family}\label{app:coeffs}
 
 Table~\ref{tab:coeffs} prints the construction of Theorem~\ref{thm:interval}
