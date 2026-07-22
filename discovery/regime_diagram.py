@@ -54,7 +54,7 @@ ax.plot(np.rad2deg(bz)[mzee], zee(bz)[mzee], color='green', lw=2.6,
 mb = bB <= BX
 ax.plot(bB[~mb], LB[~mb], color='darkorange', lw=1.0, ls='--', alpha=0.85)
 ax.plot(bB[mb], LB[mb], color='darkorange', lw=2.6,
-        label='line--arc branch (staple $\\to$ Zalgalloid)')
+        label='Zalgalloid branch (line--arc)')
 ax.plot([45], [np.sqrt(2)], marker='o', ms=6, mfc='white', mec='darkorange',
         zorder=6)
 ax.annotate('exact rectangle endpoint\n$L=\\sqrt{2}$ = diameter tie',
@@ -84,7 +84,7 @@ ax.plot([31.07, 42.16], [0.985, 0.985], color='darkorange', lw=3, alpha=0.9,
 ax.text(36.6, 0.992, 'Theorem 1: certified interval $[31.07^\\circ,42.16^\\circ]$',
         fontsize=8.5, ha='center', color='saddlebrown')
 
-for x, lab, col in ((26.8, 'CALIPER', 'teal'), (34.8, 'STAPLE / LINE--ARC',
+for x, lab, col in ((26.8, 'CALIPER', 'teal'), (34.8, 'ZALGALLOID BRANCH',
                     'darkorange'), (51.5, 'ZEE', 'green')):
     ax.text(x, 1.445, lab, fontsize=10, fontweight='bold', color=col,
             ha='center', va='top')

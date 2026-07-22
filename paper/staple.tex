@@ -172,7 +172,7 @@ its middle segment crosses the hull.  On $[45^\circ,60^\circ]$ it is
 proven optimal \cite{coultonmovshovich2006,movshovich2012}; on
 $[\beta_\times,45^\circ)$ it remains the shortest known path
 (Section~\ref{sec:zee}).
-\item The \textbf{staple--Zalgalloid branch}, for
+\item The \textbf{Zalgalloid branch}, for
 $\beta^{*}\approx27.6^\circ\le\beta\le\beta_\times$: a single connected
 family of \emph{boundary-type} paths, each traversing the boundary of its
 convex hull minus one chord.  Near $\beta_\times$ the hull is a
@@ -207,7 +207,7 @@ $\ell(T)\le\zeta\sin\beta$ (Section~\ref{sec:caliper}).
 \draw[gray!45, thin] (axis cs:42.287,0.96) -- (axis cs:42.287,1.47);
 \end{pgfonlayer}
 \addlegendimage{orange!95!black, line width=1.8pt}
-\addlegendentry{staple--Zalgalloid branch}
+\addlegendentry{Zalgalloid branch}
 \addlegendimage{magenta!65!black, line width=1.8pt}
 \addlegendentry{zee}
 \addlegendimage{teal!70!black, line width=1.8pt}
@@ -237,7 +237,7 @@ $\ell(T)\le\zeta\sin\beta$ (Section~\ref{sec:caliper}).
 \node[font=\scriptsize\bfseries, teal!60!black, rotate=90]
   at (axis cs:26.75,1.335) {caliper};
 \node[font=\scriptsize\bfseries, orange!75!black]
-  at (axis cs:34.9,1.448) {staple $\to$ Zalgalloid};
+  at (axis cs:34.9,1.448) {Zalgalloid branch};
 \node[font=\scriptsize\bfseries, magenta!60!black]
   at (axis cs:51.5,1.448) {zee};
 \node[font=\scriptsize, anchor=west]
@@ -253,7 +253,7 @@ $\ell(T)\le\zeta\sin\beta$ (Section~\ref{sec:caliper}).
 \end{tikzpicture}
 \caption{The three regimes of best-known escape paths (legs $=1$): the
 scaled caliper for $\beta\le\beta^{*}\approx27.6^\circ$, the
-staple-to-Zalgalloid line--arc branch on $[\beta^{*},\beta_\times]$, and
+Zalgalloid line--arc branch on $[\beta^{*},\beta_\times]$, and
 the zee beyond $\beta_\times=42.287^\circ$.  Thick curves are the frontier;
 dashed curves continue each branch past its regime, where it persists as a
 local optimum.  The crossing at $\beta_\times$ is transversal, and the kink
@@ -314,7 +314,7 @@ together, tangentially, leaving no kink in the envelope --- a
 (-0.2440,0.1521) (-0.2445,0.1454) (-0.2449,0.1387) (-0.2452,0.1321)
 (-0.2455,0.1254) (-0.2502,0.0000)};
 \node[font=\scriptsize,align=center] at (0,-0.27)
- {smoothed staple, $\beta=41^\circ$\\ $L=1.371047$};
+ {Zalgalloid branch, $\beta=41^\circ$\\ smoothed staple, $L=1.371047$};
 \end{scope}
 \begin{scope}[shift={(3.62,0)}]
 \draw[very thick,green!45!black] (-0.86603,0) -- (0.86603,0) -- (0,0.50000) -- cycle;
@@ -328,7 +328,7 @@ together, tangentially, leaving no kink in the envelope --- a
 (-0.2285,0.1351) (-0.2325,0.1203) (-0.2359,0.1053) (-0.2389,0.0902)
 (-0.2415,0.0750) (-0.2529,0.0000)};
 \node[font=\scriptsize,align=center] at (0,-0.27)
- {Zalgalloid, $\beta=30^\circ$\\ $L=1.137915$};
+ {Zalgalloid branch, $\beta=30^\circ$\\ $L=1.137915$};
 \end{scope}
 \begin{scope}[shift={(5.69,0)}]
 \draw[very thick,green!45!black] (-0.89879,0) -- (0.89879,0) -- (0,0.43837) -- cycle;
@@ -342,19 +342,20 @@ together, tangentially, leaving no kink in the envelope --- a
 (-0.1798,0.1587) (-0.1839,0.1478) (-0.1877,0.1368) (-0.1911,0.1258)
 (-0.2288,0.0000)};
 \node[font=\scriptsize,align=center] at (0,-0.27)
- {scaled caliper, $\beta=26^\circ$\\ $L=0.998737$};
+ {scaled caliper, $\beta=26^\circ$\\ branch endpoint, $L=0.998737$};
 \end{scope}
 \end{tikzpicture}
 \caption{One escape path per regime, each at a critical placement in its
 triangle $T(\beta)$ (legs $=1$; the hull fits only in touching position).
-Left to right: the \emph{zee} at $\beta=50^\circ$ --- diagonal type, the
-middle segment crosses the hull; the \emph{smoothed staple} at
-$\beta=41^\circ$ --- boundary type: bar under the apex, shoulder arcs of
-radius $\sin\beta$ and span $3.5^\circ$, to the eye still a trapezoid; a
-\emph{Zalgalloid} at $\beta=30^\circ$ --- the same branch with deep arcs
-and a short bar; and the \emph{scaled caliper} at $\beta=26^\circ$, which
-the branch has joined (bar length zero).  Lengths are the best known
-values at each angle; placements are computed, not sketched.}
+Left: the \emph{zee} at $\beta=50^\circ$ --- diagonal type, the middle
+segment crosses the hull.  The other three panels are members of the
+\emph{single} Zalgalloid branch --- boundary type, the path traverses its
+hull boundary minus a chord: at $41^\circ$ a smoothed staple (bar under
+the apex, shoulder arcs of radius $\sin\beta$ and span $3.5^\circ$, to
+the eye still a trapezoid); at $30^\circ$ a deeper member (long arcs,
+short bar); at $26^\circ$ the branch's lower endpoint, the scaled caliper
+(bar length zero).  Lengths are the best known values at each angle;
+placements are computed, not sketched.}
 \label{fig:gallery}
 \end{figure}
 
@@ -1396,7 +1397,7 @@ of the plot are exact coincidence to solver precision.}
 The picture this paper leaves is a phase diagram
 (Figure~\ref{fig:regimes}).  Across $26^\circ\le\beta\le60^\circ$ the
 best-known escape paths form three regimes --- caliper, the
-staple-to-Zalgalloid branch, zee --- separated by a second-order boundary
+Zalgalloid branch, zee --- separated by a second-order boundary
 at $\beta^{*}\approx27.6^\circ$, where the branch merges tangentially into
 the caliper, and a first-order boundary at $\beta_\times=42.287^\circ$,
 where two combinatorially distinct families cross transversally and the

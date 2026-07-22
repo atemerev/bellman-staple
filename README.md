@@ -61,7 +61,7 @@ for T(β) form three regimes:
 
 - **zee** (β ≥ β× = 42.287°): proven optimal on [45°, 60°]
   (Coulton–Movshovich 2006, Movshovich 2012); best known down to β×.
-- **staple → Zalgalloid** (β* ≈ 27.6° ≤ β ≤ β×): one connected branch of
+- **Zalgalloid branch** (β* ≈ 27.6° ≤ β ≤ β×): one connected branch of
   line-arc paths (hull boundary minus a chord), from near-polygonal
   trapezoids at the top to Zalgaller's caliper at the bottom.
 - **caliper** (β ≤ β*): the scaled Zalgaller caliper, ℓ ≤ ζ·sin β.
@@ -95,7 +95,7 @@ paper/          staple.tex, staple.pdf — the manuscript (amsart; builds with t
 verification/   the complete machine-checkable proofs (arXiv ancillary files)
   tight_staple_proof.py         verifies the golden-gnomon theorem
   interval_construction.json    exact rational coefficients of the family S(u)
-                                (printed in Appendix A of the paper)
+                                (printed in Appendix B of the paper)
   interval_certificate.py       verifies all 116 Sturm certificates of the
                                 interval theorem
 discovery/      numerical code that found the witnesses (not used in proofs)
