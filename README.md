@@ -1,9 +1,9 @@
-# The three regimes of escape paths for isosceles triangles in Bellman's lost-in-a-forest problem
+# From the equilateral triangle to the flat limit: the zee-to-caliper frontier in Bellman's forest problem
 
 Paper sources, machine-checkable proofs, and discovery code for:
 
-> A. Temerev and A. Doria, *The three regimes of escape paths for isosceles
-> triangles in Bellman's lost-in-a-forest problem* (2026). Sources in
+> A. Temerev and A. Doria, *From the equilateral triangle to the flat limit: the
+> zee-to-caliper frontier in Bellman's forest problem* (2026). Sources in
 > [`paper/`](paper/).
 
 ## What this is
